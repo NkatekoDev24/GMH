@@ -110,7 +110,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     private void startMainActivity() {
-        startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+        startActivity(new Intent(getApplicationContext(), TopicsActivity.class));
         finish();
     }
 

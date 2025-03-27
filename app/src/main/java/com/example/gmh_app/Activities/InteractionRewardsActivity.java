@@ -39,7 +39,7 @@ public class InteractionRewardsActivity extends AppCompatActivity {
         startVideos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InteractionRewardsActivity.this, TopicsActivity.class);
+                Intent intent = new Intent(InteractionRewardsActivity.this, IntroActivity.class);
                 startActivity(intent);
             }
         });
