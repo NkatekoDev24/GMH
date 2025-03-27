@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "73470567784",
+    "firebase_url": "https://gmhapp-7f6f4-default-rtdb.firebaseio.com",
+    "project_id": "gmhapp-7f6f4",
+    "storage_bucket": "gmhapp-7f6f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73470567784:android:fbedc8f31a65ed6fb762dd",
+        "android_client_info": {
+          "package_name": "com.example.gmh_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJY0rB8mz8-bxzg4J28ZzhiX-Ca7-f7VU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

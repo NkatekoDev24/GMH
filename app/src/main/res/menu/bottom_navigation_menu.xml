@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Home"
+        android:icon="@drawable/menu_home"
+        android:checked="true"
+        android:padding="8dp"/>
+
+    <item
+        android:id="@+id/navigation_forum"
+        android:title="Forum"
+        android:icon="@drawable/baseline_chat_bubble_24"
+        android:padding="8dp"/>
+
+
+    <item
+        android:id="@+id/navigation_account"
+        android:title="Account"
+        android:icon="@drawable/ic_account"
+        android:padding="8dp"/>
+
+</menu>

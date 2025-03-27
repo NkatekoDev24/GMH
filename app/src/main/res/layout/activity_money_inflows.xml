@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Introductory Texts -->
+        <TextView
+            android:id="@+id/tvparts2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="6dp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <!-- Introductory Texts -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COUNTING AND RECORDING MONEY INFLOWS"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to the videos in Part 2. In Part 1 (videos 1 to 4) you have completed the ‘basic level’ of the video series. Now you’ll start learning the next level of skills."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👉 As before, we RECOMMEND that you space the four parts over at least 4 weeks to enable you to watch some videos again, but also to implement and try out, in your own business, new things that you are learning."
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="But first, let’s take a look at how you are doing things currently."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <!-- Privacy Text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:textSize="16sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="italic"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <!-- Question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How long have you had this business? / When did this business start operating?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+
+        <!-- RadioGroup for Business Duration -->
+        <RadioGroup
+            android:id="@+id/business_duration_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/less_than_one_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Less than one YEAR ago"
+                android:textSize="20sp"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/one_to_three_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="1 year or more BUT less than 3 years ago"
+                android:textSize="20sp"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/three_to_five_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="3 or more years BUT less than 5 years ago"
+                android:textSize="20sp"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/five_to_ten_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 or more years BUT less than 10 years ago"
+                android:textSize="20sp"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/ten_or_more_years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="10 or more years ago"
+                android:textSize="20sp"
+                android:textColor="@android:color/black" />
+        </RadioGroup>
+
+        <!-- Business Practices -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To what extent do you do the following:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"/>
+
+        <!-- Count cash at start of day -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Count the business’s cash at the start of every day"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black" />
+
+        <RadioGroup
+            android:id="@+id/count_cash_start_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+        </RadioGroup>
+
+        <!-- Count cash at end of day -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Count the business’s cash at the end of the day"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black" />
+
+        <RadioGroup
+            android:id="@+id/count_cash_end_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+        </RadioGroup>
+
+        <!-- Write down each transaction -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Write down each transaction (sales of goods or services and buying supplies)?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black" />
+
+        <RadioGroup
+            android:id="@+id/write_transactions_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+        </RadioGroup>
+
+        <!-- Regularly count and record stock -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regularly count and record your stock (inventory)?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black" />
+
+        <RadioGroup
+            android:id="@+id/count_stock_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:fontFamily="@font/calibri_regular" android:textColor="@android:color/black" android:textSize="20sp" />
+        </RadioGroup>
+
+        <!-- Video 5 Text -->
+        <TextView
+            android:id="@+id/video5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"
+            android:textStyle="bold"/>
+
+        <!-- Video 5 Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Part 2 starts with video 5. You will learn better ways to handle the money that flows INTO your business. This is what we’ll cover and what Video 5 is about:"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvCombinedToc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="16dp"
+            android:background="@drawable/textbox_background"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watch Video 5"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

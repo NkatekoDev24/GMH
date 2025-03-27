@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Feedback Break Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FEEDBACK BREAK"
+            android:textSize="24sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:paddingBottom="16dp"/>
+
+        <!-- Video Rating Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What do you think of this video? Please rate it by indicating the number of stars."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <!-- Explanation for Rating -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1 star means: Not at all / I didn’t like it at all\n5 stars mean: A lot / I liked it very much"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"/>
+
+        <RatingBar
+            android:id="@+id/rating_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#FFD700"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Clarity Rating Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How clear was the information?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <RatingBar
+            android:id="@+id/rating_clarity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#FFD700"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0" />
+
+        <!-- Usefulness Rating Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How useful was the information?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <RatingBar
+            android:id="@+id/rating_usefulness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#FFD700"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Current Money Habits Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How good are your current money habits with recording MONEY INFLOWS in the business?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 star means: Very bad\n5 stars mean: Very good"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <RatingBar
+            android:id="@+id/current_habits_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#32cd32"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Desired Money Habits Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How would you like it to look like 4 weeks from now?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <RatingBar
+            android:id="@+id/desired_habits_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#32cd32"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Biggest Lesson Learned Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What is the biggest lesson you learned from this video?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <EditText
+            android:id="@+id/editText_lesson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your response here"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Plan for Changes Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From today, after watching these videos, are there any changes you want to make in the way you handle MONEY INFLOWS in your business?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <RadioGroup
+            android:id="@+id/change_plan_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/plan_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular" />
+
+            <RadioButton
+                android:id="@+id/plan_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+
+        <!-- Explanation for Changes -->
+        <TextView
+            android:id="@+id/tv_changes_explain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If yes: what changes do you want to make? Explain briefly: "
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <EditText
+            android:id="@+id/editText_changes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="What changes do you want to make? Explain briefly"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"/>
+
+        <!-- Reminder to Answer Before Next Video -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📌It’s important to write this down BEFORE you go to the next video."
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"/>
+
+        <!-- Comments Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any comments, problems or suggestions?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <EditText
+            android:id="@+id/editText_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your comments here"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let's go on to video 8"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"/>
+
+    </LinearLayout>
+</ScrollView>

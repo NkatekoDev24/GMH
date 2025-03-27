@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Congratulations Message -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@android:color/black"
+            android:textStyle="italic|bold"
+            android:text="👏 Congratulations! Completing and understanding this video is quite an achievement."
+            android:paddingBottom="16dp"/>
+
+        <!-- Congratulations Message -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="italic"
+            android:text="It is especially important since these costs can easily get a business into trouble."
+            android:paddingBottom="16dp"/>
+
+        <!-- Feedback Break Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FEEDBACK BREAK"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingBottom="12dp"/>
+
+        <!-- Video Rating -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What do you think of this video? Please rate it by indicating the number of stars."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="4dp"/>
+
+        <!-- Rating Explanation -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 star means: Not at all / I didn’t like it at all\n5 stars mean: A lot / I liked it very much"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:textColor="@android:color/black"/>
+
+        <RatingBar
+            android:id="@+id/rating_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#FFD700"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Clarity Rating -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How clear was the information?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <RatingBar
+            android:id="@+id/rating_clarity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#FFD700"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Usefulness Rating -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How useful was the information?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <RatingBar
+            android:id="@+id/rating_usefulness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#FFD700"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Current Overhead Costs Control Rating -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How well do you control overhead costs at the moment?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 star means: Very bad\n5 stars mean: Very good"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <RatingBar
+            android:id="@+id/rating_control_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#32cd32"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Future Overhead Costs Control Rating -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How would you want to control your overhead costs 4 weeks from now?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+
+        <RatingBar
+            android:id="@+id/rating_control_future"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#32cd32"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Biggest Lesson Learned -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What is the biggest lesson you learned from this video?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/lesson_learned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your answer here"
+            android:textColor="@android:color/black"/>
+
+        <!-- Changes in Handling Fixed Costs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From today, are there any changes you want to make to the way you handle and record Fixed Costs (overhead costs) in your business?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/fixed_cost_changes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/fixed_cost_changes_yes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" android:textColor="@color/black" android:textSize="20sp" />
+            <RadioButton android:id="@+id/fixed_cost_changes_no" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:textColor="@color/black" android:textSize="20sp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/text_changes_explained"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If yes: what changes do you want to make? Explain briefly."
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="8dp"/>
+        <EditText
+            android:id="@+id/changes_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your changes here"
+            android:textColor="@android:color/black"/>
+
+        <!-- Reminder Message -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📌 It’s important to write this down BEFORE you go to the next video."
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textStyle="italic"/>
+
+        <!-- Additional Comments -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any comments, problems or suggestions regarding video 11?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+        <EditText
+            android:id="@+id/additional_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your comments here"
+            android:layout_marginBottom="20dp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:text="Submit" />
+
+    </LinearLayout>
+</ScrollView>

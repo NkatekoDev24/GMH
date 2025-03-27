@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Logo Section -->
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            android:contentDescription="Logo"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to the Good Money Habits (GMH) Videos"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Intro Text -->
+        <TextView
+            android:id="@+id/intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The aim of the GMH Videos is to help you make more money and grow your business by adopting good habits in the handling and recording of money."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Details Section -->
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This covers inflows (income, revenue) and outflows (expenses, costs) – and the correct calculation and use of profit. Good financial habits will help you manage your business well."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Good financial habits help to ensure the survival of your business."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Good Money Habits Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Good money habits will help you:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• see better what is happening with money in your business\n• manage your business well\n• get better business performance\n• make more money (profit)\n• grow your business and\n• create employment."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Circumstances Section -->
+        <TextView
+            android:id="@+id/circumstances"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The circumstances, needs, problems and ambitions of small or micro-businesses in townships are central in the videos."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Intended Users Section -->
+        <TextView
+            android:id="@+id/intendedUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The intended users are owners and managers of small and micro-enterprises (often informal) in townships, especially if you haven’t had any training in bookkeeping or management."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Approach Section -->
+        <TextView
+            android:id="@+id/plainLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Approach: These videos are in plain language – no technical jargon or complex accounting."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- GMH Series Videos -->
+        <TextView
+            android:id="@+id/videoGroupsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GMH Series Videos (3-5 minutes per video):"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/videoGroups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Part 1: BASICS: Why Good Money Habits (4 videos)\nPart 2: Counting and recording money INFLOWS (revenue) (4 videos)\nPart 3: Counting and recording money OUTFLOWS (3 videos)\nPart 4: Counting and recording PROFIT &amp; The Risk of Customer Credit (4 videos)"
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Pre-conclusion -->
+        <TextView
+            android:id="@+id/preconclusion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The videos have to be watched in the numbered sequence within the four parts, otherwise you could miss important insights."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/calibri_regular" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You will be tempted to watch all the videos in one go, because they are really good! However, we RECOMMEND that you space the four parts (15 videos) over at least 4 WEEKS."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Conclusion Section -->
+        <TextView
+            android:id="@+id/conclusion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We hope you will learn many new and useful things – and find it enjoyable."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Next Button -->
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Next"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:textColor="@android:color/white"
+            android:padding="12dp" />
+    </LinearLayout>
+</ScrollView>

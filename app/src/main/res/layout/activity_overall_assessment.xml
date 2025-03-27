@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header and Privacy Notice -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FINALLY: AN OVERALL ASSESSMENT of the entire GMH Video Series 1 that you have just completed."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="italic"
+            android:paddingBottom="16dp"/>
+
+        <!-- Question 1: Videos Watched -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How many of the 15 GMH videos have you watched in full? Insert “All” or a number if not all:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/videos_watched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type 'All' or a number"/>
+
+        <!-- Question 2: Weeks Watched -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Over which period (number of weeks approximately) have you watched all these videos?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="8dp"/>
+        <EditText
+            android:id="@+id/weeks_watched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Enter number of weeks"/>
+
+        <!-- Question 3: Benefit from Videos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How much did you benefit from watching these videos on good money habits?"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textSize="20sp"
+            android:paddingTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/benefit_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/benefit_not_at_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/benefit_some_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/benefit_large_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/benefit_great_deal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A great deal" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+        <!-- Question 3: Benefit from Videos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you more comfortable and confident with running your business than before?"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:paddingTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/comfortable_groups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/comfortable_not_at_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/comfortable_some_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/comfortable_large_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/comfortable_great_deal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have the videos changed your money management practices (i.e. how you manage your money)?"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textSize="20sp"
+            android:paddingTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/changed_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/changed_not_at_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/changed_some_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/changed_large_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/changed_great_deal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A great deal" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/changes_explained"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If at least some changes: what are the main changes that have you made?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/changed_watched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Type your answer here"/>
+
+        <!-- Question 4: Progress and New Skills -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do you feel good about your progress and new skills?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/progress_skills_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/skills_not_at_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/skills_some_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/skills_large_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/skills_all_the_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+        <!-- Question 5: Financial Control -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have the videos changed your sense of control over your finances (revenue, costs, debt, etc.)?"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textSize="20sp"
+            android:paddingTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/control_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/control_not_at_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/control_some_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/control_large_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/control_all_the_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do you feel you can now do better planning in your business?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <RadioGroup
+            android:id="@+id/plan_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/plan_not_at_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/plan_some_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/plan_large_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/plan_all_the_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All the time" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+
+        <!-- Question 6: Profit Increase -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have your Good Money Habits improvements increased your (net) profit (the amount of money you make per month)?"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:paddingTop="8dp"/>
+        <RadioGroup
+            android:id="@+id/profit_increase_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/profit_not_at_all" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not at all" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/profit_some_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To some extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/profit_large_extent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="To a large extent" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/profit_great_deal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="A great deal" android:textSize="20sp" android:textColor="@android:color/black" android:fontFamily="@font/calibri_regular" />
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/profit_grow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If your profits did grow: By how  much has your average monthly net profit increased since starting to watch the GMH videos and implement new GMH habits? (approximate Rand amount) "
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/profit_watched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Insert Amount"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What is your average monthly net profit now? (approximate Rand amount) "
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/net_profit_watched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Insert Amount"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have you managed to increase your number of paid employees since watching the videos and implementing new GMH money habits?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"/>
+        <RadioGroup
+            android:id="@+id/changes_made_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/changes_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Yes"/>
+            <RadioButton
+                android:id="@+id/changes_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="No"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/text_changes_explained"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If YES, by how many (insert number of additional paid employees since you started to watch these videos)"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/yes_watched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Insert number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How many paid employees do you have now?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/paid_watched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Insert number"/>
+
+        <!-- Question 7: Additional Comments -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any final comments or suggestions regarding the entire GMH Video Series?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="16dp"/>
+        <EditText
+            android:id="@+id/final_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your comments here"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Submit"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</ScrollView>

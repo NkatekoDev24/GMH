@@ -1,0 +1,271 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header - Congratulations Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🙏 Thank you! We wish you all the best as you start growing your profits and building a sustainable business. \n\nRemember, to see your business clearly and make the right decisions, all you need is GOOD MONEY HABITS."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Subtext -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉 HUGE congratulations to you! 🥳 "
+            android:textSize="28sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👏 You have completed Part 4 – and thus the entire Series 1 of GMH Videos."
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have gained several new skills and learned a multitude of important lessons! 🍾🥂"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <!-- Achievement Info Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you have answered all the questions and given responses when asked, you qualify to get \nthe fourth and ultimate GOLD ACHIEVEMENT SHIELD (Level 4)."
+            android:textSize="16sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*If not, check the videos in Part 4 and make sure you have completed all the questions."
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/gray" />
+
+        <!-- Achievement Shield Heading -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Here is your final GMH ACHIEVEMENT SHIELD (Level 4)!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black" />
+
+        <!-- Shield Image -->
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/picture4"
+            android:contentDescription="Achievement Shield"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="It can now be inserted into its dedicated space on the front of your Virtual Business."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Shield Placement Text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HAVE A LOOK…. YOUR BUSINESS LOOKS SPECTACULAR!"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <!-- Rewards Image -->
+        <ImageView
+            android:id="@+id/rewardsImage"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Image showing rewards"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/snippet4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Through your hard work your business has developed so much!"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The FOUR Shields now fully protect your Virtual Business and its Money Box."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have earned all four shields by working diligently through all 15 videos \nand sets of questions in the GMH Video App."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🌟 You have now STRUCK GOLD! 🌟"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <!-- Feedback Prompt -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A couple of final questions…."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Recommendation Question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How strongly would you recommend this Video Series to other business owners and managers?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <RatingBar
+            android:id="@+id/rating_overall"
+            android:layout_width="wrap_content"
+            android:progressTint="#FFD700"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <!-- Interest Question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How keen would you be to get more videos on other financial or management topics?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <RatingBar
+            android:id="@+id/keen_overall"
+            android:layout_width="wrap_content"
+            android:progressTint="#FFD700"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Which specific topics or issues?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Topics Input Field -->
+        <EditText
+            android:id="@+id/etTopics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your answer here"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- End of Series Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="8dp"
+            android:text="END OF SERIES 4"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Certificate"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+</ScrollView>

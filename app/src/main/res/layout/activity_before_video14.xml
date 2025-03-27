@@ -1,0 +1,507 @@
+<!-- file path: app/src/main/res/layout/activity_profit_and_credit_risk.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Updated Video Introduction Text -->
+        <TextView
+            android:id="@+id/video14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s first take a look at how far you’ve come – and also how you currently do things."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Profit Calculation Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Did you correctly calculate profit in the past?"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+        <RadioGroup
+            android:id="@+id/calcProfitGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/calcProfitNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="Not at all"/>
+
+            <RadioButton
+                android:id="@+id/calcProfitSome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To some extent"/>
+
+            <RadioButton
+                android:id="@+id/calcProfitLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To a large extent"/>
+
+            <RadioButton
+                android:id="@+id/calcProfitAllTheTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="All the time"/>
+        </RadioGroup>
+
+        <!-- Gross Profit -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Using Videos 12 and 13’s information, how much GROSS PROFIT do you make per month, on average?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/grossProfitInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter gross profit in Rands"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:inputType="numberDecimal"/>
+
+        <!-- Net Profit -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Using Videos 12 and 13’s information, how much NET PROFIT do you make per month, on average?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/netProfitInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter net profit in Rands"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:inputType="numberDecimal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s get to Video 14."
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Updated Combined TOC TextView -->
+        <TextView
+            android:id="@+id/tvCombinedToc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/textbox_background"
+            android:textSize="20sp"
+            android:padding="16dp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Credit Risk Management Section -->
+        <TextView
+            android:id="@+id/tvCredit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In this short video, we revisit the issue of hazards – in fact, we meet a major hazard that you need to pay attention to. \nBefore you watch the video, let’s think about CREDIT a bit:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="24dp"/>
+
+        <!-- Credit Risk Management Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To what extent do you do the following:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sell goods on credit"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/sellOnCreditGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/sellOnCreditNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:text="Not at all"/>
+
+            <RadioButton
+                android:id="@+id/sellOnCreditSome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To some extent"/>
+
+            <RadioButton
+                android:id="@+id/sellOnCreditLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="To a large extent"/>
+
+            <RadioButton
+                android:id="@+id/sellOnCreditAllTheTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="All the time"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keep a record of outstanding debts"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/recordDebtsGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/recordDebtsNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Not at all"/>
+
+            <RadioButton
+                android:id="@+id/recordDebtsSome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To some extent"/>
+
+            <RadioButton
+                android:id="@+id/recordDebtsLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="To a large extent"/>
+
+            <RadioButton
+                android:id="@+id/recordDebtsAllTheTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="All the time"/>
+        </RadioGroup>
+
+        <!-- Credit Risk Question: Remind Customers About Outstanding Debts -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regularly remind such customers that they owe money to your business"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/remindCustomersGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/remindNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="Not at all"/>
+
+            <RadioButton
+                android:id="@+id/remindSomeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="To some extent"/>
+
+            <RadioButton
+                android:id="@+id/remindLargeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To a large extent"/>
+
+            <RadioButton
+                android:id="@+id/remindAllTheTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="All the time"/>
+        </RadioGroup>
+
+        <!-- Credit Risk Question: Collect Outstanding Debts -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Succeed in collecting outstanding debts from customers"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/collectDebtsGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/collectNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="Not at all"/>
+
+            <RadioButton
+                android:id="@+id/collectSomeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To some extent"/>
+
+            <RadioButton
+                android:id="@+id/collectLargeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To a large extent"/>
+
+            <RadioButton
+                android:id="@+id/collectAllTheTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="All the time"/>
+        </RadioGroup>
+
+        <!-- Credit Risk Question: Write Off Debt Older Than 6 Months -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Write off debt older than 6 months"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/writeOffDebtGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/writeOffNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="Not at all"/>
+
+            <RadioButton
+                android:id="@+id/writeOffSomeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:text="To some extent"/>
+
+            <RadioButton
+                android:id="@+id/writeOffLargeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To a large extent"/>
+
+            <RadioButton
+                android:id="@+id/writeOffAllTheTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="All the time"/>
+        </RadioGroup>
+
+        <!-- Credit Risk Question: Continue Selling to Indebted Customers -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue selling to customers that haven’t paid their debt"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/sellToIndebtedGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/sellToIndebtedNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="Not at all"/>
+
+            <RadioButton
+                android:id="@+id/sellToIndebtedSomeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To some extent"/>
+
+            <RadioButton
+                android:id="@+id/sellToIndebtedLargeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="To a large extent"/>
+
+            <RadioButton
+                android:id="@+id/sellToIndebtedAllTheTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:text="All the time"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s get to Video 14"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="18sp"/>
+    </LinearLayout>
+</ScrollView>

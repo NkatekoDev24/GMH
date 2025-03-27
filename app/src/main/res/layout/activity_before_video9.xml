@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title Section -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:lineSpacingExtra="6dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/titleTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:text="COUNTING AND RECORDING MONEY OUTFLOWS"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/introductionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to the videos in Part 3."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/introductionTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👏 Compliments for getting this far! You can now continue to the next set of topics."
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/introductionTextView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Before we do that, let’s assess improvements in your habits."
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared."
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <!-- Money Inflows Change Question -->
+        <TextView
+            android:id="@+id/moneyInflowsQuestionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Have you made changes in the way you handle your business’s MONEY INFLOWS after watching the previous four videos of the money inflows(part 2)?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"/>
+
+        <RadioGroup
+            android:id="@+id/moneyInflowsGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/inflows_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/inflows_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_changes_explain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If yes: what changes did make?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <EditText
+            android:id="@+id/editTextGoodHabits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Explain briefly." />
+
+        <!-- Adjusting Money Habits Question -->
+        <TextView
+            android:id="@+id/easyAdjustmentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Did you find it relatively EASY to adjust your money habits based on the previous four videos on money INFLOWS (Part 2)?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <RadioGroup
+            android:id="@+id/easyAdjustmentGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/not_easy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not easy at all"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/some_extent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To some extent"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/large_extent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To a large extent"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/very_easy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes, very easy"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_changes_explain2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What was the results/outcome of the changes?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <EditText
+            android:id="@+id/editTextChanges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your answer here"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/calibri_regular" />
+
+        <TextView
+            android:id="@+id/tv_changes_explain3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What was the result/outcome of the changes?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <EditText
+            android:id="@+id/editTextOutcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Type your answer here" />
+
+        <!-- Satisfaction with Results Question -->
+        <TextView
+            android:id="@+id/satisfactionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Are you happy with the results?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"/>
+
+        <RadioGroup
+            android:id="@+id/satisfactionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/not_yet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not yet"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/to_some_extent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To some extent"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/to_large_extent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To a large extent"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/very_happy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes, very!"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+        <!-- Encouragement Message -->
+        <TextView
+            android:id="@+id/encouragementTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📌Remember to answer all these questions, so that you can be rewarded with an Achievement Shield at the end of Part 3."
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/encouragementTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👏 If you have persisted with making even small positive changes, you are doing well! Congratulations on working so hard to make your business more profitable and earn more money for your family. Continue with the good work!"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <!-- Business Premises Question -->
+        <TextView
+            android:id="@+id/premisesTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Before we tackle the videos in Part 3, let’s record a key element of your current situation: your BUSINESS PREMISES."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The COST OF A STRUCTURE, ROOM OR SPACE in which you do business is a major factor for any business – affecting costs, sales, service levels, profits, and quality of life."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thus, we now need to ask about your situation."
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/premisesTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/whereTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Where does your business mainly operate? In what kind of space/building/kiosk/structure do you work? Mark one of these:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <RadioGroup
+            android:id="@+id/businessLocationGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/location_informal_stall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="An informal or temporary stall or table that I have to set up every day, for example next to a street, footpath or open space"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/location_room_in_house"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="A room or space in my house that is also used for other household activities (e.g. family room, sitting room or kitchen)"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/location_separate_room_in_house"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="In a separate room in my house that is not used for household activities"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/location_permanent_structure_in_yard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="A durable/permanent structure in my yard separate from the house (e.g. a kiosk or workshop in the back yard), or in another person’s yard"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/location_public_structure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:text="A durable/permanent structure (stall, kiosk) at a public area such as a taxi rank, bus station, train station, open market or main street area"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/location_shop_in_building"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="A shop, workshop, workspace or office in a business building (e.g. shopping centre, factory centre or office block)"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/location_none"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None of the above"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+        <!-- Video 9 Introduction -->
+        <TextView
+            android:id="@+id/video9IntroTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <!-- Video 9 Introduction -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Part 3 starts with video 9. You’ll learn about better ways to handle the money that flows OUT OF your business – and various types of costs. This is what we’ll cover and what Video 9 is about:"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvCombinedToc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="16dp"
+            android:background="@drawable/textbox_background"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <TextView
+            android:id="@+id/videoReminderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⏳Take your time with these topics – they are a bit more complex than the previous ones. \nReplay the videos a few times if they don’t make sense to you. \nTake enough time to really understand the concepts. \nKeep at it and don’t give up."
+            android:textSize="20sp"
+            android:lineSpacingExtra="16dp"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/videoReminderTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You’ll soon understand it very well."
+            android:textSize="20sp"
+            android:lineSpacingExtra="16dp"
+            android:textStyle="italic|bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watch video 9"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</ScrollView>

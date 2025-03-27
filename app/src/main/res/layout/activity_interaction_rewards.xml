@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    &lt;!&ndash; AppBar with Toolbar &ndash;&gt;-->
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:elevation="4dp"-->
+<!--            app:title="Rewards and Achievements"-->
+<!--            app:titleTextColor="@android:color/white" />-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+    <!-- Main Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <!-- Root ConstraintLayout for flexibility -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INTERACTIONS AND REWARDS"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Description Text -->
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="6dp"
+                android:text="To make this learning process stimulating, you will be asked to interact with the videos. Before and after each video you will find questions and opportunities to express your opinion."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/calibri_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
+
+            <TextView
+                android:id="@+id/descriptionText2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="6dp"
+                android:text="These interactive questions are important to you (and to us). There also are elements of reward and achievement."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+            <!-- Description Text -->
+            <TextView
+                android:id="@+id/rewardsCaption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="6dp"
+                android:text="Rewards"
+                android:textColor="@android:color/holo_red_dark"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:fontFamily="@font/calibri_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionText2" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="6dp"
+                android:text="If you watch all the videos, answer all the questions and give responses when asked, you will earn beautiful GMH Achievement Shields."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/calibri_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rewardsCaption" />
+
+            <TextView
+                android:id="@+id/description1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="6dp"
+                android:text="The Shields have four levels, one for each of the four Parts. The final one is a superb Gold Shield."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/calibri_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description" />
+
+            <!-- Three Shields Image Row -->
+            <LinearLayout
+                android:id="@+id/shieldsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description1">
+
+                <!-- Shield 1 -->
+                <ImageView
+                    android:id="@+id/shieldImage1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="First shield"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/picture1" />
+
+                <!-- Shield 2 -->
+                <ImageView
+                    android:id="@+id/shieldImage2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Second shield"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/picture2" />
+
+                <!-- Shield 3 -->
+                <ImageView
+                    android:id="@+id/shieldImage3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Third shield"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/picture3" />
+
+                <!-- Shield 4 -->
+                <ImageView
+                    android:id="@+id/shieldImage4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="Fourth shield"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/picture4" />
+            </LinearLayout>
+
+            <!-- Replacing CardView with LinearLayout -->
+            <LinearLayout
+                android:id="@+id/introContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:padding="12dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shieldsContainer">
+
+                <TextView
+                    android:id="@+id/intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="6dp"
+                    android:text="Attaching the Shields to the Front of the Business will ‘protect’ your virtual Business and its Money Box."
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/calibri_regular"
+                    android:textSize="20sp" />
+
+                <!-- Rewards Image -->
+                <ImageView
+                    android:id="@+id/rewardsImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="Image showing rewards"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/rewards2" />
+            </LinearLayout>
+
+            <!-- Placeholder for missing rewardsDescription TextView -->
+            <TextView
+                android:id="@+id/rewardsDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Earn all these shields"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/introContainer" />
+
+            <TextView
+                android:id="@+id/golddescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Go for GOLD!"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rewardsDescription" />
+
+            <TextView
+                android:id="@+id/bonusTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:lineSpacingExtra="6dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/golddescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+
+            <!-- Button to Start Videos -->
+            <Button
+                android:id="@+id/startVideosButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:padding="12dp"
+                android:text="Start Videos"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:backgroundTint="@color/signup_button_default_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bonusTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

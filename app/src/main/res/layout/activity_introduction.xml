@@ -1,0 +1,194 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Welcome Message -->
+        <TextView
+            android:id="@+id/tvWelcomeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="BASICS: WHY GOOD MONEY HABITS – AND THE SEPARATION RULE"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <TextView
+            android:id="@+id/tvWelcomeMessage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Welcome to the first videos of the Good Money Habits (GMH) Videos (Series 1)."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Hope Message -->
+        <TextView
+            android:id="@+id/tvHopeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="We hope you find it interesting and watch all the videos."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Series Introduction -->
+        <TextView
+            android:id="@+id/tvSeriesIntro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="There are 4 parts to this series:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Part 1 -->
+        <TextView
+            android:id="@+id/tvPart1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Part 1. BASICS: Why Good Money Habits - and the Separation rule"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Part 2 -->
+        <TextView
+            android:id="@+id/tvPart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Part 2. Counting and Recording Money INFLOWS"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Part 3 -->
+        <TextView
+            android:id="@+id/tvPart3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Part 3. Counting and Recording Money OUTFLOWS"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Part 4 -->
+        <TextView
+            android:id="@+id/tvPart4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Part 4. Counting and Recording PROFIT – and the risk of customer credit."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+<!--        &lt;!&ndash; Combined Boxed Text for Temptation, Recommendation, and Benefit Messages &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/tvCombinedMessage"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="12dp"-->
+<!--            android:background="@drawable/textbox_background"-->
+<!--            android:textSize="18sp"-->
+<!--            android:padding="16dp"-->
+<!--            android:lineSpacingExtra="6dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:fontFamily="@font/calibri_regular" />-->
+
+        <!-- Get Started Message -->
+        <TextView
+            android:id="@+id/tvGetStartedMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Get started!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_red_dark"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Video 1 Label -->
+        <TextView
+            android:id="@+id/video1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="You are starting with Part 1 now."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <TextView
+            android:id="@+id/tvCombinedToc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="16dp"
+            android:background="@drawable/textbox_background"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Watch Next Button -->
+        <Button
+            android:id="@+id/btnWatchNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Watch Video 1"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:padding="16dp"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

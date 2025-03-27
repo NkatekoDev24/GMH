@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Header - Congratulations Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉 Congratulations!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black"
+            android:gravity="center" />
+
+        <!-- Subtext -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You’ve completed Part 1 and have learned important lessons \nand new ways to understand a business."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <!-- Achievement Info Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you have answered all the questions and given responses when asked, \nyou qualify to get the first ACHIEVEMENT SHIELD (Level)."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*If not, go back to the first 4 videos and check that you complete all the questions."
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:gravity="center"
+            android:textColor="@color/gray" />
+
+        <!-- Achievement Shield Heading -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Here is your Level 1 GMH ACHIEVEMENT SHIELD!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black"
+            android:gravity="center" />
+
+        <!-- Shield Image -->
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/picture1"
+            android:contentDescription="Achievement Shield"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="It can now be inserted into its dedicated space on the front of your Virtual Business."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <!-- Rewards Image -->
+        <ImageView
+            android:id="@+id/rewardsImage"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:contentDescription="Image showing rewards"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/snippet1"
+            android:layout_gravity="center" />
+
+        <!-- Shield Placement Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Level 1 GMH Achievement Shield has been inserted into its dedicated space \non the front of your Virtual Business."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Shields ‘protect’ your Virtual Business and its Money Box. Get them all!"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <!-- Feedback Prompt -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do you have any comments or suggestions on the entire first GROUP of four videos in Part 1? (Optional)"
+            android:textSize="18sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <!-- Comments Input Field -->
+        <EditText
+            android:id="@+id/etComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your comments here"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- End of Part 1 Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="END OF PART 1"
+            android:textSize="18sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue to Part 2"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+</ScrollView>

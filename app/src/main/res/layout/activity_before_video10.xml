@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- VIDEO 10 Title -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Main Description for Video 10 -->
+        <TextView
+            android:id="@+id/video10TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Video 10, where we dig a bit deeper into your expenses."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Important Reminder Section -->
+        <TextView
+            android:id="@+id/video10ImportantTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔎Pay close attention, as this is important for your business. Replay the video if you need to, or take a break and come back to it after 15 minutes."
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvCombinedToc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="16dp"
+            android:background="@drawable/textbox_background"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Next Button at the Bottom -->
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:text="Watch Video 10"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</ScrollView>

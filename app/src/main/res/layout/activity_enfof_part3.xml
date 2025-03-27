@@ -1,0 +1,223 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="horizontal"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Header - Congratulations Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉 Congratulations!"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Subtext -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You’ve completed Part 3 of the Video Series. \nYou have successfully worked through complex ideas and learned a number of new things."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:gravity="center_horizontal"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you have answered all the questions and given responses when asked, you qualify \nto get the Level 3 ACHIEVEMENT SHIELD."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:gravity="center_horizontal"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+<!--        &lt;!&ndash; Subtext &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="If you have answered all the questions and given responses when asked, you qualify to get the third ACHIEVEMENT SHIELD (Level 2)."-->
+<!--            android:textSize="20sp"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:textStyle="bold"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:textColor="@color/black" />-->
+
+        <!-- Achievement Info Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*If not, check the videos in Part 3 and make sure you have completed all questions."
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:textColor="@color/gray" />
+
+        <!-- Achievement Shield Heading -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Here is your silver, third GMH ACHIEVEMENT SHIELD (Level 3)!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Shield Image -->
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/picture3"
+            android:contentDescription="Achievement Shield"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="It can now be inserted into its dedicated space on the front of your Virtual Business."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Rewards Image -->
+        <ImageView
+            android:id="@+id/rewardsImage"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Image showing rewards"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/snippet3" />
+
+        <!-- Shield Placement Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your third GMH Achievement Shield has been inserted into its dedicated space \non the front of your Virtual Business."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Shields ‘protect’ your Virtual Business and its Money Box. Get the last one as well!"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black" />
+
+        <!-- Feedback Prompt -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You now are ready to go on to the videos in Part 4."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black" />
+
+        <!-- Pause Suggestion Text -->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="👉 As before, we RECOMMEND that you PAUSE here and first make some changes \nin your business that you wrote down at previous videos. Try it out for a week. \nThen, next week at the same time, come back and watch Part 4.\n 🍀 We wish you good luck and success with these changes. Remember:\n👉 It is the small changes that you consistently keep doing, that make the biggest difference.\n👉 If you improve your business just a little bit every day – at the end of the month \nyou may be surprised to see how much better your business is running."-->
+<!--            android:textSize="20sp"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:background="@drawable/textbox_background"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:textColor="@color/black" />-->
+
+        <ImageView
+            android:id="@+id/desImage"
+            android:layout_width="800dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Image showing rewards"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/description4" />
+
+<!--        &lt;!&ndash; Good Luck Text &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="🍀 We wish you good luck and success with these changes. Remember:"-->
+<!--            android:textSize="20sp"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:textColor="@color/black" />-->
+
+        <!-- Tips Text -->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="👉 It is the small changes that you consistently keep doing, that make the biggest difference.\n👉 If you improve your business just a little bit every day – at the end of the month \nyou may be surprised to see how much better your business is running."-->
+<!--            android:textSize="20sp"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:textColor="@color/black" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BUT: DON’T LOSE MOMENTUM in watching these videos! \nMake sure you come back for Part 4. If necessary, put a reminder note \nto yourself inside your cash box – or on your phone!"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:gravity="center_horizontal"
+            android:paddingBottom="16dp"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <!-- End of Part 1 Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="END OF PART 3"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black" />
+
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue to Part 4"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+</ScrollView>

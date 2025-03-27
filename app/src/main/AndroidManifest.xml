@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:name=".Classes.MyApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GMHApp"
+        tools:targetApi="31">
+        <!-- If required, you can add this line -->
+        <!-- android:appComponentFactory="androidx.core.app.CoreComponentFactory" -->
+
+        <activity
+            android:name=".Activities.GmhBonusActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.OverallPart2Activity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.OverallPart3Activity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.OverallAssessmentActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.EndofPart4Activity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.EnfofPart3Activity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.EndofPart2Activity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.EndofPart1Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.InteractionRewardsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.WelcomeActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".Activities.IntroActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.AfterVideo13Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo15Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo14Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo12Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo11Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo10"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo9Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo8Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo7Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo6Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo5Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo4Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo3Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo2Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.AfterVideo1Activity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activities.BeforeVideo15Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BeforeVideo14Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BeforeVideo13Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BeforeVideo12Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BeforeVideo11Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BeforeVideo10Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BeforeVideo9Activity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.UsingTransactionValuesToCalculateMoneyInflows"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.CorrectMoneyInflows"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.CountingMoneyInflows"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.MoneyInflowsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BusinessPracticesActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.BusinessDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.UserRegistrationActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.IntroductionActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.VideoPlaybackActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
+        <activity
+            android:name=".Activities.TopicsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.VideoActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+    </application>
+</manifest>

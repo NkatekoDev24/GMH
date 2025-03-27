@@ -1,0 +1,174 @@
+package com.example.gmh_app.Activities;
+
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.gmh_app.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class AfterVideo12Activity extends AppCompatActivity {
+
+    private static final String TAG = "AfterVideo12Activity";
+
+    private RatingBar ratingVideo, ratingClarity, ratingUsefulness;
+    private RadioGroup profitChangesGroup, profitDifferenceGroup, profitConfidenceGroup;
+    private TextView changesExplained, txtYes;
+    private EditText lessonLearnedEditText, changesExplanationEditText, profitAmountEditText, additionalCommentsEditText;
+    private Button submitButton;
+
+    private DatabaseReference databaseReference;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_after_video12);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 12");
+        databaseReference.keepSynced(true);
+
+        Log.d(TAG, "Firebase Database Path: " + databaseReference);
+
+        ratingVideo = findViewById(R.id.rating_video);
+        ratingClarity = findViewById(R.id.rating_clarity);
+        ratingUsefulness = findViewById(R.id.rating_usefulness);
+        profitChangesGroup = findViewById(R.id.profit_changes);
+        profitDifferenceGroup = findViewById(R.id.profit_difference);
+        profitConfidenceGroup = findViewById(R.id.profit_confidence);
+        lessonLearnedEditText = findViewById(R.id.lesson_learned);
+        changesExplanationEditText = findViewById(R.id.changes_explanation);
+        profitAmountEditText = findViewById(R.id.profit_amount);
+        additionalCommentsEditText = findViewById(R.id.additional_comments);
+        submitButton = findViewById(R.id.submit_button);
+        changesExplained = findViewById(R.id.text_changes_explained);
+        txtYes = findViewById(R.id.txtIfYes);
+
+        profitChangesGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.profit_changes_yes) {
+                changesExplained.setVisibility(View.VISIBLE);
+                changesExplanationEditText.setVisibility(View.VISIBLE);
+            } else {
+                changesExplained.setVisibility(View.GONE);
+                changesExplanationEditText.setVisibility(View.GONE);
+            }
+        });
+
+        profitDifferenceGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.profit_difference_yes) {
+                txtYes.setVisibility(View.VISIBLE);
+                profitAmountEditText.setVisibility(View.VISIBLE);
+            } else {
+                txtYes.setVisibility(View.GONE);
+                profitAmountEditText.setVisibility(View.GONE);
+            }
+        });
+
+        submitButton.setOnClickListener(v -> validateAndSubmitFeedback());
+    }
+
+    private void validateAndSubmitFeedback() {
+        float videoRating = ratingVideo.getRating();
+        float clarityRating = ratingClarity.getRating();
+        float usefulnessRating = ratingUsefulness.getRating();
+        String lessonLearned = lessonLearnedEditText.getText().toString();
+        String changesExplanation = changesExplanationEditText.getText().toString();
+        String profitAmount = profitAmountEditText.getText().toString();
+        String additionalComments = additionalCommentsEditText.getText().toString();
+
+        String profitChanges = getSelectedRadioValue(profitChangesGroup);
+        String profitDifference = getSelectedRadioValue(profitDifferenceGroup);
+        String profitConfidence = getSelectedRadioValue(profitConfidenceGroup);
+
+        if (videoRating == 0 || clarityRating == 0 || usefulnessRating == 0 ||
+                TextUtils.isEmpty(lessonLearned) || TextUtils.isEmpty(profitChanges) || TextUtils.isEmpty(profitConfidence)) {
+            showErrorDialog("Please complete all required fields before submitting.");
+            return;
+        }
+
+        if (profitChanges.equals("Yes") && TextUtils.isEmpty(changesExplanation)) {
+            showErrorDialog("Please explain the changes you want to make to your profits.");
+            return;
+        }
+
+        if (profitDifference.equals("Yes") && TextUtils.isEmpty(profitAmount)) {
+            showErrorDialog("Please provide an approximate profit amount if you expect it to change.");
+            return;
+        }
+
+        Map<String, Object> feedback = new HashMap<>();
+        feedback.put("videoRating", videoRating);
+        feedback.put("clarityRating", clarityRating);
+        feedback.put("usefulnessRating", usefulnessRating);
+        feedback.put("lessonLearned", lessonLearned);
+        feedback.put("profitChanges", profitChanges);
+        feedback.put("changesExplanation", TextUtils.isEmpty(changesExplanation) ? "No changes explained" : changesExplanation);
+        feedback.put("profitDifference", profitDifference);
+        feedback.put("profitAmount", TextUtils.isEmpty(profitAmount) ? "Not provided" : profitAmount);
+        feedback.put("profitConfidence", profitConfidence);
+        feedback.put("additionalComments", TextUtils.isEmpty(additionalComments) ? "No comments provided" : additionalComments);
+
+        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(feedback)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        showMessageDialog("Success", "Feedback submitted successfully!", true);
+                    } else {
+                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
+                        Log.e(TAG, "Failed to submit feedback: " + error);
+                        showMessageDialog("Error", "Error submitting feedback: " + error, false);
+                    }
+                });
+
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    private String getSelectedRadioValue(RadioGroup group) {
+        int selectedId = group.getCheckedRadioButtonId();
+        if (selectedId != -1) {
+            RadioButton selectedButton = findViewById(selectedId);
+            return selectedButton.getText().toString();
+        }
+        return "";
+    }
+
+    private void showErrorDialog(String message) {
+        new AlertDialog.Builder(this)
+                .setTitle("Error")
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .show();
+    }
+
+    private void showMessageDialog(String title, String message, boolean isSuccess) {
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    if (isSuccess) {
+                        setResult(RESULT_OK);
+                        finish();
+                    }
+                })
+                .show();
+    }
+}

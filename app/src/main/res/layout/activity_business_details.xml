@@ -1,0 +1,277 @@
+<!-- res/layout/activity_business_details.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/video3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Video 3. Before we get started, please tell us a bit more about your business."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp" />
+
+        <!-- Role in Business Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Which statement best describes your role in the business?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <RadioGroup
+            android:id="@+id/rgRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+            <RadioButton
+                android:id="@+id/rbOwner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am the owner of the business"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <RadioButton
+                android:id="@+id/rbManager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am the manager of the business"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <RadioButton
+                android:id="@+id/rbOwnerManager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am both the owner and manager of the business"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you (also) are the manager: Do you pay yourself a regular salary?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+
+        <RadioGroup
+            android:id="@+id/rgSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+            <RadioButton
+                android:id="@+id/rbSalaryYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <RadioButton
+                android:id="@+id/rbSalaryNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="@color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
+        </RadioGroup>
+
+        <!-- Employment Situation Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What is the employment situation in your business:"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How many paid employees does the business have (excluding yourself)?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/etPaidEmployees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Enter number"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How many unpaid workers and/or family members work or help out in your business?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+        <EditText
+            android:id="@+id/etUnpaidWorkers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Enter number"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Would you like to employ more paid workers?"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/rgMoreWorkers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+            <RadioButton
+                android:id="@+id/rbMoreWorkersYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp" />
+            <RadioButton
+                android:id="@+id/rbMoreWorkersNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <!-- Financial Records Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What financial records do you keep for this business?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="16dp" />
+
+        <RadioGroup
+            android:id="@+id/rgFinancialRecords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rbNoRecords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No financial records kept"
+                android:textColor="@color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp" />
+            <RadioButton
+                android:id="@+id/rbSimpleNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black"
+                android:text="Simple, occasional notes of sales and/or expenditure amounts"
+                android:textSize="20sp" />
+            <RadioButton
+                android:id="@+id/rbPartialRecords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black"
+                android:text="Some financial records but not full (for example, only spending on supplies)"
+                android:textSize="20sp" />
+            <RadioButton
+                android:id="@+id/rbFullRecords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:textColor="@color/black"
+                android:text="Full financial records kept: all revenue and all expenses"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+        <!-- Video Information Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Now, watch Video 3 in Part 1:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvCombinedToc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="16dp"
+            android:background="@drawable/textbox_background"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watch video 3"
+            android:fontFamily="@font/calibri_regular"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>

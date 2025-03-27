@@ -1,0 +1,231 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/loginbkg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/loginText"
+        android:padding="16dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="20dp"
+            android:background="@drawable/custom_edittext">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="20dp"/>
+
+                <EditText
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_gender"
+                    android:drawablePadding="8dp"
+                    android:hint="Gender"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Age"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/cellphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_phone_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Cellphone Number"
+                    android:inputType="phone"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/cellphone_system"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_smartphone_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Cellphone System (Android/IOS)"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/education"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_school_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Highest Level of Education"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/township"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Township or Suburb Name"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                    android:drawablePadding="8dp"
+                    android:hint="City or Town/Village Name"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/province"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Province Name"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/country"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_public_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Country Name (if not SA)"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <EditText
+                    android:id="@+id/confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="8dp"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/black"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+
+                <CheckBox
+                    android:id="@+id/isAdminCheckbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Register as Admin"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"/>
+
+                <Button
+                    android:id="@+id/registerButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Sign Up"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/purple"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Already have an account? Log in"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
+</RelativeLayout>

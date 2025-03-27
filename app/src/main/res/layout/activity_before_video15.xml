@@ -1,0 +1,89 @@
+<!-- file path: app/src/main/res/layout/activity_income_statement.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- VIDEO 10 Title -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Main congratulatory text -->
+        <TextView
+            android:id="@+id/congratulationsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👏👏👏 Congratulations on getting to Video 15, the final video in this four-part series of GMH Videos. "
+            android:textSize="28sp"
+            android:textStyle="bold|italic"
+            android:lineSpacingExtra="6dp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"
+            android:padding="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You can feel very good about completing the series."
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            android:lineSpacingExtra="6dp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"
+            android:padding="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You’ll find this a very satisfying video. As you will see in the complete weekly example at the end of the video, this is where everything you have learned in these videos flow together. Here they culminate in a complete statement of your revenue, your expenses and your profits."
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+
+        <TextView
+            android:id="@+id/incomeStatement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"/>
+
+        <!-- Boxed text for Part 4 video list -->
+        <TextView
+            android:id="@+id/part4VideoListTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:background="@drawable/textbox_background"
+        android:textColor="@color/black"
+        android:fontFamily="@font/calibri_regular"/>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watch Video 15"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>

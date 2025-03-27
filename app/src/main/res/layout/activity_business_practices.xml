@@ -1,0 +1,296 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Video 4 Introduction -->
+        <TextView
+            android:id="@+id/video4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Video 4 – a very important one."
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Before you watch it, please tell us a bit more about your business practices."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp" />
+
+        <!-- Question 1 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To what extent do you keep the finances of the business separate from your household finances?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+        <RadioGroup
+            android:id="@+id/rgSeparateFinances"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbSeparateNotAtAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not at all"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+
+            <RadioButton
+                android:id="@+id/rbSeparateSomeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To some extent"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+
+            <RadioButton
+                android:id="@+id/rbSeparateLargeExtent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To a large extent"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+
+            <RadioButton
+                android:id="@+id/rbSeparateAllTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All the time"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+        </RadioGroup>
+
+        <!-- Question 2 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do you sometimes take business cash to buy food or goods for yourself or your family?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+        <RadioGroup
+            android:id="@+id/rgTakeCash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbTakeCashYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+
+            <RadioButton
+                android:id="@+id/rbTakeCashNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+        </RadioGroup>
+
+        <!-- Question 2 Follow-up -->
+        <TextView
+            android:id="@+id/tvCashFollowUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If YES: do you write it down somewhere?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+        <RadioGroup
+            android:id="@+id/rgWriteDownCash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbWriteDownCashYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+
+            <RadioButton
+                android:id="@+id/rbWriteDownCashNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+        </RadioGroup>
+
+        <!-- Question 3 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do you or family members sometimes just take some of the products that you sell (e.g. food, clothing) or items that you use in the business (e.g. shampoo, paraffin) without paying?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"/>
+        <RadioGroup
+            android:id="@+id/rgConsumeProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbConsumeProductsYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+
+            <RadioButton
+                android:id="@+id/rbConsumeProductsNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+        </RadioGroup>
+
+        <!-- Question 3 Follow-up -->
+        <TextView
+            android:id="@+id/tvConsumeFollowUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If YES: do you write it down somewhere?"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="8dp" />
+        <RadioGroup
+            android:id="@+id/rgWriteDownConsume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rbWriteDownConsumeYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+
+            <RadioButton
+                android:id="@+id/rbWriteDownConsumeNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
+                android:layout_gravity="start" />
+        </RadioGroup>
+
+        <!-- Video 4 Conclusion -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Now for Video 4 – a very interesting one."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(This is the last video in Part 1. Parts 2, 3, and 4 are waiting for you to enjoy and learn from.)"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvCombinedToc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:padding="16dp"
+            android:background="@drawable/textbox_background"
+            android:textSize="20sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular" />
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watch video 4"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>

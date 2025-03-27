@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header and Introduction -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOOKING BACK ON PART 3 WHICH YOU COMPLETED JUST NOW: \nCounting and Recording Money OUTFLOWS"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s consider the whole group of Videos 9 to 11 in Part 3."
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="One question is whether this new knowledge can be, or has been, implemented by you in your business."
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="italic"
+            android:paddingBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Looking back at the whole group of Videos 9 to 11 in Part 3:"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"/>
+
+        <!-- Question 1 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have you made changes in the way you handle your business EXPENSES (costs), i.e. MONEY OUTFLOWS, after watching videos 9 to 11 (Part 3)?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingBottom="8dp"/>
+        <RadioGroup
+            android:id="@+id/changes_made_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/changes_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Yes"/>
+            <RadioButton
+                android:id="@+id/changes_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="No"/>
+        </RadioGroup>
+
+        <!-- Question 2 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Which main changes regarding Good Money Habits have you adopted up to now? Explain briefly."
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/changes_adopted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your answer here"/>
+
+        <!-- Question 3 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Which ones have you postponed?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="16dp"/>
+        <EditText
+            android:id="@+id/changes_postponed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your answer here"/>
+
+        <!-- Question 4 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Why have you postponed them, if any?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="16dp"/>
+        <EditText
+            android:id="@+id/reason_postponed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your answer here"/>
+
+        <!-- Question 5 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How do you feel about your progress?"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:paddingTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/progress_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/progress_not_good"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Not good at all"/>
+            <RadioButton
+                android:id="@+id/progress_okay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Okay"/>
+            <RadioButton
+                android:id="@+id/progress_good"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Good"/>
+            <RadioButton
+                android:id="@+id/progress_very_good"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Very good"/>
+        </RadioGroup>
+
+        <!-- Question 6 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have the new habits helped you to make more money so far?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:textStyle="bold"
+            android:paddingTop="16dp"/>
+        <RadioGroup
+            android:id="@+id/money_help_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/help_not_yet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Not yet"/>
+            <RadioButton
+                android:id="@+id/help_some_extent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="To some extent"/>
+            <RadioButton
+                android:id="@+id/help_large_extent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="To a large extent"/>
+            <RadioButton
+                android:id="@+id/help_plenty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Plenty"/>
+        </RadioGroup>
+
+        <!-- Additional Comments -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any comments, problems or suggestions on the Part 3 videos (videos 9 to 11) as a group?"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri_regular"
+            android:paddingTop="16dp"/>
+        <EditText
+            android:id="@+id/part3_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_underline"
+            android:minHeight="40dp"
+            android:hint="Type your comments here"/>
+
+
+        <!-- Submission Button -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Submit"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:padding="8dp"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</ScrollView>
