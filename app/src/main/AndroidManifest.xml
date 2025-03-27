@@ -64,7 +64,7 @@
         <activity
             android:name=".Activities.IntroActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="landscape">
         </activity>
         <activity
             android:name=".Activities.AfterVideo13Activity"
