@@ -145,7 +145,7 @@ public class VideoPlaybackActivity extends AppCompatActivity {
 
     private void skipToPreviousVideo() {
         // Prevent skipping back if already on the first video
-        if (currentVideoIndex <= 0) {
+        if ((isFiltered && currentVideoIndex <= 0) || (!isFiltered && currentVideoIndex <= 1)) {
             showAlertDialog("Error", "You are already on the first video.");
             return;
         }
@@ -156,7 +156,7 @@ public class VideoPlaybackActivity extends AppCompatActivity {
             loadVideo();
         } else {
             // Original mode: Skip back by 3 videos if possible
-            int previousIndex = Math.max(0, currentVideoIndex - 3);
+            int previousIndex = Math.max(1, currentVideoIndex - 3);
             if (previousIndex < currentVideoIndex) {
                 currentVideoIndex = previousIndex;
                 loadVideo();
