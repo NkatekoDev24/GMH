@@ -10,8 +10,8 @@
     <color name="gray">#808080</color>
     <color name="login_button_default_color">#3F51B5</color>
     <color name="login_button_pressed_color">#303F9F</color>
-    <color name="signup_button_default_color">#00ff00</color>
-    <color name="signup_button_pressed_color">#388E3C</color>
+    <color name="signup_button_default_color">#018001</color>
+    <color name="signup_button_pressed_color">#1f4f21</color>
     <color name="bottomNavigationIconColor">#FFFFFF</color>
     <color name="bottomNavigationItemColor">#000000</color>
     <color name="button_pressed_color">#4A90E2</color>
