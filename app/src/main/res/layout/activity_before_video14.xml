@@ -107,7 +107,7 @@
             android:id="@+id/grossProfitInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter gross profit in Rands"
+            android:hint="Using Videos 12 and 13’s information, how much GROSS PROFIT do you make per month, on average? Enter gross profit in Rands"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:inputType="numberDecimal"/>
@@ -126,7 +126,7 @@
             android:id="@+id/netProfitInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter net profit in Rands"
+            android:hint="Using Videos 12 and 13’s information, how much NET PROFIT do you make per month, on average? Enter net profit in Rands"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:inputType="numberDecimal"/>

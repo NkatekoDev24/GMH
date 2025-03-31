@@ -123,7 +123,7 @@
             android:layout_width="match_parent"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type you answer here.."
+            android:hint="What is the biggest lesson you learned from this video?"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
 
@@ -161,7 +161,7 @@
             android:layout_width="match_parent"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type you answer here.."
+            android:hint="what changes do you want to make? Explain briefly."
             android:layout_height="wrap_content" />
 
         <!-- Instructional note -->
@@ -190,7 +190,7 @@
             android:layout_width="match_parent"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type you answer here.."
+            android:hint="Any comments, problems or suggestions on Video 14?"
             android:layout_height="wrap_content" />
 
         <!-- Submit button -->

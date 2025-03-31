@@ -95,7 +95,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="Your answer"/>
+            android:hint="What is the biggest lesson you learned from this video?"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Your answer"/>
+            android:hint="How can this understanding help you to identify possible shortcomings and introduce improvements in your business operations?"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -204,7 +204,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Your comments"/>
+            android:hint="Any comments, problems or suggestions? on video 13"/>
 
         <Button
             android:id="@+id/buttonSubmit"

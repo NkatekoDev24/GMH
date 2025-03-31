@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Type your answer here"
+            android:hint="If yes: which are the most important Good Money Habits you have adopted thus far? Explain briefly."
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp" />
 
@@ -221,7 +221,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Type your comments here"
+            android:hint="Do you have any other comments or suggestions on the entire group of videos 5 to 8 \n(i.e. those in Part 2)?"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp" />
 

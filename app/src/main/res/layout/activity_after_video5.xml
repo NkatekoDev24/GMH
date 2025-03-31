@@ -157,7 +157,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Enter your response here" />
+            android:hint="What is the biggest lesson you learned from this video?" />
 
         <!-- Plan for Changes -->
         <TextView
@@ -211,7 +211,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Explain briefly." />
+            android:hint="If yes: what changes do you want to make? Explain briefly: " />
 
         <!-- Reminder to Answer Before Next Video -->
         <TextView
@@ -239,7 +239,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_height="wrap_content"
-            android:hint="Enter your response here" />
+            android:hint="Any comments, problems or suggestions on this video?" />
 
         <!-- Submit Button -->
         <!-- Submit Button -->

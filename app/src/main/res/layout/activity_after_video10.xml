@@ -141,7 +141,7 @@
             android:id="@+id/lesson_learned"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your answer here"
+            android:hint="What is the biggest lesson you learned from this video?"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"/>
 
@@ -178,7 +178,7 @@
             android:id="@+id/changes_explanation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your changes here"
+            android:hint="If yes: what changes do you want to make? Explain briefly."
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"/>
 
@@ -205,7 +205,7 @@
             android:id="@+id/additional_comments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Type your comments here"
+            android:hint="Do you have any comments or suggestions on Video 10?"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"/>
 

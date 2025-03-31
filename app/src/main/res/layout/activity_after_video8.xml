@@ -180,7 +180,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="IExplain briefly." />
+            android:hint="If yes: what changes do you want to make? Explain briefly: " />
 
         <!-- Reminder to Answer Before Next Video -->
         <TextView
@@ -207,7 +207,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Comments..." />
+            android:hint="Any comments, problems or suggestions on this video?" />
 
         <!-- Submit Button -->
         <Button

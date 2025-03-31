@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Enter your response here"
+            android:hint="What is the biggest lesson you learned from this video?"
             android:layout_marginBottom="8dp"/>
 
         <!-- Frequent Hazards -->
@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Enter your response here" />
+            android:hint="Into which of the hazards highlighted in videos 5 and 6 do you tend to fall into frequently? (Name them here)" />
 
         <!-- Plan for Changes -->
         <TextView
@@ -233,7 +233,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Enter your response here" />
+            android:hint="Any comments, problems or suggestions?" />
 
         <!-- Submit Button -->
         <Button

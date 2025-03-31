@@ -171,7 +171,7 @@
         android:background="@drawable/dotted_underline"
         android:minHeight="40dp"
         android:layout_marginBottom="8dp"
-        android:hint="Specify other arrangements" />
+        android:hint="Other arrangements? Please describe: " />
 
     <!-- Happy with Structure Question -->
     <TextView
@@ -246,7 +246,7 @@
         android:id="@+id/editTextMoveReason"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Reason for not moving"
+        android:hint="If not happy, why don’t you move to better premises?"
         android:background="@drawable/dotted_underline"
         android:minHeight="40dp"
         android:layout_marginBottom="8dp"

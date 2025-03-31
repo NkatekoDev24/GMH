@@ -165,7 +165,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your answer here"
+            android:hint="What is the biggest lesson you learned from this video?"
             android:textColor="@android:color/black"/>
 
         <!-- Changes in Handling Fixed Costs -->
@@ -202,7 +202,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your changes here"
+            android:hint="If yes: what changes do you want to make? Explain briefly."
             android:textColor="@android:color/black"/>
 
         <!-- Reminder Message -->
@@ -229,7 +229,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your comments here"
+            android:hint="Any comments, problems or suggestions regarding video 11?"
             android:layout_marginBottom="20dp"
             android:textColor="@android:color/black"/>
 

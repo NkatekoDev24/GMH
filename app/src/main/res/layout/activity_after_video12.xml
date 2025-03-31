@@ -99,7 +99,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="Type your answer here" />
+            android:hint="What is the biggest lesson you learned from this video?" />
 
         <!-- Changes in Profits -->
         <TextView
@@ -144,7 +144,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="Type your changes here" />
+            android:hint="If yes: what changes do you want to make? Explain briefly." />
 
         <!-- Profit Levels -->
         <TextView
@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Enter Rand amount" />
+            android:hint="What amount do you think your profit per month will come to, approximately? (Enter Rand amount)" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -247,7 +247,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your comments here" />
+            android:hint="Any comments, problems or suggestions on this video?" />
 
         <!-- Submit Button -->
         <Button

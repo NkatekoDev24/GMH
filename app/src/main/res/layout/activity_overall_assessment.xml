@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type 'All' or a number"/>
+            android:hint="How many of the 15 GMH videos have you watched in full? Insert “All” or a number if not all: "/>
 
         <!-- Question 2: Weeks Watched -->
         <TextView
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Enter number of weeks"/>
+            android:hint="Over which period (number of weeks approximately) have you watched all these videos? Enter number of weeks"/>
 
         <!-- Question 3: Benefit from Videos -->
         <TextView
@@ -137,7 +137,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="Type your answer here"/>
+            android:hint="If at least some changes: what are the main changes that have you made?"/>
 
         <!-- Question 4: Progress and New Skills -->
         <TextView
@@ -232,7 +232,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="Insert Amount"/>
+            android:hint="If your profits did grow: By how  much has your average monthly net profit increased since starting to watch the GMH videos and implement new GMH habits? (approximate Rand amount) "/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -248,7 +248,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="Insert Amount"/>
+            android:hint="What is your average monthly net profit now? (approximate Rand amount)"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -297,7 +297,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="Insert number"/>
+            android:hint="If YES, by how many (insert number of additional paid employees since you started to watch these videos)"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -312,7 +312,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Insert number"/>
+            android:hint="How many paid employees do you have now?"/>
 
         <!-- Question 7: Additional Comments -->
         <TextView
@@ -330,7 +330,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your comments here"/>
+            android:hint="Any final comments or suggestions regarding the entire GMH Video Series?"/>
 
         <!-- Submit Button -->
         <Button

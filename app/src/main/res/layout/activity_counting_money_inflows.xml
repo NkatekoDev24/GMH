@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Enter amount"
+            android:hint="How much profit does your business make now per month, on average? Enter amount:"
             android:inputType="numberDecimal" />
 
         <TextView

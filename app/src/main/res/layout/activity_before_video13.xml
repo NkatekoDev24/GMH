@@ -164,7 +164,7 @@
             android:id="@+id/changesExplanationInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Explain here..."
+            android:hint="If yes: what changes have you made? Explain briefly."
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"/>
 
@@ -182,7 +182,7 @@
             android:id="@+id/profitPerMonthInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter profit in Rands"
+            android:hint="Using Video 12’s knowledge, how much PROFIT does your business make per month, on average? Enter profit in Rands"
             android:background="@drawable/dotted_underline"
             android:paddingBottom="10dp"
             android:minHeight="40dp"

@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:minHeight="40dp"
             android:background="@drawable/dotted_underline"
-            android:hint="Type your answer here..."/>
+            android:hint="If yes: what did you change?"/>
 
         <!-- Question 3: Result of Changes -->
         <TextView
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your answers here..."/>
+            android:hint="If yes, what was the results/outcome of the changes?"/>
 
         <!-- Question 4: Satisfaction with Results -->
         <TextView
@@ -344,7 +344,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
-            android:hint="R……………"
+            android:hint="What is your current total amount of profit per month, on average? Answer in Rands."
             android:minHeight="40dp"
             android:textSize="18sp"/>
 

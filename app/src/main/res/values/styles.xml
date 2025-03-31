@@ -4,4 +4,9 @@
         <item name="colorControlHighlight">@android:color/darker_gray</item>
         <item name="android:background">?selectableItemBackgroundBorderless</item>
     </style>
+
+    <style name="AppEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:imeOptions">actionDone</item>
+    </style>
 </resources>

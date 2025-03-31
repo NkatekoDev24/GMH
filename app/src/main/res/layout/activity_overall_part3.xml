@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your answer here"/>
+            android:hint="Which main changes regarding Good Money Habits have you adopted up to now? Explain briefly."/>
 
         <!-- Question 3 -->
         <TextView
@@ -123,7 +123,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your answer here"/>
+            android:hint="Which ones have you postponed?"/>
 
         <!-- Question 4 -->
         <TextView
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your answer here"/>
+            android:hint="Why have you postponed them, if any?"/>
 
         <!-- Question 5 -->
         <TextView
@@ -253,7 +253,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Type your comments here"/>
+            android:hint="Any comments, problems or suggestions on the Part 3 videos (videos 9 to 11) as a group?e"/>
 
 
         <!-- Submission Button -->
