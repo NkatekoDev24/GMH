@@ -88,8 +88,10 @@ public class VideoPlaybackActivity extends AppCompatActivity {
         // Check if index is valid
         if (videoList == null || videoList.isEmpty() || currentVideoIndex < 0 || currentVideoIndex >= videoList.size()) {
             // If invalid, reset to the first video and prevent further errors
-            currentVideoIndex = 0;
-            showAlertDialog("Error", "Invalid video position. Returning to the first video.");
+            // If the user presses back, we want to go back to TopicsActivity
+            Intent intent = new Intent(VideoPlaybackActivity.this, TopicsActivity.class);
+            startActivity(intent); // Start TopicsActivity explicitly
+            finish();  // Close VideoActivity and go to TopicsActivity
             return;
         }
 
@@ -117,7 +119,7 @@ public class VideoPlaybackActivity extends AppCompatActivity {
     private void skipToNextVideo() {
         if (isFiltered) {
             // Filtered mode: Skip by 1
-            if (currentVideoIndex + 1 < videoList.size()) {
+            if (currentVideoIndex < videoList.size()) {
                 currentVideoIndex += 1;
                 loadVideo();
             }

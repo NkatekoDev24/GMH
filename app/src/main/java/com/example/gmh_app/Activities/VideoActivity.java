@@ -104,6 +104,11 @@ public class VideoActivity extends AppCompatActivity {
             Toast.makeText(this, "All videos have been completed.", Toast.LENGTH_SHORT).show();
             markSectionAsCompleted(sectionKey);
 
+            // If the user presses back, we want to go back to TopicsActivity
+            Intent intent = new Intent(VideoActivity.this, TopicsActivity.class);
+            startActivity(intent); // Start TopicsActivity explicitly
+            finish();  // Close VideoActivity and go to TopicsActivity
+
             if (sectionKey.equals("orientation")) {
                 unlockSection("inflows");
             }
