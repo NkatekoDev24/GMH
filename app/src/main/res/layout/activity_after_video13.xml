@@ -133,7 +133,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Do you understand when to use gross profit and when to use net profit?"
+            android:text="@string/profit_question"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"/>

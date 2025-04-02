@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
+            android:inputType="numberDecimal"
             android:hint="Over which period (number of weeks approximately) have you watched all these videos? Enter number of weeks"/>
 
         <!-- Question 3: Benefit from Videos -->
@@ -231,6 +232,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
+            android:inputType="numberDecimal"
             android:layout_marginBottom="16dp"
             android:hint="If your profits did grow: By how  much has your average monthly net profit increased since starting to watch the GMH videos and implement new GMH habits? (approximate Rand amount) "/>
 
@@ -248,6 +250,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
+            android:inputType="numberDecimal"
             android:hint="What is your average monthly net profit now? (approximate Rand amount)"/>
 
         <TextView
@@ -296,6 +299,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
+            android:inputType="numberDecimal"
             android:layout_marginBottom="16dp"
             android:hint="If YES, by how many (insert number of additional paid employees since you started to watch these videos)"/>
 
@@ -312,6 +316,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
+            android:inputType="numberDecimal"
             android:hint="How many paid employees do you have now?"/>
 
         <!-- Question 7: Additional Comments -->

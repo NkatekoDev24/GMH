@@ -302,7 +302,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Do you have confidence that you are calculating your profit correctly?"
+            android:text="Do you have MORE confidence that you are calculating your profit correctly?"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"

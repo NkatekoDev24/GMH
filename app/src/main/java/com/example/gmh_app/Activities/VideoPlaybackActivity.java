@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.gmh_app.Models.VideoModel;
 import com.example.gmh_app.R;
@@ -146,24 +147,40 @@ public class VideoPlaybackActivity extends AppCompatActivity {
     }
 
     private void skipToPreviousVideo() {
-        // Prevent skipping back if already on the first video
-        if ((isFiltered && currentVideoIndex <= 0) || (!isFiltered && currentVideoIndex <= 1)) {
-            showAlertDialog("Error", "You are already on the first video.");
+        boolean isAtFirstVideo = isFiltered ? (currentVideoIndex <= 0) : (currentVideoIndex <= 1);
+
+        if (isAtFirstVideo) {
+            showNavigationDialog("Error",
+                    "You are already on the first video.\n\n Would you like to go back to the Main Menu?",
+                    TopicsActivity.class);
             return;
         }
 
-        if (isFiltered) {
-            // Filtered mode: Skip back by 1
-            currentVideoIndex -= 1;
+        int previousIndex = isFiltered ? currentVideoIndex - 1 : Math.max(1, currentVideoIndex - 3);
+
+        if (previousIndex < currentVideoIndex) {
+            currentVideoIndex = previousIndex;
             loadVideo();
-        } else {
-            // Original mode: Skip back by 3 videos if possible
-            int previousIndex = Math.max(1, currentVideoIndex - 3);
-            if (previousIndex < currentVideoIndex) {
-                currentVideoIndex = previousIndex;
-                loadVideo();
-            }
         }
+    }
+
+    private void showNavigationDialog(String title, String message, Class<?> destinationActivity) {
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    Intent intent = new Intent(this, destinationActivity);
+                    startActivity(intent);
+                    finish(); // Finish current activity to prevent back navigation
+                })
+                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .show();
+    }
+
+    private void showMainMenuDialog() {
+        showNavigationDialog("Main Menu",
+                "If you would like to go back to the Main Menu, press Yes.\n\nIf you would like to continue here, press No.",
+                TopicsActivity.class);
     }
 
     // Helper method to display an AlertDialog

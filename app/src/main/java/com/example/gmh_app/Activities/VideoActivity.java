@@ -101,7 +101,7 @@ public class VideoActivity extends AppCompatActivity {
 
     private void playNextVideo() {
         if (currentVideoIndex >= videoList.size()) {
-            Toast.makeText(this, "All videos have been completed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "All videos for this section have been completed.", Toast.LENGTH_SHORT).show();
             markSectionAsCompleted(sectionKey);
 
             // If the user presses back, we want to go back to TopicsActivity

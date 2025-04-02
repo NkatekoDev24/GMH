@@ -17,17 +17,13 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gmh_app.R;
 import com.example.gmh_app.Classes.User;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -126,46 +122,46 @@ public class UserRegistrationActivity extends AppCompatActivity {
         String age = etAge.getText().toString().trim();
 
         if (TextUtils.isEmpty(etUsername.getText().toString().trim())) {
-            showDialog("Error", "Username is required.");
+            showDialog("Validation Error", "Username is required.");
             isValid = false;
         } else if (TextUtils.isEmpty(email)) {
-            showDialog("Error", "Email is required.");
+            showDialog("Validation Error", "Email is required.");
             isValid = false;
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            showDialog("Error", "Please enter a valid email address.");
+            showDialog("Validation Error", "Please enter a valid email address.");
             isValid = false;
         } else if (!isValidSouthAfricanCellNumber(password)) {
-            showDialog("Error", "Please enter a valid South African cellphone number starting with +27 or 0.");
+            showDialog("Validation Error", "Please enter a valid South African cellphone number starting with +27 or 0.");
             isValid = false;
         } else if (password.length() < 10) {
-            showDialog("Error", "Phone number must be at least 10 characters long.");
+            showDialog("Validation Error", "Phone number must be at least 10 characters long.");
             isValid = false;
         } else if (spinnerProvince.getSelectedItemPosition() == 0) {
-            showDialog("Error", "Please select a province.");
+            showDialog("Validation Error", "Please select a province.");
             isValid = false;
         } else if (rgGender.getCheckedRadioButtonId() == -1) {
-            showDialog("Error", "Please select a gender.");
+            showDialog("Validation Error", "Please select a gender.");
             isValid = false;
         } else if (rgEducation.getCheckedRadioButtonId() == -1) {
-            showDialog("Error", "Please select your education level.");
+            showDialog("Validation Error", "Please select your education level.");
             isValid = false;
         } else if (rgBusinessName.getCheckedRadioButtonId() == -1) {
-            showDialog("Error", "Please select if you have a business name.");
+            showDialog("Validation Error", "Please select if you have a business name.");
             isValid = false;
         } else if (TextUtils.isEmpty(age) || !isAge(age)) {
-            showDialog("Error", "Please enter an age between 14 and 120 years.");
+            showDialog("Validation Error", "Please enter an age between 14 and 120 years.");
             isValid = false;
         } else if (!hasMinimumWords(etBusinessDescription.getText().toString().trim(), 3)) {
-            showDialog("Error", "Business description must contain at least three words.");
+            showDialog("Validation Error", "Business description must contain at least three words.");
             isValid = false;
         }else {
             int businessCheckedId = rgBusinessName.getCheckedRadioButtonId();
             if (businessCheckedId == R.id.rbBusinessYes) {
                 if (TextUtils.isEmpty(etBusinessName.getText().toString().trim())) {
-                    showDialog("Error", "Business name is required.");
+                    showDialog("Validation Error", "Business name is required.");
                     isValid = false;
                 } else if (rgNameDisplayed.getCheckedRadioButtonId() == -1) {
-                    showDialog("Error", "Please select if your name should be displayed.");
+                    showDialog("Validation Error", "Please select if your name should be displayed.");
                     isValid = false;
                 }
             }
@@ -175,26 +171,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
     }
 
     private void submitForm() {
-        String username = etUsername.getText().toString().trim();
-
-        databaseReference.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    showDialog("Error", "Username already exists. Please choose a different one.");
-                } else {
-                    saveUserToDatabase();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                showDialog("Error", "Database error: " + databaseError.getMessage());
-            }
-        });
-    }
-
-    private void saveUserToDatabase() {
         // Collect data
         String username = etUsername.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
@@ -206,13 +182,16 @@ public class UserRegistrationActivity extends AppCompatActivity {
         String businessDescription = etBusinessDescription.getText().toString().trim();
         String province = spinnerProvince.getSelectedItem().toString();
 
+        // Get selected options
         String gender = getSelectedRadioText(rgGender);
         String education = getSelectedRadioText(rgEducation);
         String hasBusinessName = getSelectedRadioText(rgBusinessName);
         String isNameDisplayed = getSelectedRadioText(rgNameDisplayed);
 
+        // Create user object
         User user = new User(username, email, cellphone, age, city, country, businessName, businessDescription, gender, education, hasBusinessName, isNameDisplayed, province);
 
+        // Store in Firebase
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(user).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 showDialogWithAction("Success", "Registration successful!", true);
@@ -271,7 +250,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         spinnerProvince.setSelection(0);
     }
 
-    // helper method
+    // Validation helper method
     private boolean isValidSouthAfricanCellNumber(String password) {
         //Check if the number starts with +27 or 0
         if (password.startsWith("+27")) {

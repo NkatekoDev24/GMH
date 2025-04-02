@@ -112,6 +112,9 @@ public class AfterVideo15Activity extends AppCompatActivity {
                         showMessageDialog("Error", "Failed to submit feedback: " + error, false);
                     }
                 });
+
+        setResult(RESULT_OK);
+        navigateToEndofPart4Activity();
     }
 
     // Helper method to show a message dialog

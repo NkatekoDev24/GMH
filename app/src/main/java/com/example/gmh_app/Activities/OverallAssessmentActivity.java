@@ -144,6 +144,9 @@ public class OverallAssessmentActivity extends AppCompatActivity {
                         showErrorDialog("Error submitting data: " + error);
                     }
                 });
+
+        setResult(RESULT_OK);
+        navigateToGMHBonusActivity();
     }
 
     // Navigate to GMHBonusActivity
