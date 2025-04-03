@@ -1,9 +1,7 @@
 package com.example.gmh_app.Activities;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
-import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -21,18 +19,19 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BeforeVideo13Activity extends AppCompatActivity {
 
-    private RadioGroup emergencyFundGroup, planEmergencyFundGroup, changesInProfitCalculationGroup;
+    private static final String TAG = "BeforeVideo13Activity";
 
-    private TextView changesExplained;
+    private RadioGroup emergencyFundGroup, planEmergencyFundGroup, changesInProfitCalculationGroup;
     private EditText profitPerMonthInput, changesExplanationInput;
     private Button submitButton;
-    private TextView tvCombinedToc, introductionText, emergencyFollowUp;
-
+    private TextView changesExplained, emergencyFollowUp;
     private DatabaseReference databaseReference;
 
     @Override
@@ -48,10 +47,7 @@ public class BeforeVideo13Activity extends AppCompatActivity {
 
         // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Before Video 13 Response");
-        databaseReference.keepSynced(true); // Ensures local data is synced when online
-
-        // Debugging: Log Firebase Database path
-        Log.d(TAG, "Firebase Database Path: " + databaseReference);
+        databaseReference.keepSynced(true);
 
         // Initialize UI components
         emergencyFundGroup = findViewById(R.id.emergencyFundGroup);
@@ -60,20 +56,8 @@ public class BeforeVideo13Activity extends AppCompatActivity {
         profitPerMonthInput = findViewById(R.id.profitPerMonthInput);
         changesExplanationInput = findViewById(R.id.changesExplanationInput);
         submitButton = findViewById(R.id.submitButton);
-        tvCombinedToc = findViewById(R.id.tvCombinedToc);
-        introductionText = findViewById(R.id.introductionText);
         changesExplained = findViewById(R.id.text_changes_explained);
         emergencyFollowUp = findViewById(R.id.emergencyFundFollowUp);
-
-        // Set dynamic text
-        tvCombinedToc.setText(Html.fromHtml(
-                "<b>Part 4. Counting and Recording PROFIT; the risk of customer credit</b><br>" +
-                        "Video 12: Calculating Profit correctly.<br>" +
-                        "<span style='color:#00ff00;'><b><u>Video 13: Must I use gross profit or net profit for management purposes?</b></u></span><br>" +
-                        "Video 14: The risk of customer credit - another hazard.<br>" +
-                        "Video 15: Revenue, costs & profits – a complete weekly example with numbers."
-        ));
-        introductionText.setText(Html.fromHtml("<u>VIDEO 13</u>"));
 
         emergencyFundGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.emergencyFundNo) {
@@ -95,47 +79,30 @@ public class BeforeVideo13Activity extends AppCompatActivity {
             }
         });
 
-        // Set the button listener
-        submitButton.setOnClickListener(view -> submitResponses());
+        submitButton.setOnClickListener(view -> validateAndSubmitResponses());
     }
 
-    private void submitResponses() {
-        // Collect data from UI components
+    private void validateAndSubmitResponses() {
+        List<String> errors = new ArrayList<>();
+
         String emergencyFund = getSelectedRadioButtonText(emergencyFundGroup);
         String planEmergencyFund = getSelectedRadioButtonText(planEmergencyFundGroup);
         String changesInProfitCalculation = getSelectedRadioButtonText(changesInProfitCalculationGroup);
         String profitPerMonth = profitPerMonthInput.getText().toString().trim();
         String changesExplanation = changesExplanationInput.getText().toString().trim();
 
-        // Validate required fields
-        if (emergencyFund.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Do you have an emergency fund?'.", false);
-            return;
-        }
+        if (TextUtils.isEmpty(emergencyFund)) errors.add("Please select an option for 'Do you have an emergency fund?'.");
+        if (planEmergencyFundGroup.getVisibility() == View.VISIBLE && TextUtils.isEmpty(planEmergencyFund))
+            errors.add("Please select an option for 'Do you plan to create an emergency fund?'.");
+        if (TextUtils.isEmpty(changesInProfitCalculation))
+            errors.add("Please select an option for 'Have you made changes in your profit calculation?'.");
+        if (TextUtils.isEmpty(profitPerMonth)) errors.add("Please enter your profit per month.");
+        if (!isNumeric(profitPerMonth)) errors.add("Profit per month must be a valid numeric value.");
+        if (changesInProfitCalculation.equals("Yes") && TextUtils.isEmpty(changesExplanation))
+            errors.add("Please explain the changes made in profit calculation.");
 
-        // Validate planEmergencyFund only if visible
-        if (planEmergencyFundGroup.getVisibility() == View.VISIBLE && planEmergencyFund.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Do you plan to create an emergency fund?'.", false);
-            return;
-        }
-
-        if (changesInProfitCalculation.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Have you made changes in your profit calculation?'.", false);
-            return;
-        }
-
-        if (profitPerMonth.isEmpty()) {
-            showMessageDialog("Error", "Please enter your profit per month.", false);
-            return;
-        }
-
-        if (!isNumeric(profitPerMonth)) {
-            showMessageDialog("Error", "Profit per month must be a valid numeric value.", false);
-            return;
-        }
-
-        if (changesInProfitCalculation.equals("Yes") && changesExplanation.isEmpty()) {
-            showMessageDialog("Error", "Please explain the changes made in profit calculation.", false);
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
@@ -145,48 +112,47 @@ public class BeforeVideo13Activity extends AppCompatActivity {
         response.put("planEmergencyFund", planEmergencyFund);
         response.put("changesInProfitCalculation", changesInProfitCalculation);
         response.put("profitPerMonth", profitPerMonth);
-        response.put("changesExplanation", changesExplanation);
+        response.put("changesExplanation", TextUtils.isEmpty(changesExplanation) ? "No explanation provided" : changesExplanation);
+        response.put("timestamp", System.currentTimeMillis());
 
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(response)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showMessageDialog("Success", "Responses submitted successfully!", true);
+                        Log.d(TAG, "Responses submitted successfully.");
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        showMessageDialog("Error", "Failed to submit responses. Please try again.\n\nError: " + error, false);
+                        Log.e(TAG, "Error submitting responses", task.getException());
                     }
                 });
 
-        // Proceed to the next activity immediately
         setResult(RESULT_OK);
-        finish(); // Close this activity
+        finish();
     }
 
     private String getSelectedRadioButtonText(RadioGroup group) {
         int selectedId = group.getCheckedRadioButtonId();
         if (selectedId == -1) {
-            return ""; // No option selected
+            return "";
         }
         RadioButton selectedRadioButton = findViewById(selectedId);
         return selectedRadioButton.getText().toString();
     }
 
-    private void showMessageDialog(String title, String message, boolean isSuccess) {
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
-                .setPositiveButton("OK", (dialog, which) -> {
-                    if (isSuccess) {
-                        setResult(RESULT_OK);
-                        finish(); // Close activity after successful submission
-                    }
-                })
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
                 .show();
     }
 
     private boolean isNumeric(String str) {
         try {
-            Double.parseDouble(str); // Try parsing the string as a double
+            Double.parseDouble(str);
             return true;
         } catch (NumberFormatException e) {
             return false;

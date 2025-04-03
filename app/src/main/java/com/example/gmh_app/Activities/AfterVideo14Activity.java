@@ -1,6 +1,7 @@
 package com.example.gmh_app.Activities;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -18,33 +19,29 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AfterVideo14Activity extends AppCompatActivity {
 
-    private RatingBar ratingBarVideo;
-    private RatingBar ratingBarClarity;
-    private RatingBar ratingBarUsefulness;
-    private RatingBar ratingBarCurrentHabits;
-    private TextView changesExplained;
-    private EditText editTextLesson;
+    private static final String TAG = "AfterVideo14Activity";
+
+    private RatingBar ratingBarVideo, ratingBarClarity, ratingBarUsefulness, ratingBarCurrentHabits;
+    private EditText editTextLesson, editTextChanges, editTextComments;
     private RadioGroup radioGroupChanges;
-    private EditText editTextChanges;
-    private EditText editTextComments;
     private Button buttonSubmit;
+    private TextView changesExplained;
 
     private DatabaseReference databaseReference;
-    private static final String TAG = "AfterVideo14Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_after_video14);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 14");
@@ -73,10 +70,10 @@ public class AfterVideo14Activity extends AppCompatActivity {
             }
         });
 
-        buttonSubmit.setOnClickListener(v -> submitFeedback());
+        buttonSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
     }
 
-    private void submitFeedback() {
+    private void validateAndSubmitFeedback() {
         float videoRating = ratingBarVideo.getRating();
         float clarityRating = ratingBarClarity.getRating();
         float usefulnessRating = ratingBarUsefulness.getRating();
@@ -88,8 +85,17 @@ public class AfterVideo14Activity extends AppCompatActivity {
         int selectedChangesId = radioGroupChanges.getCheckedRadioButtonId();
         boolean changesPlanned = (selectedChangesId == R.id.rb_changes_yes);
 
-        if (lessonLearned.isEmpty() || (changesPlanned && plannedChanges.isEmpty())) {
-            showMessageDialog("Validation Error", "Please complete all required fields before submitting.", false);
+        List<String> errors = new ArrayList<>();
+
+        if (videoRating == 0) errors.add("Please rate the video.");
+        if (clarityRating == 0) errors.add("Please rate the clarity of the video.");
+        if (usefulnessRating == 0) errors.add("Please rate the usefulness of the video.");
+        if (currentHabitsRating == 0) errors.add("Please rate your current habits.");
+        if (TextUtils.isEmpty(lessonLearned)) errors.add("Please describe the biggest lesson you learned.");
+        if (changesPlanned && TextUtils.isEmpty(plannedChanges)) errors.add("Please describe the changes you plan to make.");
+
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
@@ -100,17 +106,16 @@ public class AfterVideo14Activity extends AppCompatActivity {
         feedback.put("currentHabitsRating", currentHabitsRating);
         feedback.put("lessonLearned", lessonLearned);
         feedback.put("changesPlanned", changesPlanned);
-        feedback.put("plannedChanges", plannedChanges.isEmpty() ? "No changes provided" : plannedChanges);
-        feedback.put("comments", comments.isEmpty() ? "No comments provided" : comments);
+        feedback.put("plannedChanges", TextUtils.isEmpty(plannedChanges) ? "No changes provided" : plannedChanges);
+        feedback.put("comments", TextUtils.isEmpty(comments) ? "No comments provided" : comments);
+        feedback.put("timestamp", System.currentTimeMillis());
 
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(feedback)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showMessageDialog("Success", "Feedback submitted successfully!", true);
+                        Log.d(TAG, "Feedback submitted successfully.");
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        Log.e(TAG, "Failed to submit feedback: " + error);
-                        showMessageDialog("Error", "Error submitting feedback: " + error, false);
+                        Log.e(TAG, "Error submitting feedback", task.getException());
                     }
                 });
 
@@ -118,16 +123,16 @@ public class AfterVideo14Activity extends AppCompatActivity {
         finish();
     }
 
-    private void showMessageDialog(String title, String message, boolean isSuccess) {
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
-                .setPositiveButton("OK", (dialog, which) -> {
-                    if (isSuccess) {
-                        setResult(RESULT_OK);
-                        finish();
-                    }
-                })
+                .setTitle("Validation Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
                 .show();
     }
 }

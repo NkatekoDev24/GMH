@@ -20,7 +20,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AfterVideo12Activity extends AppCompatActivity {
@@ -99,19 +101,25 @@ public class AfterVideo12Activity extends AppCompatActivity {
         String profitDifference = getSelectedRadioValue(profitDifferenceGroup);
         String profitConfidence = getSelectedRadioValue(profitConfidenceGroup);
 
+        List<String> errors = new ArrayList<>();
+
         if (videoRating == 0 || clarityRating == 0 || usefulnessRating == 0 ||
                 TextUtils.isEmpty(lessonLearned) || TextUtils.isEmpty(profitChanges) || TextUtils.isEmpty(profitConfidence)) {
-            showErrorDialog("Please complete all required fields before submitting.");
-            return;
+            errors.add("Please complete all required fields before submitting.");
         }
 
         if (profitChanges.equals("Yes") && TextUtils.isEmpty(changesExplanation)) {
-            showErrorDialog("Please explain the changes you want to make to your profits.");
-            return;
+            errors.add("Please explain the changes you want to make to your profits.");
         }
 
         if (profitDifference.equals("Yes") && TextUtils.isEmpty(profitAmount)) {
-            showErrorDialog("Please provide an approximate profit amount if you expect it to change.");
+            errors.add("Please provide an approximate profit amount if you expect it to change.");
+        }
+
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
@@ -151,10 +159,15 @@ public class AfterVideo12Activity extends AppCompatActivity {
         return "";
     }
 
-    private void showErrorDialog(String message) {
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle("Error")
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }

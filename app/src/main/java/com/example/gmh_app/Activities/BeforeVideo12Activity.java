@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -22,7 +23,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BeforeVideo12Activity extends AppCompatActivity {
@@ -97,46 +100,54 @@ public class BeforeVideo12Activity extends AppCompatActivity {
             }
         });
 
-        btnSubmit.setOnClickListener(view -> submitResponses());
+        btnSubmit.setOnClickListener(view -> validateAndSubmitResponses());
     }
 
-    private void submitResponses() {
+    private void validateAndSubmitResponses() {
+        List<String> errors = new ArrayList<>();
+
         String adjustHabits = getSelectedOption(rgAdjustHabits);
-        String whatChanged = etWhatChanged.getText().toString().trim();
-        String result = etResult.getText().toString().trim();
-        String happyResults = getSelectedOption(rgHappyResults);
         String confidenceProfit = getSelectedOption(rgConfidenceProfit);
-        String currentProfit = etCurrentProfit.getText().toString().trim();
         String satisfactionProfit = getSelectedOption(rgSatisfactionProfit);
-
-        if (adjustHabits.isEmpty() || confidenceProfit.isEmpty() || currentProfit.isEmpty() || satisfactionProfit.isEmpty() || !isNumeric(currentProfit)) {
-            showMessageDialog("Validation Error", "Please complete all required fields with valid input.", false);
-            return;
-        }
-
+        String currentProfit = etCurrentProfit.getText().toString().trim();
         boolean isVeryEasySelected = rgAdjustHabits.getCheckedRadioButtonId() == R.id.rb_easy_yes_very;
 
-        if (isVeryEasySelected && (whatChanged.isEmpty() || result.isEmpty() || happyResults.isEmpty())) {
-            showMessageDialog("Error", "Please complete the follow-up fields when 'Very Easy' is selected.", false);
+        if (TextUtils.isEmpty(adjustHabits)) errors.add("Please select how easy it was to adjust habits.");
+        if (TextUtils.isEmpty(confidenceProfit)) errors.add("Please select your confidence in profit.");
+        if (TextUtils.isEmpty(satisfactionProfit)) errors.add("Please select your satisfaction with profit.");
+        if (TextUtils.isEmpty(currentProfit) || !isNumeric(currentProfit)) errors.add("Please enter a valid current profit.");
+
+        if (isVeryEasySelected) {
+            String whatChanged = etWhatChanged.getText().toString().trim();
+            String result = etResult.getText().toString().trim();
+            String happyResults = getSelectedOption(rgHappyResults);
+
+            if (TextUtils.isEmpty(whatChanged)) errors.add("Please describe what changed.");
+            if (TextUtils.isEmpty(result)) errors.add("Please describe the results.");
+            if (TextUtils.isEmpty(happyResults)) errors.add("Please select your happiness with results.");
+        }
+
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
         Map<String, Object> response = new HashMap<>();
         response.put("adjustHabits", adjustHabits);
-        response.put("whatChanged", isVeryEasySelected ? whatChanged : "");
-        response.put("result", isVeryEasySelected ? result : "");
-        response.put("happyResults", isVeryEasySelected ? happyResults : "");
         response.put("confidenceProfit", confidenceProfit);
         response.put("currentProfit", currentProfit);
         response.put("satisfactionProfit", satisfactionProfit);
+        response.put("whatChanged", isVeryEasySelected ? etWhatChanged.getText().toString().trim() : "");
+        response.put("result", isVeryEasySelected ? etResult.getText().toString().trim() : "");
+        response.put("happyResults", isVeryEasySelected ? getSelectedOption(rgHappyResults) : "");
+        response.put("timestamp", System.currentTimeMillis());
 
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(response)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showMessageDialog("Success", "Responses submitted successfully!", true);
+                        Log.d(TAG, "Responses submitted successfully.");
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        showMessageDialog("Error", "Failed to submit responses. Please try again.\n\nError: " + error, false);
+                        Log.e(TAG, "Error submitting responses", task.getException());
                     }
                 });
 
@@ -170,5 +181,18 @@ public class BeforeVideo12Activity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
+                .show();
     }
 }

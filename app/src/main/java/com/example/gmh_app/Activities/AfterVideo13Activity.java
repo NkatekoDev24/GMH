@@ -1,6 +1,7 @@
 package com.example.gmh_app.Activities;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,23 +17,21 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AfterVideo13Activity extends AppCompatActivity {
 
-    private RatingBar ratingBarVideo;
-    private RatingBar ratingBarClarity;
-    private RatingBar ratingBarUsefulness;
-    private EditText editTextLesson;
-    private RadioGroup radioGroupGrossNetProfit;
-    private RadioGroup radioGroupWhenToUseProfit;
-    private EditText editTextUnderstanding;
-    private EditText editTextComments;
+    private static final String TAG = "AfterVideo13Activity";
+
+    private RatingBar ratingBarVideo, ratingBarClarity, ratingBarUsefulness;
+    private EditText editTextLesson, editTextUnderstanding, editTextComments;
+    private RadioGroup radioGroupGrossNetProfit, radioGroupWhenToUseProfit;
     private Button buttonSubmit;
 
     private DatabaseReference databaseReference;
-    private static final String TAG = "AfterVideo13Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +45,16 @@ public class AfterVideo13Activity extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 13");
         databaseReference.keepSynced(true);
-
         Log.d(TAG, "Firebase Database Path: " + databaseReference);
 
         ratingBarVideo = findViewById(R.id.ratingBarVideo);
         ratingBarClarity = findViewById(R.id.ratingBarClarity);
         ratingBarUsefulness = findViewById(R.id.ratingBarUsefulness);
         editTextLesson = findViewById(R.id.editTextLesson);
-        radioGroupGrossNetProfit = findViewById(R.id.radioGroupGrossNetProfit);
-        radioGroupWhenToUseProfit = findViewById(R.id.radioGroupWhenToUseProfit);
         editTextUnderstanding = findViewById(R.id.editTextUnderstanding);
         editTextComments = findViewById(R.id.editTextComments);
+        radioGroupGrossNetProfit = findViewById(R.id.radioGroupGrossNetProfit);
+        radioGroupWhenToUseProfit = findViewById(R.id.radioGroupWhenToUseProfit);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
         buttonSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
@@ -71,14 +69,25 @@ public class AfterVideo13Activity extends AppCompatActivity {
         String comments = editTextComments.getText().toString().trim();
 
         int selectedGrossNetProfitId = radioGroupGrossNetProfit.getCheckedRadioButtonId();
-        boolean understandsGrossNetProfit = (selectedGrossNetProfitId == R.id.radioYesGrossNetProfit);
+        Boolean understandsGrossNetProfit = selectedGrossNetProfitId == R.id.radioYesGrossNetProfit ? true :
+                (selectedGrossNetProfitId == R.id.radioNoGrossNetProfit ? false : null);
 
         int selectedWhenToUseProfitId = radioGroupWhenToUseProfit.getCheckedRadioButtonId();
-        boolean understandsWhenToUseProfit = (selectedWhenToUseProfitId == R.id.radioYesWhenToUseProfit);
+        Boolean understandsWhenToUseProfit = selectedWhenToUseProfitId == R.id.radioYesWhenToUseProfit ? true :
+                (selectedWhenToUseProfitId == R.id.radioNoWhenToUseProfit ? false : null);
 
-        if (videoRating == 0 || clarityRating == 0 || usefulnessRating == 0 ||
-                lessonLearned.isEmpty() || understandingBenefit.isEmpty()) {
-            showMessageDialog("Validation Error", "Please complete all required fields before submitting.", false);
+        List<String> errors = new ArrayList<>();
+
+        if (videoRating == 0) errors.add("Please rate the video.");
+        if (clarityRating == 0) errors.add("Please rate the clarity.");
+        if (usefulnessRating == 0) errors.add("Please rate the usefulness.");
+        if (TextUtils.isEmpty(lessonLearned)) errors.add("Please write what you learned from the video.");
+        if (TextUtils.isEmpty(understandingBenefit)) errors.add("Please describe your understanding.");
+        if (understandsGrossNetProfit == null) errors.add("Please select an option for Gross vs. Net Profit.");
+        if (understandsWhenToUseProfit == null) errors.add("Please select an option for When to Use Profit.");
+
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
@@ -87,19 +96,18 @@ public class AfterVideo13Activity extends AppCompatActivity {
         feedback.put("clarityRating", clarityRating);
         feedback.put("usefulnessRating", usefulnessRating);
         feedback.put("lessonLearned", lessonLearned);
+        feedback.put("understandingBenefit", understandingBenefit);
         feedback.put("understandsGrossNetProfit", understandsGrossNetProfit);
         feedback.put("understandsWhenToUseProfit", understandsWhenToUseProfit);
-        feedback.put("understandingBenefit", understandingBenefit);
-        feedback.put("comments", comments.isEmpty() ? "No comments provided" : comments);
+        feedback.put("comments", TextUtils.isEmpty(comments) ? "No comments provided" : comments);
+        feedback.put("timestamp", System.currentTimeMillis());
 
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(feedback)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showMessageDialog("Success", "Feedback submitted successfully!", true);
+                        Log.d(TAG, "Feedback submitted successfully.");
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        Log.e(TAG, "Failed to submit feedback: " + error);
-                        showMessageDialog("Error", "Error submitting feedback: " + error, false);
+                        Log.e(TAG, "Error submitting feedback", task.getException());
                     }
                 });
 
@@ -107,16 +115,16 @@ public class AfterVideo13Activity extends AppCompatActivity {
         finish();
     }
 
-    private void showMessageDialog(String title, String message, boolean isSuccess) {
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
-                .setPositiveButton("OK", (dialog, which) -> {
-                    if (isSuccess) {
-                        setResult(RESULT_OK);
-                        finish();
-                    }
-                })
+                .setTitle("Validation Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
                 .show();
     }
 }

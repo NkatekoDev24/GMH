@@ -135,7 +135,7 @@ public class AfterVideo1Activity extends AppCompatActivity {
 
         // Create and show an AlertDialog with the error messages
         new AlertDialog.Builder(this)
-                .setTitle("Validation Errors")
+                .setTitle("Errors")
                 .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();

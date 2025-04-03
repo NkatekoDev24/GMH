@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,6 +21,11 @@ import com.example.gmh_app.Classes.BeforeVideo11Response;
 import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BeforeVideo11Activity extends AppCompatActivity {
 
@@ -84,46 +90,33 @@ public class BeforeVideo11Activity extends AppCompatActivity {
         String location = getSelectedOption(radioGroupLocation);
         String moveReason = editTextMoveReason.getText().toString().trim();
 
+        List<String> errors = new ArrayList<>();
+
         // rules
-        if (rent.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Do you rent your business premises?'.", false);
+        if (rent.isEmpty()) errors.add("Please select an option for 'Do you rent your business premises?'.");
+        if (own.isEmpty()) errors.add("Please select an option for 'Do you own your business premises?'.");
+        if (free.isEmpty()) errors.add("Please select an option for 'Do you use the premises for free?'.");
+        if (rent.equals("Other") && otherArrangements.isEmpty()) errors.add("Please provide details about your other arrangements for rent.");
+        if (structure.isEmpty()) errors.add("Please select an option for 'What is the structure of the premises?'.");
+        if (location.isEmpty()) errors.add("Please select an option for 'What is the location of the premises?'.");
+        if (location.equals("Move to a new location") && moveReason.isEmpty()) errors.add( "Please provide a reason for moving to a new location.");
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
-        if (own.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Do you own your business premises?'.", false);
-            return;
-        }
-
-        if (free.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Do you use the premises for free?'.", false);
-            return;
-        }
-
-        if (rent.equals("Other") && otherArrangements.isEmpty()) {
-            showMessageDialog("Error", "Please provide details about your other arrangements for rent.", false);
-            return;
-        }
-
-        if (structure.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'What is the structure of the premises?'.", false);
-            return;
-        }
-
-        if (location.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'What is the location of the premises?'.", false);
-            return;
-        }
-
-        if (location.equals("Move to a new location") && moveReason.isEmpty()) {
-            showMessageDialog("Error", "Please provide a reason for moving to a new location.", false);
-            return;
-        }
-
-        // Create a response object
-        BeforeVideo11Response response = new BeforeVideo11Response(
-                rent, own, free, otherArrangements, structure, location, moveReason
-        );
+        // Create feedback data
+        Map<String, Object> response = new HashMap<>();
+        response.put("rent", rent);
+        response.put("own", own);
+        response.put("free", free);
+        response.put("otherArrangements", TextUtils.isEmpty(otherArrangements) ? "N/A" : otherArrangements);
+        response.put("structure", structure);
+        response.put("location", location);
+        response.put("moveReason", TextUtils.isEmpty(moveReason) ? "N/A" : moveReason);
+        response.put("timestamp", System.currentTimeMillis());
 
         // Save to Firebase
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(response)
@@ -148,6 +141,21 @@ public class BeforeVideo11Activity extends AppCompatActivity {
         }
         RadioButton selectedRadioButton = findViewById(selectedId);
         return selectedRadioButton.getText().toString();
+    }
+
+    private void showErrorDialog(List<String> errors) {
+        // Combine error messages into a single string
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        // Create and show an AlertDialog with the error messages
+        new AlertDialog.Builder(this)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
+                .show();
     }
 
     private void showMessageDialog(String title, String message, boolean isSuccess) {

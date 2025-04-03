@@ -1,9 +1,7 @@
 package com.example.gmh_app.Activities;
 
-import static android.content.ContentValues.TAG;
-
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,10 +17,14 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AfterVideo15Activity extends AppCompatActivity {
+
+    private static final String TAG = "AfterVideo15Activity";
 
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness;
     private RadioGroup rgIncomeStatementAbility, rgExistingIncomeStatement, rgRecentIncomeStatement, rgRealizationIncomeStatement;
@@ -35,21 +37,17 @@ public class AfterVideo15Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Make the activity full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_after_video15);
 
-        // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 15");
-        databaseReference.keepSynced(true); // Ensures local data is synced when online
+        databaseReference.keepSynced(true);
 
-        // Debugging: Log Firebase Database path
         Log.d(TAG, "Firebase Database Path: " + databaseReference);
 
-        // Link UI elements to their corresponding views
         ratingVideo = findViewById(R.id.rating_video);
         ratingClarity = findViewById(R.id.rating_clarity);
         ratingUsefulness = findViewById(R.id.rating_usefulness);
@@ -61,11 +59,10 @@ public class AfterVideo15Activity extends AppCompatActivity {
         etComments = findViewById(R.id.et_comments);
         btnSubmit = findViewById(R.id.btn_submit);
 
-        btnSubmit.setOnClickListener(v -> submitFeedback());
+        btnSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
     }
 
-    private void submitFeedback() {
-        // Collect data from UI elements
+    private void validateAndSubmitFeedback() {
         float videoRating = ratingVideo.getRating();
         float clarityRating = ratingClarity.getRating();
         float usefulnessRating = ratingUsefulness.getRating();
@@ -73,67 +70,61 @@ public class AfterVideo15Activity extends AppCompatActivity {
         String comments = etComments.getText().toString().trim();
 
         int selectedIncomeStatementAbilityId = rgIncomeStatementAbility.getCheckedRadioButtonId();
-        boolean canDrawIncomeStatement = (selectedIncomeStatementAbilityId == R.id.rb_income_statement_ability_yes);
-
         int selectedExistingIncomeStatementId = rgExistingIncomeStatement.getCheckedRadioButtonId();
-        boolean hasExistingIncomeStatement = (selectedExistingIncomeStatementId == R.id.rb_existing_income_statement_yes);
-
         int selectedRecentIncomeStatementId = rgRecentIncomeStatement.getCheckedRadioButtonId();
-        boolean hasRecentIncomeStatement = (selectedRecentIncomeStatementId == R.id.rb_recent_income_statement_yes);
-
         int selectedRealizationIncomeStatementId = rgRealizationIncomeStatement.getCheckedRadioButtonId();
-        boolean realizesIncomeStatementImportance = (selectedRealizationIncomeStatementId == R.id.rb_realization_income_statement_yes);
 
-        // Validation
-        if (lessonLearned.isEmpty()) {
-            showMessageDialog("Validation Error", "Please fill out all required fields.", false);
+        List<String> errors = new ArrayList<>();
+
+        if (videoRating == 0) errors.add("Please rate the video.");
+        if (clarityRating == 0) errors.add("Please rate the clarity of the information.");
+        if (usefulnessRating == 0) errors.add("Please rate the usefulness of the information.");
+        if (TextUtils.isEmpty(lessonLearned)) errors.add("Please write the biggest lesson you learned.");
+        if (selectedIncomeStatementAbilityId == -1) errors.add("Please indicate if you can draw an income statement.");
+        if (selectedExistingIncomeStatementId == -1) errors.add("Please specify if you have an existing income statement.");
+        if (selectedRecentIncomeStatementId == -1) errors.add("Please confirm if you have a recent income statement.");
+        if (selectedRealizationIncomeStatementId == -1) errors.add("Please state if you realize the importance of an income statement.");
+
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
-        // Create a feedback map to send to Firebase
         Map<String, Object> feedback = new HashMap<>();
         feedback.put("videoRating", videoRating);
         feedback.put("clarityRating", clarityRating);
         feedback.put("usefulnessRating", usefulnessRating);
         feedback.put("lessonLearned", lessonLearned);
-        feedback.put("canDrawIncomeStatement", canDrawIncomeStatement);
-        feedback.put("hasExistingIncomeStatement", hasExistingIncomeStatement);
-        feedback.put("hasRecentIncomeStatement", hasRecentIncomeStatement);
-        feedback.put("realizesIncomeStatementImportance", realizesIncomeStatementImportance);
-        feedback.put("comments", comments.isEmpty() ? "No comments provided" : comments);
+        feedback.put("comments", TextUtils.isEmpty(comments) ? "No comments provided" : comments);
+        feedback.put("canDrawIncomeStatement", selectedIncomeStatementAbilityId == R.id.rb_income_statement_ability_yes);
+        feedback.put("hasExistingIncomeStatement", selectedExistingIncomeStatementId == R.id.rb_existing_income_statement_yes);
+        feedback.put("hasRecentIncomeStatement", selectedRecentIncomeStatementId == R.id.rb_recent_income_statement_yes);
+        feedback.put("realizesIncomeStatementImportance", selectedRealizationIncomeStatementId == R.id.rb_realization_income_statement_yes);
+        feedback.put("timestamp", System.currentTimeMillis());
 
-        // Send data to Firebase
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(feedback)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showMessageDialog("Success", "Feedback submitted successfully!", true);
+                        Log.d(TAG, "Feedback submitted successfully.");
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        showMessageDialog("Error", "Failed to submit feedback: " + error, false);
+                        Log.e(TAG, "Error submitting feedback", task.getException());
                     }
                 });
 
         setResult(RESULT_OK);
-        navigateToEndofPart4Activity();
+        finish();
     }
 
-    // Helper method to show a message dialog
-    private void showMessageDialog(String title, String message, boolean isSuccess) {
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
-                .setPositiveButton("OK", (dialog, which) -> {
-                    if (isSuccess) {
-                        navigateToEndofPart4Activity();
-                    }
-                })
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
                 .show();
-    }
-
-    // Navigates to EndofPart4Activity after submitting
-    private void navigateToEndofPart4Activity() {
-        Intent endOfPartIntent = new Intent(AfterVideo15Activity.this, OverallAssessmentActivity.class);
-        startActivity(endOfPartIntent);
-        finish(); // Finish current activity to remove it from the back stack
     }
 }

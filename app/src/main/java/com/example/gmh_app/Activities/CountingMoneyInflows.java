@@ -18,7 +18,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CountingMoneyInflows extends AppCompatActivity {
@@ -89,49 +91,22 @@ public class CountingMoneyInflows extends AppCompatActivity {
         String emergencyFund = getSelectedRadioText(emergencyFundGroup);
         String profit = profitInput.getText().toString().trim();
 
+        List<String> errors = new ArrayList<>();
+
         // Validation rules
-        if (personalBankAccount == null) {
-            showErrorDialog("Please select an option for 'Personal Bank Account'.");
-            return;
-        }
+        if (personalBankAccount == null) errors.add("Please select an option for 'Personal Bank Account'.");
+        if (businessBankAccount == null) errors.add("Please select an option for 'Business Bank Account'.");
+        if (calculateProfitLoss == null) errors.add("Please select an option for 'Calculate Profit or Loss'.");
+        if (regularlyCalculateProfit == null) errors.add("Please select an option for 'Regularly Calculate Profit'.");
+        if (saveProfit == null) errors.add("Please select an option for 'Save Profit'.");
+        if (emergencyFund == null) errors.add("Please select an option for 'Emergency Fund'.");
+        if (profit.isEmpty()) errors.add("Please enter a profit amount.");
+        if (!isNumeric(profit)) errors.add("Profit must be a valid number.");
+        if (Double.parseDouble(profit) <= 0) errors.add("Profit must be a positive number.");
 
-        if (businessBankAccount == null) {
-            showErrorDialog("Please select an option for 'Business Bank Account'.");
-            return;
-        }
-
-        if (calculateProfitLoss == null) {
-            showErrorDialog("Please select an option for 'Calculate Profit or Loss'.");
-            return;
-        }
-
-        if (regularlyCalculateProfit == null) {
-            showErrorDialog("Please select an option for 'Regularly Calculate Profit'.");
-            return;
-        }
-
-        if (saveProfit == null) {
-            showErrorDialog("Please select an option for 'Save Profit'.");
-            return;
-        }
-
-        if (emergencyFund == null) {
-            showErrorDialog("Please select an option for 'Emergency Fund'.");
-            return;
-        }
-
-        if (profit.isEmpty()) {
-            showErrorDialog("Please enter a profit amount.");
-            return;
-        }
-
-        if (!isNumeric(profit)) {
-            showErrorDialog("Profit must be a valid number.");
-            return;
-        }
-
-        if (Double.parseDouble(profit) <= 0) {
-            showErrorDialog("Profit must be a positive number.");
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
@@ -151,9 +126,8 @@ public class CountingMoneyInflows extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         showSuccessDialog();
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
+                        String error = task.getException() != null ? task.getException().getMessage() : "Error.";
                         Log.e(TAG, "Error submitting data: " + error);
-                        showErrorDialog("Error submitting data: " + error);
                     }
                 });
 
@@ -183,10 +157,15 @@ public class CountingMoneyInflows extends AppCompatActivity {
     }
 
     // Helper method to show an error dialog
-    private void showErrorDialog(String message) {
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle("Error")
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }

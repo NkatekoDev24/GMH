@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -21,6 +22,11 @@ import com.example.gmh_app.Classes.BeforeVideo9Response;
 import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BeforeVideo9Activity extends AppCompatActivity {
 
@@ -91,7 +97,7 @@ public class BeforeVideo9Activity extends AppCompatActivity {
     }
 
     private void submitResponses() {
-        // Gather user inputs
+        // Collect input data
         String moneyInflows = getSelectedRadioText(moneyInflowsGroup);
         String goodHabits = editTextGoodHabits.getText().toString().trim();
         String easyAdjustment = getSelectedRadioText(easyAdjustmentGroup);
@@ -100,55 +106,46 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         String satisfaction = getSelectedRadioText(satisfactionGroup);
         String businessLocation = getSelectedRadioText(businessLocationGroup);
 
-        // Validation
-        if (moneyInflows.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Money Inflows'.", false);
+        // Create a list to hold error messages
+        List<String> errors = new ArrayList<>();
+
+        // Validate input
+        if (TextUtils.isEmpty(moneyInflows)) errors.add("Please select an option for 'Money Inflows'.");
+        if ("Yes".equals(moneyInflows) && TextUtils.isEmpty(goodHabits)) {
+            errors.add("Please describe your good habits since you selected 'Yes' for Money Inflows.");
+        }
+        if (TextUtils.isEmpty(easyAdjustment)) errors.add("Please select an option for 'Easy Adjustment'.");
+        if (TextUtils.isEmpty(changes)) errors.add("Please describe your changes.");
+        if (TextUtils.isEmpty(outcome)) errors.add("Please describe the outcome.");
+        if (TextUtils.isEmpty(satisfaction)) errors.add("Please select an option for 'Satisfaction'.");
+        if (TextUtils.isEmpty(businessLocation)) errors.add("Please select an option for 'Business Location'.");
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
-        if (moneyInflows.equals("Yes") && goodHabits.isEmpty()) {
-            showMessageDialog("Error", "Please describe your good habits since you selected 'Yes' for Money Inflows.", false);
-            return;
-        }
-
-        if (easyAdjustment.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Easy Adjustment'.", false);
-            return;
-        }
-
-        if (changes.isEmpty()) {
-            showMessageDialog("Error", "Please describe your changes.", false);
-            return;
-        }
-
-        if (outcome.isEmpty()) {
-            showMessageDialog("Error", "Please describe the outcome.", false);
-            return;
-        }
-
-        if (satisfaction.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Satisfaction'.", false);
-            return;
-        }
-
-        if (businessLocation.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Business Location'.", false);
-            return;
-        }
-
-        // Create a response object
-        BeforeVideo9Response response = new BeforeVideo9Response(
-                moneyInflows, goodHabits, easyAdjustment, changes, outcome, satisfaction, businessLocation
-        );
+        // Create response data
+        Map<String, Object> response = new HashMap<>();
+        response.put("moneyInflows", moneyInflows);
+        response.put("goodHabits", TextUtils.isEmpty(goodHabits) ? "Not provided" : goodHabits);
+        response.put("easyAdjustment", easyAdjustment);
+        response.put("changes", changes);
+        response.put("outcome", outcome);
+        response.put("satisfaction", satisfaction);
+        response.put("businessLocation", businessLocation);
+        response.put("timestamp", System.currentTimeMillis());
 
         // Save to Firebase
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(response)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        Log.d(TAG, "Responses submitted successfully.");
                         showMessageDialog("Success", "Responses submitted successfully!", true);
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        showMessageDialog("Error", "Failed to submit responses. Please try again.\n\nError: " + error, false);
+                        Log.e(TAG, "Error submitting responses", task.getException());
+                        showMessageDialog("Error", "Failed to submit responses. Please try again.", false);
                     }
                 });
 
@@ -164,6 +161,19 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         }
         RadioButton selectedRadioButton = findViewById(selectedId);
         return selectedRadioButton.getText().toString();
+    }
+
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
+                .show();
     }
 
     private void showMessageDialog(String title, String message, boolean isSuccess) {

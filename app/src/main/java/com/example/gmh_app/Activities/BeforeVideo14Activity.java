@@ -1,9 +1,7 @@
 package com.example.gmh_app.Activities;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
-import android.text.Html;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -11,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,16 +17,19 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BeforeVideo14Activity extends AppCompatActivity {
 
-    private RadioGroup pastProfitCalculationGroup, sellOnCreditGroup, recordDebtsGroup, remindCustomersGroup,
-            collectDebtsGroup, writeOffDebtsGroup, sellToDebtorsGroup;
+    private static final String TAG = "BeforeVideo14Activity";
+
+    private RadioGroup pastProfitCalculationGroup, sellOnCreditGroup, recordDebtsGroup,
+            remindCustomersGroup, collectDebtsGroup, writeOffDebtsGroup, sellToDebtorsGroup;
     private EditText grossProfitInput, netProfitInput;
     private Button submitButton;
-    private TextView tvCombinedToc, tvCredit, video14;
 
     private DatabaseReference databaseReference;
 
@@ -62,30 +62,14 @@ public class BeforeVideo14Activity extends AppCompatActivity {
         writeOffDebtsGroup = findViewById(R.id.writeOffDebtGroup);
         sellToDebtorsGroup = findViewById(R.id.sellToIndebtedGroup);
         submitButton = findViewById(R.id.submitButton);
-        tvCombinedToc = findViewById(R.id.tvCombinedToc);
-        tvCredit = findViewById(R.id.tvCredit);
-        video14 = findViewById(R.id.video14);
 
-        // Set text for TextViews
-        tvCombinedToc.setText(Html.fromHtml(
-                "<b>Part 4. Counting and Recording PROFIT; the risk of customer credit</b><br>" +
-                        "Video 12: Calculating Profit correctly.<br>" +
-                        "Video 13: Must I use gross profit or net profit for management purposes?<br>" +
-                        "<span style='color:#00ff00;'><b><u>Video 14: The risk of customer credit - another hazard.</b></u></span><br>" +
-                        "Video 15: Revenue, costs & profits – a complete weekly example with numbers."
-        ));
-
-        tvCredit.setText(Html.fromHtml("In this short video, we revisit the issue of hazards – in fact, we meet a <b>major hazard</b> that you need to pay attention to.<br><br>" +
-                "Before you watch the video, let’s think about CREDIT a bit:"));
-
-        video14.setText(Html.fromHtml("<u>VIDEO 14</u>"));
-
-        // Set button listener to save data
-        submitButton.setOnClickListener(v -> saveDataToFirebase());
+        // Set button listener to validate and submit data
+        submitButton.setOnClickListener(v -> validateAndSubmitData());
     }
 
-    private void saveDataToFirebase() {
-        // Get data from UI components
+    private void validateAndSubmitData() {
+        List<String> errors = new ArrayList<>();
+
         String pastProfitResponse = getSelectedRadioButtonText(pastProfitCalculationGroup);
         String grossProfit = grossProfitInput.getText().toString().trim();
         String netProfit = netProfitInput.getText().toString().trim();
@@ -96,54 +80,24 @@ public class BeforeVideo14Activity extends AppCompatActivity {
         String writeOffDebtsExtent = getSelectedRadioButtonText(writeOffDebtsGroup);
         String sellToDebtorsExtent = getSelectedRadioButtonText(sellToDebtorsGroup);
 
-        // Validate fields
-        if (pastProfitResponse.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Past Profit Calculation'.", false);
-            return;
-        }
+        // Validation
+        if (TextUtils.isEmpty(pastProfitResponse)) errors.add("Please select an option for 'Past Profit Calculation'.");
+        if (TextUtils.isEmpty(grossProfit) || !isNumeric(grossProfit)) errors.add("Please enter a valid gross profit.");
+        if (TextUtils.isEmpty(netProfit) || !isNumeric(netProfit)) errors.add("Please enter a valid net profit.");
+        if (TextUtils.isEmpty(sellOnCreditExtent)) errors.add("Please select an option for 'Sell on Credit'.");
+        if (TextUtils.isEmpty(recordDebtsExtent)) errors.add("Please select an option for 'Record Debts'.");
+        if (TextUtils.isEmpty(remindCustomersExtent)) errors.add("Please select an option for 'Remind Customers'.");
+        if (TextUtils.isEmpty(collectDebtsExtent)) errors.add("Please select an option for 'Collect Debts'.");
+        if (TextUtils.isEmpty(writeOffDebtsExtent)) errors.add("Please select an option for 'Write Off Debts'.");
+        if (TextUtils.isEmpty(sellToDebtorsExtent)) errors.add("Please select an option for 'Sell to Debtors'.");
 
-        if (grossProfit.isEmpty() || !isNumeric(grossProfit)) {
-            showMessageDialog("Error", "Please enter a valid gross profit.", false);
-            return;
-        }
-
-        if (netProfit.isEmpty() || !isNumeric(netProfit)) {
-            showMessageDialog("Error", "Please enter a valid net profit.", false);
-            return;
-        }
-
-        if (sellOnCreditExtent.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Sell on Credit'.", false);
-            return;
-        }
-
-        if (recordDebtsExtent.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Record Debts'.", false);
-            return;
-        }
-
-        if (remindCustomersExtent.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Remind Customers'.", false);
-            return;
-        }
-
-        if (collectDebtsExtent.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Collect Debts'.", false);
-            return;
-        }
-
-        if (writeOffDebtsExtent.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Write Off Debts'.", false);
-            return;
-        }
-
-        if (sellToDebtorsExtent.isEmpty()) {
-            showMessageDialog("Error", "Please select an option for 'Sell to Debtors'.", false);
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
         // Prepare data map
-        Map<String, String> dataMap = new HashMap<>();
+        Map<String, Object> dataMap = new HashMap<>();
         dataMap.put("PastProfitCalculation", pastProfitResponse);
         dataMap.put("GrossProfit", grossProfit);
         dataMap.put("NetProfit", netProfit);
@@ -153,19 +107,21 @@ public class BeforeVideo14Activity extends AppCompatActivity {
         dataMap.put("CollectDebts", collectDebtsExtent);
         dataMap.put("WriteOffDebts", writeOffDebtsExtent);
         dataMap.put("SellToDebtors", sellToDebtorsExtent);
+        dataMap.put("timestamp", System.currentTimeMillis());
 
         // Save to Firebase
-        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(dataMap).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                showMessageDialog("Success", "Data saved successfully!", true);
-            } else {
-                showMessageDialog("Error", "Failed to save data. Try again.", false);
-            }
-        });
+        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(dataMap)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "Data submitted successfully.");
+                    } else {
+                        Log.e(TAG, "Error submitting data", task.getException());
+                    }
+                });
 
-        // Proceed to the next activity immediately
+        // Proceed to the next activity
         setResult(RESULT_OK);
-        finish(); // Close this activity
+        finish();
     }
 
     private String getSelectedRadioButtonText(RadioGroup radioGroup) {
@@ -177,19 +133,6 @@ public class BeforeVideo14Activity extends AppCompatActivity {
         return selectedButton.getText().toString();
     }
 
-    private void showMessageDialog(String title, String message, boolean isSuccess) {
-        new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
-                .setPositiveButton("OK", (dialog, which) -> {
-                    if (isSuccess) {
-                        setResult(RESULT_OK);
-                        finish();
-                    }
-                })
-                .show();
-    }
-
     private boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -197,5 +140,18 @@ public class BeforeVideo14Activity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
+                .setPositiveButton("OK", null)
+                .show();
     }
 }
