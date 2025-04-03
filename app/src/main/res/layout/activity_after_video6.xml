@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Into which of the hazards highlighted in videos 5 and 6 do you tend to fall into frequently? (Name them here)" />
+            android:hint="Into which of the hazards highlighted in videos 5 and 6 do you tend to fall \ninto frequently?(Name them here)" />
 
         <!-- Plan for Changes -->
         <TextView
