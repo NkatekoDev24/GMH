@@ -344,7 +344,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
-            android:hint="What is your current total amount of profit per month, on average? Answer in Rands."
+            android:hint="What is your current total amount of profit per month, on average?\nAnswer in Rands."
             android:minHeight="40dp"
             android:textSize="18sp"/>
 

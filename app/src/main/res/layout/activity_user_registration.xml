@@ -339,7 +339,7 @@
             android:id="@+id/etBusinessDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="What goods or services do the business provide? Describe the business in at least three words"
+            android:hint="What goods or services do the business provide?\nDescribe the business in at least three words"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:textSize="18sp"/>

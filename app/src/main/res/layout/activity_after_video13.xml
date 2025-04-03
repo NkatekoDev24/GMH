@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="How can this understanding help you to identify possible shortcomings and introduce \nimprovements in your business operations?"/>
+            android:hint="How can this understanding help you to identify possible shortcomings\nand introduce improvements in your business operations?"/>
 
         <TextView
             android:layout_width="wrap_content"

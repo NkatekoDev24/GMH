@@ -155,7 +155,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="How many unpaid workers and/or family members work or help out in your business?\nEnter number: "
+            android:hint="How many unpaid workers and/or family members work or\nhelp out in your business?Enter number: "
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:textSize="18sp"/>
