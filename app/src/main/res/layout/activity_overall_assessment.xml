@@ -64,7 +64,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:inputType="numberDecimal"
-            android:hint="Over which period (number of weeks approximately) have you watched all these videos? Enter number of weeks"/>
+            android:hint="Over which period (number of weeks approximately) have you watched all these videos?\nEnter number of weeks"/>
 
         <!-- Question 3: Benefit from Videos -->
         <TextView
@@ -234,7 +234,7 @@
             android:minHeight="40dp"
             android:inputType="numberDecimal"
             android:layout_marginBottom="16dp"
-            android:hint="If your profits did grow: By how  much has your average monthly net profit increased since starting to watch the GMH videos and implement new GMH habits? (approximate Rand amount) "/>
+            android:hint="If your profits did grow: By how  much has your average monthly net profit increased since\nstarting to watch the GMH videos and implement new GMH habits? (approximate Rand amount) "/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -301,7 +301,7 @@
             android:minHeight="40dp"
             android:inputType="numberDecimal"
             android:layout_marginBottom="16dp"
-            android:hint="If YES, by how many (insert number of additional paid employees since you started to watch these videos)"/>
+            android:hint="If YES, by how many (insert number of additional paid employees since you started to watch\nthese videos)"/>
 
         <TextView
             android:layout_width="wrap_content"

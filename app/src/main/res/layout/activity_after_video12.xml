@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="What amount do you think your profit per month will come to, approximately? (Enter Rand amount)" />
+            android:hint="What amount do you think your profit per month will come to, approximately?\n (Enter Rand amount)" />
 
         <TextView
             android:layout_width="wrap_content"

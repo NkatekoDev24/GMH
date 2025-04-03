@@ -65,8 +65,8 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         easyAdjustmentGroup = findViewById(R.id.easyAdjustmentGroup);
         tvChangesExplain2 = findViewById(R.id.tv_changes_explain2);
         editTextChanges = findViewById(R.id.editTextChanges);
-        tvChangesExplain3 = findViewById(R.id.tv_changes_explain3);
-        editTextOutcome = findViewById(R.id.editTextOutcome);
+        //tvChangesExplain3 = findViewById(R.id.tv_changes_explain3);
+        //editTextOutcome = findViewById(R.id.editTextOutcome);
         satisfactionGroup = findViewById(R.id.satisfactionGroup);
         encouragementTextView = findViewById(R.id.encouragementTextView);
         businessLocationGroup = findViewById(R.id.businessLocationGroup);

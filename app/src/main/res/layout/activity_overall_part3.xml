@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Which main changes regarding Good Money Habits have you adopted up to now? Explain briefly."/>
+            android:hint="Which main changes regarding Good Money Habits have you adopted up to now?\n Explain briefly."/>
 
         <!-- Question 3 -->
         <TextView
@@ -253,7 +253,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Any comments, problems or suggestions on the Part 3 videos (videos 9 to 11) as a group?e"/>
+            android:hint="Any comments, problems or suggestions on the Part 3 videos\n (videos 9 to 11) as a group?"/>
 
 
         <!-- Submission Button -->
