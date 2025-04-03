@@ -202,24 +202,6 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/calibri_regular" />
 
-        <TextView
-            android:id="@+id/tv_changes_explain3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="What was the result/outcome of the changes?"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/calibri_regular" />
-
-        <EditText
-            android:id="@+id/editTextOutcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dotted_underline"
-            android:minHeight="40dp"
-            android:layout_marginBottom="8dp"
-            android:hint="What was the result/outcome of the changes? Type your answer here" />
-
         <!-- Satisfaction with Results Question -->
         <TextView
             android:id="@+id/satisfactionTextView"

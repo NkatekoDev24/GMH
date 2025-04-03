@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="How can this understanding help you to identify possible shortcomings and introduce improvements in your business operations?"/>
+            android:hint="How can this understanding help you to identify possible shortcomings and introduce \nimprovements in your business operations?"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -192,7 +192,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Any comments, problems or suggestions? on video 13"
+            android:text="Any comments, problems or suggestions on video 13?"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
@@ -204,7 +204,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Any comments, problems or suggestions? on video 13"/>
+            android:hint="Any comments, problems or suggestions on video 13?"/>
 
         <Button
             android:id="@+id/buttonSubmit"
