@@ -18,7 +18,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BusinessPracticesActivity extends AppCompatActivity {
@@ -98,51 +100,49 @@ public class BusinessPracticesActivity extends AppCompatActivity {
         video4.setText(Html.fromHtml("<u>VIDEO 4</u>"));
 
         // Submit button click listener
-        btnSubmit.setOnClickListener(v -> validateAndSubmit());
+        btnSubmit.setOnClickListener(v -> validateAndSubmitBusinessPractices());
     }
 
-    private void validateAndSubmit() {
-        boolean isValid = validateRadioGroup(rgSeparateFinances, "Please specify if you separate business and personal finances.");
+    private void validateAndSubmitBusinessPractices() {
+        // Collect input data
+        String separateFinances = getSelectedRadioValue(rgSeparateFinances);
+        String takeCash = getSelectedRadioValue(rgTakeCash);
+        String writeDownCash = (tvCashFollowUp.getVisibility() == View.VISIBLE) ? getSelectedRadioValue(rgWriteDownCash) : "Not applicable";
+        String consumeProducts = getSelectedRadioValue(rgConsumeProducts);
+        String writeDownConsume = (tvConsumeFollowUp.getVisibility() == View.VISIBLE) ? getSelectedRadioValue(rgWriteDownConsume) : "Not applicable";
 
-        if (!validateRadioGroup(rgTakeCash, "Please specify if you take cash from the business.")) {
-            isValid = false;
+        // Create a list to hold error messages
+        List<String> errors = new ArrayList<>();
+
+        // Validate input
+        if (validateRadioGroup(rgSeparateFinances, "Please specify if you separate business and personal finances.")) errors.add("Please specify if you separate business and personal finances.");
+        if (validateRadioGroup(rgTakeCash, "Please specify if you take cash from the business.")) errors.add("Please specify if you take cash from the business.");
+        if (tvCashFollowUp.getVisibility() == View.VISIBLE && validateRadioGroup(rgWriteDownCash, "Please specify if you write down cash taken from the business.")) errors.add("Please specify if you write down cash taken from the business.");
+        if (validateRadioGroup(rgConsumeProducts, "Please specify if you consume products from the business.")) errors.add("Please specify if you consume products from the business.");
+        if (tvConsumeFollowUp.getVisibility() == View.VISIBLE && validateRadioGroup(rgWriteDownConsume, "Please specify if you write down consumed products.")) errors.add("Please specify if you write down consumed products.");
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
+            return;
         }
 
-        if (tvCashFollowUp.getVisibility() == View.VISIBLE &&
-                !validateRadioGroup(rgWriteDownCash, "Please specify if you write down cash taken from the business.")) {
-            isValid = false;
-        }
-
-        if (!validateRadioGroup(rgConsumeProducts, "Please specify if you consume products from the business.")) {
-            isValid = false;
-        }
-
-        if (tvConsumeFollowUp.getVisibility() == View.VISIBLE &&
-                !validateRadioGroup(rgWriteDownConsume, "Please specify if you write down consumed products.")) {
-            isValid = false;
-        }
-
-        if (!isValid) {
-            return; // Stop submission if validation fails
-        }
-
-        // Prepare data for Firebase
+        // Create business practices data
         Map<String, Object> businessPractices = new HashMap<>();
-        businessPractices.put("separateFinances", getSelectedRadioValue(rgSeparateFinances));
-        businessPractices.put("takeCash", getSelectedRadioValue(rgTakeCash));
-        businessPractices.put("writeDownCash", (tvCashFollowUp.getVisibility() == View.VISIBLE) ? getSelectedRadioValue(rgWriteDownCash) : "Not applicable");
-        businessPractices.put("consumeProducts", getSelectedRadioValue(rgConsumeProducts));
-        businessPractices.put("writeDownConsume", (tvConsumeFollowUp.getVisibility() == View.VISIBLE) ? getSelectedRadioValue(rgWriteDownConsume) : "Not applicable");
+        businessPractices.put("separateFinances", separateFinances);
+        businessPractices.put("takeCash", takeCash);
+        businessPractices.put("writeDownCash", writeDownCash);
+        businessPractices.put("consumeProducts", consumeProducts);
+        businessPractices.put("writeDownConsume", writeDownConsume);
+        businessPractices.put("timestamp", System.currentTimeMillis());
 
-        // Save data to Firebase
+        // Save data to Firebase (offline support enabled)
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(businessPractices)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showSuccessDialog();
+                        Log.d(TAG, "Business practices submitted successfully.");
                     } else {
-                        String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        Log.e(TAG, "Failed to submit business practices: " + error);
-                        showErrorDialog("Error submitting data: " + error);
+                        Log.e(TAG, "Error submitting business practices", task.getException());
                     }
                 });
 
@@ -151,13 +151,14 @@ public class BusinessPracticesActivity extends AppCompatActivity {
         finish(); // Close this activity
     }
 
+
     // Helper method to validate a RadioGroup
     private boolean validateRadioGroup(RadioGroup group, String errorMessage) {
         if (group.getCheckedRadioButtonId() == -1) {
-            showErrorDialog(errorMessage);
-            return false;
+            showErrorDialog(List.of(errorMessage));
+            return true;
         }
-        return true;
+        return false;
     }
 
     // Helper method to get selected value from a RadioGroup
@@ -171,10 +172,17 @@ public class BusinessPracticesActivity extends AppCompatActivity {
     }
 
     // Helper method to show an error dialog
-    private void showErrorDialog(String message) {
+    private void showErrorDialog(List<String> errors) {
+        // Combine error messages into a single string
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        // Create and show an AlertDialog with the error messages
         new AlertDialog.Builder(this)
-                .setTitle("Error")
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }

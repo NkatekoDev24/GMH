@@ -102,8 +102,13 @@ public class CountingMoneyInflows extends AppCompatActivity {
         if (emergencyFund == null) errors.add("Please select an option for 'Emergency Fund'.");
         if (profit.isEmpty()) errors.add("Please enter a profit amount.");
         if (!isNumeric(profit)) errors.add("Profit must be a valid number.");
-        if (Double.parseDouble(profit) <= 0) errors.add("Profit must be a positive number.");
-
+        if (profit.isEmpty()) {
+            errors.add("Please enter a profit amount.");
+        } else if (!isNumeric(profit)) {
+            errors.add("Profit must be a valid number.");
+        } else if (Double.parseDouble(profit) <= 0) {
+            errors.add("Profit must be a positive number.");
+        }
         // Show errors if any
         if (!errors.isEmpty()) {
             showErrorDialog(errors);
@@ -148,6 +153,9 @@ public class CountingMoneyInflows extends AppCompatActivity {
 
     // Helper method to check if a string is numeric
     private boolean isNumeric(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            return false;
+        }
         try {
             Double.parseDouble(str);
             return true;

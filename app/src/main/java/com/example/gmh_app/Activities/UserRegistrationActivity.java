@@ -27,7 +27,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserRegistrationActivity extends AppCompatActivity {
 
@@ -109,69 +112,12 @@ public class UserRegistrationActivity extends AppCompatActivity {
         video2.setText(Html.fromHtml("<u>VIDEO 2</u>"));
 
         btnSubmit.setOnClickListener(v -> {
-            if (validateForm()) {
-                submitForm();
-            }
+            validateAndSubmitForm();
         });
     }
 
-    private boolean validateForm() {
-        boolean isValid = true;
-        String email = etEmail.getText().toString().trim();
-        String password = etCellphone.getText().toString().trim();
-        String age = etAge.getText().toString().trim();
-
-        if (TextUtils.isEmpty(etUsername.getText().toString().trim())) {
-            showDialog("Validation Error", "Username is required.");
-            isValid = false;
-        } else if (TextUtils.isEmpty(email)) {
-            showDialog("Validation Error", "Email is required.");
-            isValid = false;
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            showDialog("Validation Error", "Please enter a valid email address.");
-            isValid = false;
-        } else if (!isValidSouthAfricanCellNumber(password)) {
-            showDialog("Validation Error", "Please enter a valid South African cellphone number starting with +27 or 0.");
-            isValid = false;
-        } else if (password.length() < 10) {
-            showDialog("Validation Error", "Phone number must be at least 10 characters long.");
-            isValid = false;
-        } else if (spinnerProvince.getSelectedItemPosition() == 0) {
-            showDialog("Validation Error", "Please select a province.");
-            isValid = false;
-        } else if (rgGender.getCheckedRadioButtonId() == -1) {
-            showDialog("Validation Error", "Please select a gender.");
-            isValid = false;
-        } else if (rgEducation.getCheckedRadioButtonId() == -1) {
-            showDialog("Validation Error", "Please select your education level.");
-            isValid = false;
-        } else if (rgBusinessName.getCheckedRadioButtonId() == -1) {
-            showDialog("Validation Error", "Please select if you have a business name.");
-            isValid = false;
-        } else if (TextUtils.isEmpty(age) || !isAge(age)) {
-            showDialog("Validation Error", "Please enter an age between 14 and 120 years.");
-            isValid = false;
-        } else if (!hasMinimumWords(etBusinessDescription.getText().toString().trim(), 3)) {
-            showDialog("Validation Error", "Business description must contain at least three words.");
-            isValid = false;
-        }else {
-            int businessCheckedId = rgBusinessName.getCheckedRadioButtonId();
-            if (businessCheckedId == R.id.rbBusinessYes) {
-                if (TextUtils.isEmpty(etBusinessName.getText().toString().trim())) {
-                    showDialog("Validation Error", "Business name is required.");
-                    isValid = false;
-                } else if (rgNameDisplayed.getCheckedRadioButtonId() == -1) {
-                    showDialog("Validation Error", "Please select if your name should be displayed.");
-                    isValid = false;
-                }
-            }
-        }
-
-        return isValid;
-    }
-
-    private void submitForm() {
-        // Collect data
+    private void validateAndSubmitForm() {
+        // Collect input data
         String username = etUsername.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String cellphone = etCellphone.getText().toString().trim();
@@ -188,17 +134,54 @@ public class UserRegistrationActivity extends AppCompatActivity {
         String hasBusinessName = getSelectedRadioText(rgBusinessName);
         String isNameDisplayed = getSelectedRadioText(rgNameDisplayed);
 
-        // Create user object
-        User user = new User(username, email, cellphone, age, city, country, businessName, businessDescription, gender, education, hasBusinessName, isNameDisplayed, province);
+        // Create a list to hold error messages
+        List<String> errors = new ArrayList<>();
+
+        // Validate input
+        if (TextUtils.isEmpty(username)) errors.add("Username is required.");
+        if (TextUtils.isEmpty(email) || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) errors.add("Please enter a valid email address.");
+        if (!isValidSouthAfricanCellNumber(cellphone) || cellphone.length() < 10) errors.add("Please enter a valid South African cellphone number (at least 10 characters). ");
+        if (spinnerProvince.getSelectedItemPosition() == 0) errors.add("Please select a province.");
+        if (rgGender.getCheckedRadioButtonId() == -1) errors.add("Please select a gender.");
+        if (rgEducation.getCheckedRadioButtonId() == -1) errors.add("Please select your education level.");
+        if (rgBusinessName.getCheckedRadioButtonId() == -1) errors.add("Please specify if you have a business.");
+        if (TextUtils.isEmpty(age) || !isAge(age)) errors.add("Please enter a valid age (14-120 years).");
+        if (!hasMinimumWords(businessDescription, 3)) errors.add("Business description must contain at least three words.");
+        if (rgBusinessName.getCheckedRadioButtonId() == R.id.rbBusinessYes && TextUtils.isEmpty(businessName)) errors.add("Business name is required.");
+        if (rgBusinessName.getCheckedRadioButtonId() == R.id.rbBusinessYes && rgNameDisplayed.getCheckedRadioButtonId() == -1) errors.add("Please select if your name should be displayed.");
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
+            return;
+        }
+
+        // Create user data map
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("username", username);
+        userData.put("email", email);
+        userData.put("cellphone", cellphone);
+        userData.put("age", age);
+        userData.put("city", city);
+        userData.put("country", country);
+        userData.put("businessName", businessName);
+        userData.put("businessDescription", businessDescription);
+        userData.put("gender", gender);
+        userData.put("education", education);
+        userData.put("hasBusinessName", hasBusinessName);
+        userData.put("isNameDisplayed", isNameDisplayed);
+        userData.put("province", province);
+        userData.put("timestamp", System.currentTimeMillis());
 
         // Store in Firebase
-        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(user).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                showDialogWithAction("Success", "Registration successful!", true);
-            } else {
-                showDialog("Error", "Failed to register. Try again!");
-            }
-        });
+        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(userData)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        showDialogWithAction("Success", "Registration successful!", true);
+                    } else {
+                        showErrorDialog(List.of("Failed to register. Try again!"));
+                    }
+                });
 
         // Proceed to the next activity immediately
         setResult(RESULT_OK);
@@ -212,10 +195,15 @@ public class UserRegistrationActivity extends AppCompatActivity {
         return selectedButton.getText().toString();
     }
 
-    private void showDialog(String title, String message) {
+    private void showErrorDialog(List<String> errors) {
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }

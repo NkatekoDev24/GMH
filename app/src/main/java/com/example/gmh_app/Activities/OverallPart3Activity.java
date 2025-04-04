@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,7 +20,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OverallPart3Activity extends AppCompatActivity {
@@ -58,44 +61,60 @@ public class OverallPart3Activity extends AppCompatActivity {
         submitButton = findViewById(R.id.submit_button);
 
         // Set button click listener
-        submitButton.setOnClickListener(v -> submitDataToFirebase());
+        submitButton.setOnClickListener(v -> validateAndSubmitData());
     }
 
-    private void submitDataToFirebase() {
-        if (!isFormValid()) {
-            showDialog("Incomplete Form", "Please fill in all required fields.");
+    private void validateAndSubmitData() {
+        // Collect input data
+        String changesMade = getSelectedRadioText(changesMadeGroup);
+        String progress = getSelectedRadioText(progressGroup);
+        String moneyHelp = getSelectedRadioText(moneyHelpGroup);
+        String changesAdoptedText = changesAdopted.getText().toString().trim();
+        String changesPostponedText = changesPostponed.getText().toString().trim();
+        String reasonPostponedText = reasonPostponed.getText().toString().trim();
+        String part3CommentsText = part3Comments.getText().toString().trim();
+
+        // Create a list to hold error messages
+        List<String> errors = new ArrayList<>();
+
+        // Validate input
+        if (changesMade == null) errors.add("Please specify the changes made.");
+        if (progress == null) errors.add("Please specify your progress.");
+        if (moneyHelp == null) errors.add("Please specify if money management has helped.");
+        if (TextUtils.isEmpty(changesAdoptedText)) errors.add("Please specify the changes you have adopted.");
+        if (TextUtils.isEmpty(changesPostponedText)) errors.add("Please specify the changes you have postponed.");
+        if (TextUtils.isEmpty(reasonPostponedText)) errors.add("Please specify the reason for postponing changes.");
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
+        // Create data map
         Map<String, Object> formData = new HashMap<>();
-        formData.put("changes_made", getSelectedRadioText(changesMadeGroup));
-        formData.put("progress", getSelectedRadioText(progressGroup));
-        formData.put("money_help", getSelectedRadioText(moneyHelpGroup));
-        formData.put("changes_adopted", changesAdopted.getText().toString().trim());
-        formData.put("changes_postponed", changesPostponed.getText().toString().trim());
-        formData.put("reason_postponed", reasonPostponed.getText().toString().trim());
-        formData.put("part3_comments", part3Comments.getText().toString().trim());
+        formData.put("changes_made", changesMade);
+        formData.put("progress", progress);
+        formData.put("money_help", moneyHelp);
+        formData.put("changes_adopted", changesAdoptedText);
+        formData.put("changes_postponed", changesPostponedText);
+        formData.put("reason_postponed", reasonPostponedText);
+        formData.put("part3_comments", TextUtils.isEmpty(part3CommentsText) ? "No comments provided" : part3CommentsText);
+        formData.put("timestamp", System.currentTimeMillis());
 
-        // Generate unique ID using timestamp
-        String entryId = String.valueOf(System.currentTimeMillis());
+        // Save data to Firebase (offline support enabled)
+        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(formData)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "Data submitted successfully.");
+                    } else {
+                        Log.e(TAG, "Error submitting data", task.getException());
+                    }
+                });
 
-        // Save data to Firebase (works offline)
-        databaseReference.child(entryId).setValue(formData)
-                .addOnSuccessListener(aVoid -> Log.d(TAG, "Data saved successfully (online or offline)."))
-                .addOnFailureListener(e -> Log.e(TAG, "Failed to save data!", e));
-
-        // Move to next activity immediately
+        // Proceed to the next activity immediately
         setResult(RESULT_OK);
-        navigateToNextActivity();
-    }
-
-    private boolean isFormValid() {
-        return changesMadeGroup.getCheckedRadioButtonId() != -1 &&
-                progressGroup.getCheckedRadioButtonId() != -1 &&
-                moneyHelpGroup.getCheckedRadioButtonId() != -1 &&
-                !changesAdopted.getText().toString().trim().isEmpty() &&
-                !changesPostponed.getText().toString().trim().isEmpty() &&
-                !reasonPostponed.getText().toString().trim().isEmpty();
+        finish(); // Close this activity
     }
 
     private String getSelectedRadioText(RadioGroup radioGroup) {
@@ -109,10 +128,17 @@ public class OverallPart3Activity extends AppCompatActivity {
         return selectedRadioButton.getTag().toString();
     }
 
-    private void showDialog(String title, String message) {
+    private void showErrorDialog(List<String> errors) {
+        // Combine error messages into a single string
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        // Create and show an AlertDialog with the error messages
         new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }

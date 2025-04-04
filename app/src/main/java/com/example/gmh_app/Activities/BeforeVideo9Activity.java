@@ -102,7 +102,7 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         String goodHabits = editTextGoodHabits.getText().toString().trim();
         String easyAdjustment = getSelectedRadioText(easyAdjustmentGroup);
         String changes = editTextChanges.getText().toString().trim();
-        String outcome = editTextOutcome.getText().toString().trim();
+//        String outcome = editTextOutcome.getText().toString().trim();
         String satisfaction = getSelectedRadioText(satisfactionGroup);
         String businessLocation = getSelectedRadioText(businessLocationGroup);
 
@@ -116,7 +116,7 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(easyAdjustment)) errors.add("Please select an option for 'Easy Adjustment'.");
         if (TextUtils.isEmpty(changes)) errors.add("Please describe your changes.");
-        if (TextUtils.isEmpty(outcome)) errors.add("Please describe the outcome.");
+//        if (TextUtils.isEmpty(outcome)) errors.add("Please describe the outcome.");
         if (TextUtils.isEmpty(satisfaction)) errors.add("Please select an option for 'Satisfaction'.");
         if (TextUtils.isEmpty(businessLocation)) errors.add("Please select an option for 'Business Location'.");
 
@@ -132,7 +132,7 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         response.put("goodHabits", TextUtils.isEmpty(goodHabits) ? "Not provided" : goodHabits);
         response.put("easyAdjustment", easyAdjustment);
         response.put("changes", changes);
-        response.put("outcome", outcome);
+//        response.put("outcome", outcome);
         response.put("satisfaction", satisfaction);
         response.put("businessLocation", businessLocation);
         response.put("timestamp", System.currentTimeMillis());

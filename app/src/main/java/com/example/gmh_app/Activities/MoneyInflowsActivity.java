@@ -17,7 +17,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MoneyInflowsActivity extends AppCompatActivity {
@@ -77,24 +79,30 @@ public class MoneyInflowsActivity extends AppCompatActivity {
     }
 
     private void validateAndSubmit() {
-        boolean isValid = validateRadioGroup(businessDurationGroup, "Please specify the duration of your business operations.");
+        // Create a list to hold error messages
+        List<String> errors = new ArrayList<>();
 
-        // Validate all RadioGroups
+        // Validate input
+        if (!validateRadioGroup(businessDurationGroup, "Please specify the duration of your business operations.")) {
+            errors.add("Please specify the duration of your business operations.");
+        }
         if (!validateRadioGroup(countCashStartGroup, "Please specify if you count cash at the start of the day.")) {
-            isValid = false;
+            errors.add("Please specify if you count cash at the start of the day.");
         }
         if (!validateRadioGroup(countCashEndGroup, "Please specify if you count cash at the end of the day.")) {
-            isValid = false;
+            errors.add("Please specify if you count cash at the end of the day.");
         }
         if (!validateRadioGroup(writeTransactionsGroup, "Please specify if you write down daily transactions.")) {
-            isValid = false;
+            errors.add("Please specify if you write down daily transactions.");
         }
         if (!validateRadioGroup(countStockGroup, "Please specify if you count your stock.")) {
-            isValid = false;
+            errors.add("Please specify if you count your stock.");
         }
 
-        if (!isValid) {
-            return; // Stop submission if validation fails
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
+            return;
         }
 
         // Collect data from RadioGroups
@@ -111,16 +119,17 @@ public class MoneyInflowsActivity extends AppCompatActivity {
         moneyInflowsData.put("countCashEnd", countCashEnd);
         moneyInflowsData.put("writeTransactions", writeTransactions);
         moneyInflowsData.put("countStock", countStock);
+        moneyInflowsData.put("timestamp", System.currentTimeMillis());
 
         // Save data to Firebase
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(moneyInflowsData)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showSuccessDialog();
+                        Log.d(TAG, "Data submitted successfully.");
                     } else {
                         String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
                         Log.e(TAG, "Error submitting data: " + error);
-                        showErrorDialog("Error submitting data: " + error);
+//                        showErrorDialog("Error submitting data: " + error);
                     }
                 });
 
@@ -129,10 +138,11 @@ public class MoneyInflowsActivity extends AppCompatActivity {
         finish(); // Close this activity
     }
 
+
     // Helper method to validate a RadioGroup and show a dialog if invalid
     private boolean validateRadioGroup(RadioGroup group, String errorMessage) {
         if (group.getCheckedRadioButtonId() == -1) {
-            showErrorDialog(errorMessage);
+            showErrorDialog(List.of(errorMessage));
             return false;
         }
         return true;
@@ -149,10 +159,17 @@ public class MoneyInflowsActivity extends AppCompatActivity {
     }
 
     // Helper method to show an error dialog
-    private void showErrorDialog(String message) {
+    private void showErrorDialog(List<String> errors) {
+        // Combine error messages into a single string
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        // Create and show an AlertDialog with the error messages
         new AlertDialog.Builder(this)
-                .setTitle("Error")
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }

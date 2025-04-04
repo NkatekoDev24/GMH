@@ -20,7 +20,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OverallAssessmentActivity extends AppCompatActivity {
@@ -105,49 +107,94 @@ public class OverallAssessmentActivity extends AppCompatActivity {
         });
 
         // Set submit button click listener
-        submitButton.setOnClickListener(v -> submitAssessment());
+        submitButton.setOnClickListener(v -> validateAndSubmitAssessment());
     }
 
-    private void submitAssessment() {
-        // Validate required fields
-        if (!isFormValid()) {
+    private void validateAndSubmitAssessment() {
+        // Collect input data
+        String videos = videosWatched.getText().toString().trim();
+        String weeks = weeksWatched.getText().toString().trim();
+        String profitAmount = profitWatched.getText().toString().trim();
+        String netProfitAmount = netProfitWatched.getText().toString().trim();
+        String additionalEmployees = yesWatched.getText().toString().trim();
+        String totalPaidEmployees = paidWatched.getText().toString().trim();
+
+        // Get selected radio button values
+        String benefit = getSelectedRadioText(benefitGroup);
+        String confidence = getSelectedRadioText(confidenceGroup);
+        String moneyManagementChanges = getSelectedRadioText(moneyManagementChangesGroup);
+        String progressSkills = getSelectedRadioText(progressSkillsGroup);
+        String control = getSelectedRadioText(controlGroup);
+        String plan = getSelectedRadioText(planGroup);
+        String profitIncrease = getSelectedRadioText(profitIncreaseGroup);
+        String changesMade = getSelectedRadioText(changesMadeGroup);
+        String mainChange = mainChanges.getText().toString().trim();
+        String finalComment = finalComments.getText().toString().trim();
+
+        // Create a list to hold error messages
+        List<String> errors = new ArrayList<>();
+
+        // Validate inputs
+        if (TextUtils.isEmpty(videos)) errors.add("Please enter how many videos you have watched.");
+        if (TextUtils.isEmpty(weeks)) errors.add("Please enter the number of weeks you watched the videos.");
+        if (benefit == null) errors.add("Please select how much you benefited from the videos.");
+        if (confidence == null) errors.add("Please select if you feel more confident in your business.");
+        if (moneyManagementChanges == null) errors.add("Please select if the videos changed your money management practices.");
+
+        if (profitWatched.getVisibility() == View.VISIBLE) {
+            if (TextUtils.isEmpty(profitAmount)) errors.add("Please enter the profit increase amount.");
+            if (!isDecimal(profitAmount)) errors.add("Please enter a valid decimal amount for profit increase.");
+        }
+
+        if (!isDecimal(netProfitAmount)) errors.add("Please enter a valid decimal amount for net profit.");
+        if (yesWatched.getVisibility() == View.VISIBLE && !isInteger(additionalEmployees)) {
+            errors.add("Please enter a valid integer for additional employees.");
+        }
+        if (!isInteger(totalPaidEmployees)) errors.add("Please enter a valid integer for total paid employees.");
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
         // Prepare data to be saved
         Map<String, Object> assessmentData = new HashMap<>();
-        assessmentData.put("videosWatched", videosWatched.getText().toString().trim());
-        assessmentData.put("weeksWatched", weeksWatched.getText().toString().trim());
-        assessmentData.put("benefit", getSelectedRadioText(benefitGroup));
-        assessmentData.put("confidence", getSelectedRadioText(confidenceGroup));
-        assessmentData.put("moneyManagementChanges", getSelectedRadioText(moneyManagementChangesGroup));
-        assessmentData.put("progressSkills", getSelectedRadioText(progressSkillsGroup));
-        assessmentData.put("control", getSelectedRadioText(controlGroup));
-        assessmentData.put("plan", getSelectedRadioText(planGroup));
-        assessmentData.put("profitIncrease", getSelectedRadioText(profitIncreaseGroup));
-        assessmentData.put("changesMade", getSelectedRadioText(changesMadeGroup));
-        assessmentData.put("mainChanges", mainChanges.getText().toString().trim());
-        assessmentData.put("finalComments", finalComments.getText().toString().trim());
-        assessmentData.put("profitIncreaseAmount", profitWatched.getText().toString().trim());
-        assessmentData.put("netProfitNow", netProfitWatched.getText().toString().trim());
-        assessmentData.put("additionalEmployees", yesWatched.getText().toString().trim());
-        assessmentData.put("totalPaidEmployees", paidWatched.getText().toString().trim());
+        assessmentData.put("videosWatched", videos);
+        assessmentData.put("weeksWatched", weeks);
+        assessmentData.put("benefit", benefit);
+        assessmentData.put("confidence", confidence);
+        assessmentData.put("moneyManagementChanges", moneyManagementChanges);
+        assessmentData.put("progressSkills", progressSkills);
+        assessmentData.put("control", control);
+        assessmentData.put("plan", plan);
+        assessmentData.put("profitIncrease", profitIncrease);
+        assessmentData.put("changesMade", changesMade);
+        assessmentData.put("mainChanges", mainChange);
+        assessmentData.put("finalComments", finalComment);
+        assessmentData.put("profitIncreaseAmount", profitAmount);
+        assessmentData.put("netProfitNow", netProfitAmount);
+        assessmentData.put("additionalEmployees", additionalEmployees);
+        assessmentData.put("totalPaidEmployees", totalPaidEmployees);
+        assessmentData.put("timestamp", System.currentTimeMillis());
 
         // Save data to Firebase
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(assessmentData)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        Log.d(TAG, "Assessment submitted successfully.");
                         navigateToGMHBonusActivity();
                     } else {
                         String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
-                        Log.e(TAG, "Error submitting data: " + error);
-                        showErrorDialog("Error submitting data: " + error);
+                        Log.e(TAG, "Error submitting assessment: " + error);
+//                        showErrorDialog("Error submitting data: " + error);
                     }
                 });
 
         setResult(RESULT_OK);
         navigateToGMHBonusActivity();
     }
+
 
     // Navigate to GMHBonusActivity
     private void navigateToGMHBonusActivity() {
@@ -157,59 +204,6 @@ public class OverallAssessmentActivity extends AppCompatActivity {
     }
 
     // Helper method to validate required fields
-    private boolean isFormValid() {
-        // Enforce numeric input types
-        videosWatched.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
-        weeksWatched.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
-        profitWatched.setInputType(android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL | android.text.InputType.TYPE_CLASS_NUMBER);
-        netProfitWatched.setInputType(android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL | android.text.InputType.TYPE_CLASS_NUMBER);
-        yesWatched.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
-        paidWatched.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
-
-        if (TextUtils.isEmpty(videosWatched.getText().toString().trim())) {
-            showErrorDialog("Please enter how many videos you have watched.");
-            return false;
-        }
-        if (TextUtils.isEmpty(weeksWatched.getText().toString().trim())) {
-            showErrorDialog("Please enter the number of weeks you watched the videos.");
-            return false;
-        }
-        if (benefitGroup.getCheckedRadioButtonId() == -1) {
-            showErrorDialog("Please select how much you benefited from the videos.");
-            return false;
-        }
-        if (confidenceGroup.getCheckedRadioButtonId() == -1) {
-            showErrorDialog("Please select if you feel more confident in your business.");
-            return false;
-        }
-        if (moneyManagementChangesGroup.getCheckedRadioButtonId() == -1) {
-            showErrorDialog("Please select if the videos changed your money management practices.");
-            return false;
-        }
-        if (profitWatched.getVisibility() == View.VISIBLE) {
-            if (profitWatched.getText().toString().trim().isEmpty()) {
-                showErrorDialog("Please enter the profit increase amount.");
-                return false;
-            }
-            if (!isDecimal(profitWatched.getText().toString().trim())) {
-                showErrorDialog("Please enter a valid decimal amount for profit increase.");
-                return false;
-            }
-        }
-        if (!isDecimal(netProfitWatched.getText().toString().trim())) {
-            showErrorDialog("Please enter a valid decimal amount for net profit.");
-            return false;
-        }
-        if (yesWatched.getVisibility() == View.VISIBLE && !isInteger(yesWatched.getText().toString().trim())) {
-            showErrorDialog("Please enter a valid integer for additional employees.");
-            return false;
-        }
-        if (!isInteger(paidWatched.getText().toString().trim())) {
-            showErrorDialog("Please enter a valid integer for total paid employees.");
-            return false;
-        }
-        return true;
-    }
 
     // Helper method to get selected value from a RadioGroup
     private String getSelectedRadioText(RadioGroup group) {
@@ -222,10 +216,17 @@ public class OverallAssessmentActivity extends AppCompatActivity {
     }
 
     // Helper method to show an error dialog
-    private void showErrorDialog(String message) {
+    private void showErrorDialog(List<String> errors) {
+        // Combine error messages into a single string
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        // Create and show an AlertDialog with the error messages
         new AlertDialog.Builder(this)
-                .setTitle("Error")
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }

@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -21,7 +22,9 @@ import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OverallPart2Activity extends AppCompatActivity {
@@ -70,63 +73,60 @@ public class OverallPart2Activity extends AppCompatActivity {
         });
 
         // Set the button click listener
-        submitButton.setOnClickListener(v -> submitDataToFirebase());
+        submitButton.setOnClickListener(v -> validateAndSubmitData());
     }
 
-    private void submitDataToFirebase() {
-        // Validate form inputs
-        if (!isFormValid()) {
-            showDialog("Incomplete Form", "Please complete all required fields.");
+    private void validateAndSubmitData() {
+        // Collect input data
+        String changesInflows = getSelectedRadioText(changesInflowsGroup);
+        String progress = getSelectedRadioText(progressGroup);
+        String moneyHelp = getSelectedRadioText(moneyHelpGroup);
+        String importantHabitsText = importantHabits.getText().toString().trim();
+        String commentsText = part2Comments.getText().toString().trim();
+
+        // Create a list to hold error messages
+        List<String> errors = new ArrayList<>();
+
+        // Validate input
+        if (TextUtils.isEmpty(changesInflows)) errors.add("Please select whether there are changes in inflows.");
+        if (TextUtils.isEmpty(progress)) errors.add("Please select your progress.");
+        if (TextUtils.isEmpty(moneyHelp)) errors.add("Please select if money helped you.");
+
+        // If 'Yes' is selected for inflows, importantHabits must not be empty
+        if (changesInflows.equals("Yes") && TextUtils.isEmpty(importantHabitsText)) {
+            errors.add("Please explain the important habits if there are changes in inflows.");
+        }
+
+        // Show errors if any
+        if (!errors.isEmpty()) {
+            showErrorDialog(errors);
             return;
         }
 
         // Prepare data
         Map<String, Object> formData = new HashMap<>();
-        formData.put("changes_inflows", getSelectedRadioText(changesInflowsGroup));
-        formData.put("progress", getSelectedRadioText(progressGroup));
-        formData.put("money_help", getSelectedRadioText(moneyHelpGroup));
-        formData.put("important_habits", importantHabits.getText().toString().trim());
-        formData.put("part2_comments", part2Comments.getText().toString().trim());
-
-        // Generate a unique entry ID using timestamp
-        String entryId = String.valueOf(System.currentTimeMillis());
+        formData.put("changesInflows", changesInflows);
+        formData.put("progress", progress);
+        formData.put("moneyHelp", moneyHelp);
+        formData.put("importantHabits", importantHabitsText);
+        formData.put("comments", TextUtils.isEmpty(commentsText) ? "No comments provided" : commentsText);
+        formData.put("timestamp", System.currentTimeMillis());
 
         // Store data in Firebase (works offline)
-        databaseReference.child(entryId).setValue(formData)
-                .addOnSuccessListener(aVoid -> Log.d(TAG, "Data saved successfully (online or offline)."))
-                .addOnFailureListener(e -> Log.e(TAG, "Failed to save data!", e));
+        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(formData)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "Data submitted successfully.");
+                    } else {
+                        Log.e(TAG, "Error submitting data", task.getException());
+                    }
+                });
 
         // Proceed to the next activity immediately
         setResult(RESULT_OK);
-        navigateToNextActivity();
+        finish(); // Close this activity
     }
 
-    private boolean isFormValid() {
-        boolean isValid = true;
-
-        if (changesInflowsGroup.getCheckedRadioButtonId() == -1) {
-            showDialog("Error", "Please select whether there are changes in inflows.");
-            isValid = false;
-        } else {
-            int inflowsCheckedId = changesInflowsGroup.getCheckedRadioButtonId();
-            if (inflowsCheckedId == R.id.inflows_yes && importantHabits.getText().toString().trim().isEmpty()) {
-                showDialog("Error", "Please explain the important habits if there are changes in inflows.");
-                isValid = false;
-            }
-        }
-
-        if (progressGroup.getCheckedRadioButtonId() == -1) {
-            showDialog("Error", "Please select your progress.");
-            isValid = false;
-        }
-
-        if (moneyHelpGroup.getCheckedRadioButtonId() == -1) {
-            showDialog("Error", "Please select if money helped you.");
-            isValid = false;
-        }
-
-        return isValid;
-    }
 
 
     private String getSelectedRadioText(RadioGroup radioGroup) {
@@ -141,10 +141,17 @@ public class OverallPart2Activity extends AppCompatActivity {
         return selectedRadioButton.getTag().toString();
     }
 
-    private void showDialog(String title, String message) {
+    private void showErrorDialog(List<String> errors) {
+        // Combine error messages into a single string
+        StringBuilder errorMessage = new StringBuilder();
+        for (String error : errors) {
+            errorMessage.append("• ").append(error).append("\n");
+        }
+
+        // Create and show an AlertDialog with the error messages
         new AlertDialog.Builder(this)
-                .setTitle(title)
-                .setMessage(message)
+                .setTitle("Errors")
+                .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }
