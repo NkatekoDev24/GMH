@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    android:orientation="vertical"
-    tools:context=".ProfileActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,11 +97,11 @@
                     app:cardCornerRadius="6dp"
                     app:cardElevation="0dp">
 
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="90dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/pp" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="150dp"-->
+<!--                        android:layout_height="90dp"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/pp" />-->
 
                 </androidx.cardview.widget.CardView>
 
@@ -494,12 +493,12 @@
                             android:gravity="center_vertical"
                             android:paddingRight="8dp">
 
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:background="@drawable/circular_grey_bordersolid"
-                                android:padding="10dp"
-                                android:src="@drawable/paintbrush" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="40dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:background="@drawable/circular_grey_bordersolid"-->
+<!--                                android:padding="10dp"-->
+<!--                                android:src="@drawable/paintbrush" />-->
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -618,11 +617,11 @@
                             app:cardCornerRadius="6dp"
                             app:cardElevation="0dp">
 
-                            <ImageView
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/person1" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="70dp"-->
+<!--                                android:scaleType="centerCrop"-->
+<!--                                android:src="@drawable/person1" />-->
 
                         </androidx.cardview.widget.CardView>
 
@@ -674,11 +673,11 @@
                             app:cardCornerRadius="6dp"
                             app:cardElevation="0dp">
 
-                            <ImageView
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/person2" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="70dp"-->
+<!--                                android:scaleType="centerCrop"-->
+<!--                                android:src="@drawable/person2" />-->
 
                         </androidx.cardview.widget.CardView>
 
@@ -728,11 +727,11 @@
                             app:cardCornerRadius="6dp"
                             app:cardElevation="0dp">
 
-                            <ImageView
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/person3" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="70dp"-->
+<!--                                android:scaleType="centerCrop"-->
+<!--                                android:src="@drawable/person3" />-->
 
                         </androidx.cardview.widget.CardView>
 

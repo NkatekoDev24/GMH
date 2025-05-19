@@ -1,6 +1,7 @@
 package com.example.gmh_app.Activities;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,7 @@ public class BeforeVideo14Activity extends AppCompatActivity {
             remindCustomersGroup, collectDebtsGroup, writeOffDebtsGroup, sellToDebtorsGroup;
     private EditText grossProfitInput, netProfitInput;
     private Button submitButton;
+    TextView tvCombinedToc;
 
     private DatabaseReference databaseReference;
 
@@ -62,6 +65,17 @@ public class BeforeVideo14Activity extends AppCompatActivity {
         writeOffDebtsGroup = findViewById(R.id.writeOffDebtGroup);
         sellToDebtorsGroup = findViewById(R.id.sellToIndebtedGroup);
         submitButton = findViewById(R.id.submitButton);
+        tvCombinedToc = findViewById(R.id.tvCombinedToc);
+
+
+        tvCombinedToc.setText(Html.fromHtml(
+                "<b>Part 4. Counting and Recording PROFIT – and the risk of customer credit</b><br>" +
+                        "Video 12: Calculating Profit correctly.<br>" +
+                        "Video 13: Must I use gross profit or net profit for management purposes?<br>" +
+                        "<span style='color:#00ff00;'><b><u>Video 14: The risk of customer credit - another hazard.</b></u></span><br>" +
+                        "Video 15: Revenue, costs & profits – a complete weekly example with numbers."
+        ));
+
 
         // Set button listener to validate and submit data
         submitButton.setOnClickListener(v -> validateAndSubmitData());

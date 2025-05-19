@@ -1,5 +1,6 @@
 package com.example.gmh_app.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -112,7 +113,7 @@ public class AfterVideo15Activity extends AppCompatActivity {
                 });
 
         setResult(RESULT_OK);
-        finish();
+        navigateToEndofPart3Activity(); // Close this activity
     }
 
     private void showErrorDialog(List<String> errors) {
@@ -126,5 +127,11 @@ public class AfterVideo15Activity extends AppCompatActivity {
                 .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
+    }
+
+    private void navigateToEndofPart3Activity() {
+        Intent endOfPartIntent = new Intent(AfterVideo15Activity.this, OverallAssessmentActivity.class);
+        startActivity(endOfPartIntent);
+        finish(); // Finish current activity to remove it from the back stack
     }
 }

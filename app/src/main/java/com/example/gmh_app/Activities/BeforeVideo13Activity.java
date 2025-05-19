@@ -1,6 +1,7 @@
 package com.example.gmh_app.Activities;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +32,7 @@ public class BeforeVideo13Activity extends AppCompatActivity {
     private RadioGroup emergencyFundGroup, planEmergencyFundGroup, changesInProfitCalculationGroup;
     private EditText profitPerMonthInput, changesExplanationInput;
     private Button submitButton;
-    private TextView changesExplained, emergencyFollowUp;
+    private TextView changesExplained, emergencyFollowUp, tvCombinedToc;
     private DatabaseReference databaseReference;
 
     @Override
@@ -58,6 +59,15 @@ public class BeforeVideo13Activity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         changesExplained = findViewById(R.id.text_changes_explained);
         emergencyFollowUp = findViewById(R.id.emergencyFundFollowUp);
+        tvCombinedToc = findViewById(R.id.tvCombinedToc);
+
+        tvCombinedToc.setText(Html.fromHtml(
+                "<b>Part 4. Counting and Recording PROFIT – and the risk of customer credit</b><br>" +
+                        "Video 12: Calculating Profit correctly.<br>" +
+                        "<span style='color:#00ff00;'><b><u>Video 13: Must I use gross profit or net profit for management purposes?</b></u></span><br>" +
+                        "Video 14: The risk of customer credit - another hazard.<br>" +
+                        "Video 15: Revenue, costs & profits – a complete weekly example with numbers."
+        ));
 
         emergencyFundGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.emergencyFundNo) {

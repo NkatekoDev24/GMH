@@ -183,11 +183,10 @@ public class OverallAssessmentActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "Assessment submitted successfully.");
-                        navigateToGMHBonusActivity();
+//                        navigateToGMHBonusActivity();
                     } else {
                         String error = task.getException() != null ? task.getException().getMessage() : "Unknown error.";
                         Log.e(TAG, "Error submitting assessment: " + error);
-//                        showErrorDialog("Error submitting data: " + error);
                     }
                 });
 
@@ -198,7 +197,7 @@ public class OverallAssessmentActivity extends AppCompatActivity {
 
     // Navigate to GMHBonusActivity
     private void navigateToGMHBonusActivity() {
-        Intent intent = new Intent(this, GmhBonusActivity.class);
+        Intent intent = new Intent(OverallAssessmentActivity.this, GmhBonusActivity.class);
         startActivity(intent);
         finish(); // Close this activity
     }

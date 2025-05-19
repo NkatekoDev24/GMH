@@ -113,8 +113,10 @@ public class OverallPart3Activity extends AppCompatActivity {
                 });
 
         // Proceed to the next activity immediately
-        setResult(RESULT_OK);
-        finish(); // Close this activity
+//        setResult(RESULT_OK);
+//        finish(); // Close this activity
+
+        navigateToNextActivity();
     }
 
     private String getSelectedRadioText(RadioGroup radioGroup) {
