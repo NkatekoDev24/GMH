@@ -224,7 +224,7 @@ public class VideoActivity extends AppCompatActivity {
             playNextVideo();
         } else {
             // Show dialog offering two options: Go back to video or exit to Topics
-            new AlertDialog.Builder(this)
+            new AlertDialog.Builder(VideoActivity.this)
                     .setTitle("What would you like to do?")
                     .setMessage("Do you want to go back to the previous video or exit to the main menu?")
                     .setPositiveButton("Go Back to Video", (dialog, which) -> {
@@ -238,6 +238,13 @@ public class VideoActivity extends AppCompatActivity {
                     .setCancelable(true)
                     .show();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(VideoActivity.this, TopicsActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 

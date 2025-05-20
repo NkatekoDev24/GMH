@@ -163,7 +163,7 @@ public class VideoPlaybackActivity extends AppCompatActivity {
         boolean isAtFirstVideo = isFiltered ? (currentVideoIndex <= 0) : (currentVideoIndex <= 1);
 
         if (isAtFirstVideo) {
-            showNavigationDialog("Error",
+            showNavigationDialog("This is the first video of this section!",
                     "You are already on the first video.\n\n Would you like to go back to the Main Menu?",
                     TopicsActivity.class);
             return;
@@ -177,7 +177,7 @@ public class VideoPlaybackActivity extends AppCompatActivity {
         }
     }
 
-    private void showNavigationDialog(String title, String message, Class<?> destinationActivity) {
+    public void showNavigationDialog(String title, String message, Class<?> destinationActivity) {
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
@@ -188,6 +188,15 @@ public class VideoPlaybackActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
                 .show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Always go to TopicsActivity when system back button is used
+        super.onBackPressed();
+        Intent intent = new Intent(VideoPlaybackActivity.this, TopicsActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showMainMenuDialog() {
