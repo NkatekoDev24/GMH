@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class AfterVideo3Activity extends AppCompatActivity {
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness;
     private EditText etLesson, etChangesExplain, etComments;
     private TextView tv_changes_explain;
+    ImageView btnBack;
     private RadioGroup rgChanges;
     private Button btnSubmit;
 
@@ -66,6 +68,7 @@ public class AfterVideo3Activity extends AppCompatActivity {
         etComments = findViewById(R.id.et_comments);
         btnSubmit = findViewById(R.id.btn_submit);
         tv_changes_explain = findViewById(R.id.tv_changes_explain);
+        btnBack = findViewById(R.id.btn_back);
 
 
         rgChanges.setOnCheckedChangeListener((group, checkedId) ->{
@@ -80,6 +83,14 @@ public class AfterVideo3Activity extends AppCompatActivity {
 
         // Set button click listener
         btnSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
     }
 
     private void validateAndSubmitFeedback() {

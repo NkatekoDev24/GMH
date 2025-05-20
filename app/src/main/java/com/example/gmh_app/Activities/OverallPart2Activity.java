@@ -123,10 +123,9 @@ public class OverallPart2Activity extends AppCompatActivity {
                 });
 
         // Proceed to the next activity immediately
-//        setResult(RESULT_OK);
-//        finish(); // Close this activity
-
+        setResult(RESULT_OK);
         navigateToNextActivity();
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.gmh_app.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -32,9 +33,11 @@ public class VideoPlaybackActivity extends AppCompatActivity {
 
     private SimpleExoPlayer simpleExoPlayer;
     private ProgressBar progressBar;
-    private ImageView exoSkipForward, exoSkipBack, exoPlay, exoPause, exoReplay;
+    private ImageView exoSkipForward, exoSkipBack, exoPlay, exoPause, exoReplay, btFullSCreen;
 
     private int furthestWatchedIndex; // New variable to track the furthest point the user reached
+    private boolean isFullScreen = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class VideoPlaybackActivity extends AppCompatActivity {
         exoPlay = findViewById(R.id.exo_play);
         exoPause = findViewById(R.id.exo_pause);
         exoReplay = findViewById(R.id.exo_replay);
+        btFullSCreen = findViewById(R.id.bt_fullscreen);
 
         exoReplay.setVisibility(View.GONE);
 
@@ -67,6 +71,15 @@ public class VideoPlaybackActivity extends AppCompatActivity {
         exoSkipForward.setOnClickListener(v -> skipToNextVideo());
         exoSkipBack.setOnClickListener(v -> skipToPreviousVideo());
         exoReplay.setOnClickListener(v -> replayVideo());
+
+        btFullSCreen.setOnClickListener(v -> {
+            if (isFullScreen) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            } else {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+            isFullScreen = !isFullScreen;
+        });
 
         simpleExoPlayer.addListener(new Player.Listener() {
             @Override

@@ -222,7 +222,28 @@ public class VideoActivity extends AppCompatActivity {
             playNextVideo();
         } else {
             // If the user presses back, go directly to TopicsActivity
-            onBackPressed();
+            goBackToPreviousVideo();
         }
     }
+
+    private void goBackToPreviousVideo() {
+        // Stay within bounds
+        if (currentVideoIndex > 0) {
+            currentVideoIndex--; // Step back
+        }
+
+        // Replay previous video only (skip question)
+        VideoModel currentVideo = videoList.get(currentVideoIndex);
+        if (!currentVideo.isQuestion()) {
+            openVideoPlaybackActivity(wasSectionCompleted(sectionKey));
+        } else {
+            // If still a question, backtrack further until a video is found
+            while (currentVideoIndex > 0 && videoList.get(currentVideoIndex).isQuestion()) {
+                currentVideoIndex--;
+            }
+            // Finally play the actual video
+            openVideoPlaybackActivity(wasSectionCompleted(sectionKey));
+        }
+    }
+
 }

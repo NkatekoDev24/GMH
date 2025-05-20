@@ -3,10 +3,12 @@ package com.example.gmh_app.Activities;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 
@@ -28,6 +30,7 @@ public class AfterVideo13Activity extends AppCompatActivity {
 
     private RatingBar ratingBarVideo, ratingBarClarity, ratingBarUsefulness;
     private EditText editTextLesson, editTextUnderstanding, editTextComments;
+    private ImageView btnBack;
     private RadioGroup radioGroupGrossNetProfit, radioGroupWhenToUseProfit;
     private Button buttonSubmit;
 
@@ -56,8 +59,16 @@ public class AfterVideo13Activity extends AppCompatActivity {
         radioGroupGrossNetProfit = findViewById(R.id.radioGroupGrossNetProfit);
         radioGroupWhenToUseProfit = findViewById(R.id.radioGroupWhenToUseProfit);
         buttonSubmit = findViewById(R.id.buttonSubmit);
+        btnBack = findViewById(R.id.btn_back);
 
         buttonSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
     }
 
     private void validateAndSubmitFeedback() {

@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class AfterVideo10 extends AppCompatActivity {
     private RatingBar ratingClarity, ratingUsefulness, ratingMoneyHabits, ratingFutureMoneyHabits;
     private RadioGroup variableCostChangesGroup;
     private TextView changesExplained;
+    private ImageView btnBack;
     private EditText lessonLearnedEditText, changesExplanationEditText, additionalCommentsEditText;
     private Button submitButton;
     private DatabaseReference databaseReference;
@@ -64,6 +66,7 @@ public class AfterVideo10 extends AppCompatActivity {
         variableCostChangesGroup = findViewById(R.id.variable_cost_changes);
         submitButton = findViewById(R.id.submit_button);
         changesExplained = findViewById(R.id.text_changes_explained);
+        btnBack = findViewById(R.id.btn_back);
 
         variableCostChangesGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.variable_cost_changes_yes) {
@@ -79,6 +82,14 @@ public class AfterVideo10 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validateAndSubmitFeedback();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
     }

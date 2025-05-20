@@ -8,21 +8,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back_24"
+            android:contentDescription="Back" />
 
         <!-- Feedback Break Header -->
+
+        <!-- Instruction Text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FEEDBACK BREAK"
-            android:textSize="24sp"
             android:fontFamily="@font/calibri_regular"
-            android:textStyle="bold"
+            android:paddingBottom="12dp"
+            android:text="FEEDBACK BREAK"
             android:textColor="@color/black"
-            android:paddingBottom="12dp"/>
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <!-- Instruction Text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

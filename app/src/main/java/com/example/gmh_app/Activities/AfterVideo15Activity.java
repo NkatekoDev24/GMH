@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 
@@ -30,6 +32,7 @@ public class AfterVideo15Activity extends AppCompatActivity {
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness;
     private RadioGroup rgIncomeStatementAbility, rgExistingIncomeStatement, rgRecentIncomeStatement, rgRealizationIncomeStatement;
     private EditText etLesson, etComments;
+    private ImageView btnBack;
     private Button btnSubmit;
 
     private DatabaseReference databaseReference;
@@ -59,8 +62,16 @@ public class AfterVideo15Activity extends AppCompatActivity {
         etLesson = findViewById(R.id.et_lesson);
         etComments = findViewById(R.id.et_comments);
         btnSubmit = findViewById(R.id.btn_submit);
+        btnBack = findViewById(R.id.btn_back);
 
         btnSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
     }
 
     private void validateAndSubmitFeedback() {

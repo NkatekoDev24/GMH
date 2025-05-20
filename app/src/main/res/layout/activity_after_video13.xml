@@ -11,6 +11,14 @@
         android:background="@color/white"
         android:orientation="vertical">
 
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back_24"
+            android:contentDescription="Back" />
+
         <!-- FEEDBACK BREAK Title -->
         <TextView
             android:layout_width="wrap_content"
