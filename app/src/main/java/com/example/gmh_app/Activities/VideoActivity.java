@@ -223,22 +223,37 @@ public class VideoActivity extends AppCompatActivity {
             currentVideoIndex++;
             playNextVideo();
         } else {
-            // Show dialog offering two options: Go back to video or exit to Topics
-            new AlertDialog.Builder(VideoActivity.this)
-                    .setTitle("What would you like to do?")
-                    .setMessage("Do you want to go back to the previous video or exit to the main menu?")
-                    .setPositiveButton("Go Back to Video", (dialog, which) -> {
-                        goBackToPreviousVideo();
-                    })
-                    .setNegativeButton("Exit to Topics", (dialog, which) -> {
-                        Intent intent = new Intent(VideoActivity.this, TopicsActivity.class);
-                        startActivity(intent);
-                        finish();
-                    })
-                    .setCancelable(true)
-                    .show();
+            // Determine if we are at the first question (no prior video)
+            boolean isFirstItem = currentVideoIndex == 0;
+            boolean previousIsVideo = !isFirstItem && !videoList.get(currentVideoIndex - 1).isQuestion();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(VideoActivity.this)
+                    .setCancelable(false)
+                    .setTitle("What would you like to do?");
+
+            if (previousIsVideo) {
+                // Standard case: give both options
+                builder.setMessage("Do you want to go back to the previous video or exit to the main menu?")
+                        .setPositiveButton("Go Back to Video", (dialog, which) -> goBackToPreviousVideo())
+                        .setNegativeButton("Exit to Main Menu", (dialog, which) -> {
+                            Intent intent = new Intent(VideoActivity.this, TopicsActivity.class);
+                            startActivity(intent);
+                            finish();
+                        });
+            } else {
+                // No video before this question — just go to Topics
+                builder.setMessage("There is no video before this part.\n\nDo you want to go to the main menu?")
+                        .setPositiveButton("Go to Main Menu", (dialog, which) -> {
+                            Intent intent = new Intent(VideoActivity.this, TopicsActivity.class);
+                            startActivity(intent);
+                            finish();
+                        });
+            }
+
+            builder.show();
         }
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
