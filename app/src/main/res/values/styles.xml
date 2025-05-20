@@ -9,4 +9,12 @@
         <item name="android:inputType">textCapSentences</item>
         <item name="android:imeOptions">actionDone</item>
     </style>
+
+    <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
 </resources>

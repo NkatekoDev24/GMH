@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -217,14 +218,28 @@ public class VideoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (resultCode == RESULT_OK) {
             currentVideoIndex++;
             playNextVideo();
         } else {
-            // If the user presses back, go directly to TopicsActivity
-            goBackToPreviousVideo();
+            // Show dialog offering two options: Go back to video or exit to Topics
+            new AlertDialog.Builder(this)
+                    .setTitle("What would you like to do?")
+                    .setMessage("Do you want to go back to the previous video or exit to the main menu?")
+                    .setPositiveButton("Go Back to Video", (dialog, which) -> {
+                        goBackToPreviousVideo();
+                    })
+                    .setNegativeButton("Exit to Topics", (dialog, which) -> {
+                        Intent intent = new Intent(VideoActivity.this, TopicsActivity.class);
+                        startActivity(intent);
+                        finish();
+                    })
+                    .setCancelable(true)
+                    .show();
         }
     }
+
 
     private void goBackToPreviousVideo() {
         // Stay within bounds
