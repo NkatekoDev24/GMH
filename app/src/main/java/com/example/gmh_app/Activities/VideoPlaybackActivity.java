@@ -74,9 +74,9 @@ public class VideoPlaybackActivity extends AppCompatActivity {
 
         btFullSCreen.setOnClickListener(v -> {
             if (isFullScreen) {
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            } else {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            } else {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
             }
             isFullScreen = !isFullScreen;
         });

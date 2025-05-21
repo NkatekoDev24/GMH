@@ -173,7 +173,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Using Video 12’s knowledge, how much PROFIT does your business make\n per month, on average?"
+            android:text="Using Video 12’s knowledge, how much PROFIT does your business make \n per month, on average?"
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
@@ -195,7 +195,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="However, if you find Video 13 difficult at this stage, you can skip it and regard it as optional – and get back to it later.”"
+            android:text="However, if you find Video 13 difficult at this stage, you can give it your best attempt, but regard it as optional – you can then revisit this video and try understand it better at a later stage."
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"

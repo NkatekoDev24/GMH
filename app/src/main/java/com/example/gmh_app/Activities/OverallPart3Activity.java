@@ -83,7 +83,12 @@ public class OverallPart3Activity extends AppCompatActivity {
         if (moneyHelp == null) errors.add("Please specify if money management has helped.");
         if (TextUtils.isEmpty(changesAdoptedText)) errors.add("Please specify the changes you have adopted.");
         if (TextUtils.isEmpty(changesPostponedText)) errors.add("Please specify the changes you have postponed.");
-        if (TextUtils.isEmpty(reasonPostponedText)) errors.add("Please specify the reason for postponing changes.");
+        if (!"none".equalsIgnoreCase(changesPostponedText) &&
+                !"0".equals(changesPostponedText)) {
+            if (TextUtils.isEmpty(reasonPostponedText)) {
+                errors.add("Please specify the reason for postponing changes.");
+            }
+        }
 
         // Show errors if any
         if (!errors.isEmpty()) {

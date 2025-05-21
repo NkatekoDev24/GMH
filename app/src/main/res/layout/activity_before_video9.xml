@@ -115,7 +115,7 @@
             android:id="@+id/tv_changes_explain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If yes: what changes did make?"
+            android:text="If yes: what changes did you make?"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular" />
@@ -127,7 +127,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="8dp"
-            android:hint="If yes: what changes did make?" />
+            android:hint="If yes: what changes did you make?" />
 
         <!-- Adjusting Money Habits Question -->
         <TextView

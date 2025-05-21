@@ -74,6 +74,7 @@ public class TopicsActivity extends AppCompatActivity {
         updateCardState(cardInflows, isOrientationComplete);
         updateCardState(cardOutflows, isInflowsComplete);
         updateCardState(cardProfit, isOutflowsComplete);
+
     }
 
     // Helper method to set card state

@@ -95,8 +95,12 @@ public class UserRegistrationActivity extends AppCompatActivity {
             }
         });
 
-        // Populate the spinner
+                // Populate the spinner
         List<String> provinces = new ArrayList<>(Arrays.asList("Select Province", "Gauteng", "Western Cape", "KwaZulu-Natal", "Eastern Cape", "Free State", "Limpopo", "Mpumalanga", "Northern Cape", "North West"));
+        String defaultOption = provinces.remove(0);
+        Collections.sort(provinces);
+        provinces.add(0, defaultOption);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProvince.setAdapter(adapter);
