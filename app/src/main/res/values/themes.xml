@@ -3,6 +3,7 @@
     <style name="Base.Theme.GMHApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:forceDarkAllowed" tools:targetApi="29">false</item>
         <item name="editTextStyle">@style/AppEditTextStyle</item>
     </style>
 
@@ -10,7 +11,7 @@
         <item name="editTextStyle">@style/AppEditTextStyle</item>
     </style>
 
-    
+
     <style name="Theme.AppCompat.NoActionBar.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
