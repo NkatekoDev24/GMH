@@ -195,7 +195,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="However, if you find Video 13 difficult at this stage, you can give it your best attempt, but regard it as optional – you can then revisit this video and try understand it better at a later stage."
+            android:text="However, if you find Video 13 difficult at this stage, you can give it your best attempt, you can then revisit this video and try understand it better at a later stage."
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
