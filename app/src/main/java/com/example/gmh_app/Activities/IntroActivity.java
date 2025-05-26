@@ -77,8 +77,8 @@ public class IntroActivity extends AppCompatActivity {
 
     private List<ScreenItems> getScreenItems() {
         List<ScreenItems> mList = new ArrayList<>();
-        mList.add(new ScreenItems(R.drawable.screen1, "How to Pause Video", "To pause, tap the screen to show the PAUSE symbol, then tap it again to stop."));
-        mList.add(new ScreenItems(R.drawable.screen2, "Scrub through Video", "Use the slider to move forward or backward in the video."));
+        mList.add(new ScreenItems(R.drawable.screen1, "How to Pause a Video", "To pause, tap the screen to show the PAUSE symbol, then tap it again to stop."));
+        mList.add(new ScreenItems(R.drawable.screen2, "How to Move through the Videos", "Use the slider to move forward or backward in the video."));
         mList.add(new ScreenItems(R.drawable.screen3, "Jump to Previous/Next Video", "Tap the JUMP symbols to navigate between previously watched videos."));
         return mList;
     }

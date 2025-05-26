@@ -36,7 +36,7 @@ public class AfterVideo1Activity extends AppCompatActivity {
     private RatingBar ratingOverall, ratingClarity, ratingUsefulness;
     private EditText etLesson, etComments;
 //    ImageView btnBack;
-    private RadioGroup rgConsent;
+
     private Button btnSubmit;
 
     private DatabaseReference databaseReference;
@@ -74,7 +74,7 @@ public class AfterVideo1Activity extends AppCompatActivity {
         ratingUsefulness = findViewById(R.id.rating_usefulness);
         etLesson = findViewById(R.id.et_lesson);
         etComments = findViewById(R.id.et_comments);
-        rgConsent = findViewById(R.id.rg_consent);
+
         btnSubmit = findViewById(R.id.btn_submit);
 //        btnBack = findViewById(R.id.btn_back);
 
@@ -98,7 +98,7 @@ public class AfterVideo1Activity extends AppCompatActivity {
         String comments = etComments.getText().toString().trim();
 
         // Get the selected radio button value
-        int selectedConsentId = rgConsent.getCheckedRadioButtonId();
+        /*int selectedConsentId = rgConsent.getCheckedRadioButtonId();
         String consentGiven;
 
         if (selectedConsentId == R.id.rb_consent_yes) {
@@ -107,7 +107,7 @@ public class AfterVideo1Activity extends AppCompatActivity {
             consentGiven = "No";
         } else {
             consentGiven = null; // No selection made
-        }
+        }*/
 
         // Create a list to hold error messages
         List<String> errors = new ArrayList<>();
@@ -117,7 +117,7 @@ public class AfterVideo1Activity extends AppCompatActivity {
         if (clarityRating == 0) errors.add("Please rate the clarity of the information.");
         if (usefulnessRating == 0) errors.add("Please rate the usefulness of the information.");
         if (TextUtils.isEmpty(lessonLearned)) errors.add("Please write the biggest lesson you learned.");
-        if (consentGiven == null) errors.add("Please provide your consent for data collection.");
+        /*if (consentGiven == null) errors.add("Please provide your consent for data collection.");*/
 
         // Show errors if any
         if (!errors.isEmpty()) {
@@ -132,7 +132,7 @@ public class AfterVideo1Activity extends AppCompatActivity {
         feedback.put("usefulnessRating", usefulnessRating);
         feedback.put("lessonLearned", lessonLearned);
         feedback.put("comments", TextUtils.isEmpty(comments) ? "No comments provided" : comments);
-        feedback.put("consentGiven", consentGiven);
+        /*feedback.put("consentGiven", consentGiven);*/
         feedback.put("timestamp", System.currentTimeMillis());
 
         // Save data to Firebase (offline support enabled)
