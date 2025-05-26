@@ -1,8 +1,11 @@
 package com.example.gmh_app.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -62,13 +65,13 @@ public class AfterVideo13Activity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_back);
 
         buttonSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setResult(RESULT_CANCELED);
-                finish();
-            }
-        });
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                setResult(RESULT_CANCELED);
+//                finish();
+//            }
+//        });
     }
 
     private void validateAndSubmitFeedback() {
@@ -137,5 +140,36 @@ public class AfterVideo13Activity extends AppCompatActivity {
                 .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            setResult(RESULT_CANCELED);
+            finish();
+            return true;
+        } else if (id == R.id.action_home) {
+            startActivity(new Intent(AfterVideo13Activity.this, TopicsActivity.class));
+            overridePendingTransition(0, 0);
+            return true;
+        } else if (id == R.id.action_help) {
+            startActivity(new Intent(AfterVideo13Activity.this, HelpActivity.class));
+            overridePendingTransition(0,0);
+            return true;
+        } else if (id == R.id.action_achievements) {
+            startActivity(new Intent(AfterVideo13Activity.this, ProfileActivity.class));
+            overridePendingTransition(0,0);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

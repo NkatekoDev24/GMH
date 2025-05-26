@@ -13,37 +13,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GMHApp"
         tools:targetApi="31">
-        <!-- If required, you can add this line -->
+        <activity
+            android:name=".Activities.HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.ProfileActivity"
+            android:exported="false" /> <!-- If required, you can add this line -->
         <!-- android:appComponentFactory="androidx.core.app.CoreComponentFactory" -->
-
         <activity
             android:name=".Activities.GmhBonusActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.OverallPart2Activity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.OverallPart3Activity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.OverallAssessmentActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.EndofPart4Activity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.EnfofPart3Activity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.EndofPart2Activity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.EndofPart1Activity"
             android:exported="false"
@@ -55,17 +59,17 @@
         <activity
             android:name=".Activities.WelcomeActivity"
             android:exported="true"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Activities.IntroActivity"
             android:exported="true"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.AfterVideo13Activity"
             android:exported="false"
@@ -125,7 +129,7 @@
         <activity
             android:name=".Activities.AfterVideo1Activity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.BeforeVideo15Activity"
             android:exported="false"
@@ -188,9 +192,9 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.VideoPlaybackActivity"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|screenSize|screenLayout"
             android:exported="false"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
         <activity
             android:name=".Activities.TopicsActivity"
@@ -205,4 +209,5 @@
             android:exported="false"
             android:screenOrientation="landscape" />
     </application>
+
 </manifest>

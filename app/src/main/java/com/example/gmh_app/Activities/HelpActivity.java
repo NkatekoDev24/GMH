@@ -2,12 +2,10 @@ package com.example.gmh_app.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.gmh_app.R;
 
-public class UsingTransactionValuesToCalculateMoneyInflows extends AppCompatActivity {
-
-    Button btnNext;
-    TextView tvCombinedToc, titleTextView;
+public class HelpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +24,7 @@ public class UsingTransactionValuesToCalculateMoneyInflows extends AppCompatActi
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_using_transaction_values_to_calculate_money_inflows);
+        setContentView(R.layout.activity_help);
 
         // Setup Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -40,24 +35,18 @@ public class UsingTransactionValuesToCalculateMoneyInflows extends AppCompatActi
             getSupportActionBar().setTitle("");
         }
 
-        btnNext = findViewById(R.id.nextButton);
-        tvCombinedToc = findViewById(R.id.tvCombinedToc);
-        titleTextView = findViewById(R.id.titleTextView);
+        TextView helpContent = findViewById(R.id.help_text);
+        helpContent.setText(getHelpText());
+    }
 
-        tvCombinedToc.setText(Html.fromHtml(
-                "<b>Part 2. Counting and Recording Money INFLOWS</b><br>" +
-                        "Video 5: Daily steps to count Money Inflows correctly – and avoid financial hazards.<br>" +
-                        "Video 6: More hazards when counting daily money inflows.<br>" +
-                        "Video 7: Correcting daily calculations of money inflows for purchases and hazards.<br>" +
-                        "<span style='color:#00ff00;'><b><u>Video 8: Using transaction values to calculate money inflows for a day and week.</b></u></span>"
-        ));
-
-        titleTextView.setText(Html.fromHtml("<u>VIDEO 8</u>"));
-
-        btnNext.setOnClickListener(v -> {
-            setResult(RESULT_OK);
-            finish();
-        });
+    private String getHelpText() {
+        return "Welcome to the GMH App!\n\n"
+                + "Here are some tips to get you started:\n\n"
+                + "\u2022 Navigate through the four main topics: Orientation, Inflows, Outflows, and Profit.\n"
+                + "\u2022 Watch each video and complete the feedback section to unlock the next topic.\n"
+                + "\u2022 Earn badges as you complete each section. Check them out in your Profile.\n"
+                + "\u2022 Use the bottom navigation to quickly jump between Home, Topics, and Profile.\n\n"
+                + "Need more help? Contact our support at help@gmhapp.com.";
     }
 
     @Override
@@ -75,16 +64,16 @@ public class UsingTransactionValuesToCalculateMoneyInflows extends AppCompatActi
             finish();
             return true;
         } else if (id == R.id.action_home) {
-            startActivity(new Intent(UsingTransactionValuesToCalculateMoneyInflows.this, TopicsActivity.class));
+            startActivity(new Intent(HelpActivity.this, TopicsActivity.class));
             overridePendingTransition(0, 0);
             return true;
         } else if (id == R.id.action_help) {
-            startActivity(new Intent(UsingTransactionValuesToCalculateMoneyInflows.this, HelpActivity.class));
-            overridePendingTransition(0,0);
+            startActivity(new Intent(HelpActivity.this, HelpActivity.class));
+            overridePendingTransition(0, 0);
             return true;
         } else if (id == R.id.action_achievements) {
-            startActivity(new Intent(UsingTransactionValuesToCalculateMoneyInflows.this, ProfileActivity.class));
-            overridePendingTransition(0,0);
+            startActivity(new Intent(HelpActivity.this, ProfileActivity.class));
+            overridePendingTransition(0, 0);
             return true;
         }
 

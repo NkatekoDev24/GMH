@@ -5,19 +5,20 @@
         android:title="Home"
         android:icon="@drawable/menu_home"
         android:checked="true"
-        android:padding="8dp"/>
+        android:padding="8dp" />
+
+    <!-- Separator (non-clickable spacer) -->
+    <item
+        android:id="@+id/navigation_separator"
+        android:enabled="false"
+        android:icon="@android:color/transparent"
+        android:title=""
+        android:visible="false" />
 
     <item
-        android:id="@+id/navigation_forum"
-        android:title="Forum"
-        android:icon="@drawable/baseline_chat_bubble_24"
-        android:padding="8dp"/>
-
-
-    <item
-        android:id="@+id/navigation_account"
-        android:title="Account"
+        android:id="@+id/navigation_certificates"
+        android:title="Certificates"
         android:icon="@drawable/ic_account"
-        android:padding="8dp"/>
+        android:padding="8dp" />
 
 </menu>

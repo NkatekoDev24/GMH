@@ -31,12 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 if (id == R.id.navigation_home) {
                     // Home is already the current activity, no need to create new intent
                     return true;
-                }else if(id == R.id.navigation_forum){
-
-//                    intent = new Intent(MainActivity.this, ForumActivity.class);
-//                    startActivity(intent);
-//                    return true;
-                } else if (id == R.id.navigation_account) {
+                } else if (id == R.id.navigation_certificates) {
 //                    intent = new Intent(MainActivity.this, AccountActivity.class);
                 }
                 if (intent != null) {

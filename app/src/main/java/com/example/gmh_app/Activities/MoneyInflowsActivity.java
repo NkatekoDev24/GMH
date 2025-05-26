@@ -1,8 +1,11 @@
 package com.example.gmh_app.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +48,15 @@ public class MoneyInflowsActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_money_inflows);
+
+        // Setup Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
+            getSupportActionBar().setTitle("");
+        }
 
         // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Before Video 5 Response");
@@ -184,5 +197,36 @@ public class MoneyInflowsActivity extends AppCompatActivity {
                     finish(); // Close activity
                 })
                 .show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            setResult(RESULT_CANCELED);
+            finish();
+            return true;
+        } else if (id == R.id.action_home) {
+            startActivity(new Intent(MoneyInflowsActivity.this, TopicsActivity.class));
+            overridePendingTransition(0, 0);
+            return true;
+        } else if (id == R.id.action_help) {
+            startActivity(new Intent(MoneyInflowsActivity.this, HelpActivity.class));
+            overridePendingTransition(0,0);
+            return true;
+        } else if (id == R.id.action_achievements) {
+            startActivity(new Intent(MoneyInflowsActivity.this, ProfileActivity.class));
+            overridePendingTransition(0,0);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

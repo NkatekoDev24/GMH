@@ -1,8 +1,11 @@
 package com.example.gmh_app.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,6 +16,7 @@ import android.widget.RatingBar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
@@ -45,6 +49,15 @@ public class AfterVideo2Activity extends AppCompatActivity {
 
         setContentView(R.layout.activity_after_video2);
 
+        // Setup Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
+            getSupportActionBar().setTitle("");
+        }
+
         // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 2");
         databaseReference.keepSynced(true); // Ensures local data is synced when online
@@ -63,13 +76,13 @@ public class AfterVideo2Activity extends AppCompatActivity {
 
         // Set up button click listener
         btnSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setResult(RESULT_CANCELED);
-                finish();
-            }
-        });
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                setResult(RESULT_CANCELED);
+//                finish();
+//            }
+//        });
     }
 
     private void validateAndSubmitFeedback() {
@@ -159,5 +172,36 @@ public class AfterVideo2Activity extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            setResult(RESULT_CANCELED);
+            finish();
+            return true;
+        } else if (id == R.id.action_home) {
+            startActivity(new Intent(AfterVideo2Activity.this, TopicsActivity.class));
+            overridePendingTransition(0, 0);
+            return true;
+        } else if (id == R.id.action_help) {
+            startActivity(new Intent(AfterVideo2Activity.this, HelpActivity.class));
+            overridePendingTransition(0,0);
+            return true;
+        } else if (id == R.id.action_achievements) {
+            startActivity(new Intent(AfterVideo2Activity.this, ProfileActivity.class));
+            overridePendingTransition(0,0);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
