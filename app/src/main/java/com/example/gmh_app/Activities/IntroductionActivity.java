@@ -136,10 +136,6 @@ public class IntroductionActivity extends AppCompatActivity {
             startActivity(new Intent(IntroductionActivity.this, HelpActivity.class));
             overridePendingTransition(0, 0);
             return true;
-        } else if (id == R.id.action_achievements) {
-            startActivity(new Intent(IntroductionActivity.this, ProfileActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
         }
 
         return super.onOptionsItemSelected(item);

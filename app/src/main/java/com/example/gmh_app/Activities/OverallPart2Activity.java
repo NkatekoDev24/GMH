@@ -191,10 +191,6 @@ public class OverallPart2Activity extends AppCompatActivity {
             startActivity(new Intent(OverallPart2Activity.this, HelpActivity.class));
             overridePendingTransition(0,0);
             return true;
-        } else if (id == R.id.action_achievements) {
-            startActivity(new Intent(OverallPart2Activity.this, ProfileActivity.class));
-            overridePendingTransition(0,0);
-            return true;
         }
 
         return super.onOptionsItemSelected(item);

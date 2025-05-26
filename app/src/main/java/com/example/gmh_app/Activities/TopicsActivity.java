@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -60,13 +61,20 @@ public class TopicsActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
+
             if (id == R.id.navigation_home) {
                 return true;
+
             } else if (id == R.id.navigation_certificates) {
-                startActivity(new Intent(TopicsActivity.this, ProfileActivity.class));
-                overridePendingTransition(0, 0);
+                if (areAllVideosWatched()) {
+                    startActivity(new Intent(TopicsActivity.this, GmhBonusActivity.class));
+                    overridePendingTransition(0, 0);
+                } else {
+                    showLockedDialog();
+                }
                 return true;
             }
+
             return false;
         });
 
@@ -101,6 +109,22 @@ public class TopicsActivity extends AppCompatActivity {
         card.setEnabled(isEnabled);
         card.setAlpha(isEnabled ? 1.0f : 0.5f); // Grey out if locked
     }
+
+    // Check flag from SharedPreferences
+    private boolean areAllVideosWatched() {
+        SharedPreferences prefs = getSharedPreferences("VideoPrefs", MODE_PRIVATE);
+        return prefs.getBoolean("all_videos_watched", false);
+    }
+
+    // Show dialog box if videos are not completed
+    private void showLockedDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Locked")
+                .setMessage("Complete all videos to unlock the Certificates section.")
+                .setPositiveButton("OK", null)
+                .show();
+    }
+
 
 
     private void openVideoActivity(ArrayList<VideoModel> videoList, String sectionKey) {

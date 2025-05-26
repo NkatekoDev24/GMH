@@ -84,10 +84,6 @@ public class BeforeVideo10Activity extends AppCompatActivity {
             startActivity(new Intent(BeforeVideo10Activity.this, HelpActivity.class));
             overridePendingTransition(0,0);
             return true;
-        } else if (id == R.id.action_achievements) {
-            startActivity(new Intent(BeforeVideo10Activity.this, HelpActivity.class));
-            overridePendingTransition(0,0);
-            return true;
         }
 
         return super.onOptionsItemSelected(item);

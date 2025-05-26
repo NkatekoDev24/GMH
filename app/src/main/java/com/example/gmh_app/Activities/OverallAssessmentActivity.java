@@ -279,10 +279,6 @@ public class OverallAssessmentActivity extends AppCompatActivity {
             startActivity(new Intent(OverallAssessmentActivity.this, HelpActivity.class));
             overridePendingTransition(0,0);
             return true;
-        } else if (id == R.id.action_achievements) {
-            startActivity(new Intent(OverallAssessmentActivity.this, ProfileActivity.class));
-            overridePendingTransition(0,0);
-            return true;
         }
 
         return super.onOptionsItemSelected(item);

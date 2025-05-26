@@ -220,10 +220,6 @@ public class BeforeVideo9Activity extends AppCompatActivity {
             startActivity(new Intent(this, HelpActivity.class));
             overridePendingTransition(0, 0);
             return true;
-        } else if (id == R.id.action_achievements) {
-            startActivity(new Intent(this, HelpActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
         }
 
         return super.onOptionsItemSelected(item);
