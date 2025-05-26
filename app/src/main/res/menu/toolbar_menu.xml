@@ -12,10 +12,4 @@
         android:title="Help"
         android:icon="@drawable/ic_help"
         app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_achievements"
-        android:title="Badges"
-        android:icon="@drawable/ic_badge"
-        app:showAsAction="ifRoom" />
 </menu>
