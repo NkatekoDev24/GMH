@@ -7,19 +7,19 @@
     android:orientation="vertical">
 
     <!-- Top Navigation Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="56dp"
-        android:background="@color/white"
-        android:elevation="4dp"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title=""
-        app:navigationIcon="@drawable/ic_arrow_back_24"
-        app:titleTextColor="@color/black"
-        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
-        app:menu="@menu/toolbar_menu"/>
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minHeight="56dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:elevation="4dp"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+<!--        app:title=""-->
+<!--        app:navigationIcon="@drawable/ic_arrow_back_24"-->
+<!--        app:titleTextColor="@color/black"-->
+<!--        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--        app:menu="@menu/toolbar_menu"/>-->
 
 <ScrollView
     android:layout_width="match_parent"

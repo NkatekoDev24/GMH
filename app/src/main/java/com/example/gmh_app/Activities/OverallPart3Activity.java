@@ -161,32 +161,32 @@ public class OverallPart3Activity extends AppCompatActivity {
                 .show();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            setResult(RESULT_CANCELED);
-            finish();
-            return true;
-        } else if (id == R.id.action_home) {
-            startActivity(new Intent(OverallPart3Activity.this, TopicsActivity.class));
-            overridePendingTransition(0, 0);
-            return true;
-        } else if (id == R.id.action_help) {
-            startActivity(new Intent(OverallPart3Activity.this, HelpActivity.class));
-            overridePendingTransition(0,0);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//
+//        if (id == android.R.id.home) {
+//            setResult(RESULT_CANCELED);
+//            finish();
+//            return true;
+//        } else if (id == R.id.action_home) {
+//            startActivity(new Intent(OverallPart3Activity.this, TopicsActivity.class));
+//            overridePendingTransition(0, 0);
+//            return true;
+//        } else if (id == R.id.action_help) {
+//            startActivity(new Intent(OverallPart3Activity.this, HelpActivity.class));
+//            overridePendingTransition(0,0);
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     private void navigateToNextActivity() {
         Intent nextIntent = new Intent(OverallPart3Activity.this, EnfofPart3Activity.class);

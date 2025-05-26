@@ -101,28 +101,32 @@ public class VideoActivity extends AppCompatActivity {
 
 
     private void playNextVideo() {
+        if (videoList == null || videoList.isEmpty()) {
+            Toast.makeText(this, "No videos available.", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         if (currentVideoIndex >= videoList.size()) {
-            Toast.makeText(this, "All videos for this section have been completed.", Toast.LENGTH_SHORT).show();
-            markSectionAsCompleted(sectionKey);
-
-            // If the user presses back, we want to go back to TopicsActivity
             Intent intent = new Intent(VideoActivity.this, TopicsActivity.class);
-            startActivity(intent); // Start TopicsActivity explicitly
-            finish();  // Close VideoActivity and go to TopicsActivity
-
-            if (sectionKey.equals("orientation")) {
-                unlockSection("inflows");
-            }
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
             return;
         }
 
         VideoModel currentVideo = videoList.get(currentVideoIndex);
+        if (currentVideo == null) {
+            Toast.makeText(this, "Invalid video data.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        boolean isFiltered = wasSectionCompleted(sectionKey);
 
         if (currentVideo.isQuestion()) {
             openQuestionActivity(currentVideo);
         } else {
-            boolean isFiltered = wasSectionCompleted(sectionKey); // Get whether the section is completed
-            openVideoPlaybackActivity(isFiltered); // Pass boolean instead of VideoModel
+            openVideoPlaybackActivity(isFiltered);
         }
 
         isViewed.set(currentVideoIndex, true);

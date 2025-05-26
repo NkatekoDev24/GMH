@@ -17,11 +17,11 @@ public class GmhBonusActivity extends AppCompatActivity {
     private static final String PREFS_NAME = "VideoCompletionPrefs";
     private static final String KEY_OUTFLOWS_COMPLETED = "profit";
     private Button btnComplete;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Make the activity full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -30,19 +30,33 @@ public class GmhBonusActivity extends AppCompatActivity {
 
         btnComplete = findViewById(R.id.btn_complete);
 
-        btnComplete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        // Check if already completed
+        SharedPreferences certPrefs = getSharedPreferences("VideoPrefs", MODE_PRIVATE);
+        boolean alreadyUnlocked = certPrefs.getBoolean("all_videos_watched", false);
 
-                // Save completion status in SharedPreferences
-                SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(KEY_OUTFLOWS_COMPLETED, true); // Mark Outflows as completed
-                editor.apply();
+        if (alreadyUnlocked) {
+            btnComplete.setVisibility(View.GONE); // Hide if previously completed
+        } else {
+            btnComplete.setVisibility(View.VISIBLE); // Show button
 
-                Intent Home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
-                startActivity(Home);
-            }
-        });
+            btnComplete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Save completion status
+                    SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean(KEY_OUTFLOWS_COMPLETED, true);
+                    editor.apply();
+
+                    // Unlock certificate
+                    certPrefs.edit().putBoolean("all_videos_watched", true).apply();
+
+                    btnComplete.setVisibility(View.GONE); // Hide after clicking
+
+                    Intent home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
+                    startActivity(home);
+                }
+            });
+        }
     }
 }
