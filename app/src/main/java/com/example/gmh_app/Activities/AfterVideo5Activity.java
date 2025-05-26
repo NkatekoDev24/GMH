@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.gmh_app.R;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +54,15 @@ public class AfterVideo5Activity extends AppCompatActivity {
 
         // Set the layout
         setContentView(R.layout.activity_after_video5);
+
+        // Setup Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
+            getSupportActionBar().setTitle("");
+        }
 
         // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 5");
