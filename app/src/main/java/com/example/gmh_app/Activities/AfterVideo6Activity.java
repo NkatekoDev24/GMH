@@ -2,14 +2,17 @@ package com.example.gmh_app.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -35,10 +38,12 @@ public class AfterVideo6Activity extends AppCompatActivity {
 
     // UI components
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness, ratingSeparation;
-    private EditText editTextLesson, editTextHazards, editTextChanges, editTextComments;
+    private EditText editTextLesson, editTextChanges, editTextComments;
     private TextView changesExplained;
     private ImageView btnBack;
     private RadioGroup changePlanGroup;
+
+    private ViewGroup hazardGroup;
     private Button buttonSubmit;
 
     // Firebase reference
@@ -74,13 +79,29 @@ public class AfterVideo6Activity extends AppCompatActivity {
         ratingUsefulness = findViewById(R.id.rating_usefulness);
         ratingSeparation = findViewById(R.id.rating_separation);
         editTextLesson = findViewById(R.id.editText_lesson);
-        editTextHazards = findViewById(R.id.editText_hazards);
         editTextChanges = findViewById(R.id.editText_changes);
         editTextComments = findViewById(R.id.editText_comments);
         changePlanGroup = findViewById(R.id.change_plan_group);
         buttonSubmit = findViewById(R.id.button_submit);
         changesExplained = findViewById(R.id.tv_changes_explain);
+        hazardGroup = findViewById(R.id.hazardGroup);
         btnBack = findViewById(R.id.btn_back);
+
+
+        CheckBox checkBox1 = findViewById(R.id.milking_the_business);
+        checkBox1.setText(Html.fromHtml(
+                "<b>Milking the business</b> – Taking money from the business to pay for household expenses without recording it as a salary advance.",
+                Html.FROM_HTML_MODE_LEGACY));
+
+        CheckBox checkBox2 = findViewById(R.id.location_room_in_house);
+        checkBox2.setText(Html.fromHtml(
+                "<b>Eating your profits</b> – Eating or taking products/stock of your business for you or your family members without paying for it or recording it as a salary advance to you.",
+                Html.FROM_HTML_MODE_LEGACY));
+
+        CheckBox checkBox3 = findViewById(R.id.location_separate_room_in_house);
+        checkBox3.setText(Html.fromHtml(
+                "<b>Milking the household</b> – Taking household money to pay for business expenses or recording it as a cash loan from the household to the business, thus owed to the household.",
+                Html.FROM_HTML_MODE_LEGACY));
 
         changePlanGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.plan_yes) {
@@ -103,6 +124,19 @@ public class AfterVideo6Activity extends AppCompatActivity {
 //        });
     }
 
+    private List<String> getSelectedHazardGroup(ViewGroup parent) {
+        List<String> selectedOptions = new ArrayList<>();
+        for (int i = 0; i < parent.getChildCount(); i++) {
+            View child = parent.getChildAt(i);
+            if (child instanceof CheckBox) {
+                CheckBox checkBox = (CheckBox) child;
+                if (checkBox.isChecked()) {
+                    selectedOptions.add(checkBox.getText().toString());
+                }
+            }
+        }
+        return selectedOptions;
+    }
     private void validateAndSubmitFeedback() {
         // Collect input data
         float videoRating = ratingVideo.getRating();
@@ -110,9 +144,11 @@ public class AfterVideo6Activity extends AppCompatActivity {
         float usefulnessRating = ratingUsefulness.getRating();
         float separationRating = ratingSeparation.getRating();
         String lessonLearned = editTextLesson.getText().toString();
-        String hazards = editTextHazards.getText().toString();
         String changesExplanation = editTextChanges.getText().toString();
         String comments = editTextComments.getText().toString();
+
+        List<String> hazardGroupList = getSelectedHazardGroup(hazardGroup);
+        String hazardType = TextUtils.join(", ", hazardGroupList);
 
         // Get selected radio button value
         int selectedChangePlanId = changePlanGroup.getCheckedRadioButtonId();
@@ -121,6 +157,7 @@ public class AfterVideo6Activity extends AppCompatActivity {
 
         // Validate inputs
         List<String> errors = new ArrayList<>();
+
         if (videoRating == 0) {
             errors.add("Please rate the video.");
         }
@@ -136,9 +173,7 @@ public class AfterVideo6Activity extends AppCompatActivity {
         if (TextUtils.isEmpty(lessonLearned)) {
             errors.add("Please write the biggest lesson you learned.");
         }
-        if (TextUtils.isEmpty(hazards)) {
-            errors.add("Please name the hazards you tend to fall into.");
-        }
+        if (hazardGroupList.isEmpty()) errors.add("Please select at least one option for 'Types of Hazard'.");
         if (TextUtils.isEmpty(changePlan)) {
             errors.add("Please indicate whether you want to make changes.");
         }
@@ -159,8 +194,8 @@ public class AfterVideo6Activity extends AppCompatActivity {
         feedback.put("usefulnessRating", usefulnessRating);
         feedback.put("separationRating", separationRating);
         feedback.put("lessonLearned", lessonLearned);
-        feedback.put("hazards", hazards);
         feedback.put("changePlan", changePlan);
+        feedback.put("hazardType", hazardType);
         feedback.put("changesExplanation", changesExplanation.isEmpty() ? "No explanation provided" : changesExplanation);
         feedback.put("comments", comments.isEmpty() ? "No comments provided" : comments);
 

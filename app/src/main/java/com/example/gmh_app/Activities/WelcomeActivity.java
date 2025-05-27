@@ -28,7 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         // Set the logo image
-        ImageView logoImage = findViewById(R.id.logoImage);
+        ImageView logoImage = findViewById(R.id.Logo);
         logoImage.setImageResource(R.drawable.logo);
 
         // Set the texts for each TextView

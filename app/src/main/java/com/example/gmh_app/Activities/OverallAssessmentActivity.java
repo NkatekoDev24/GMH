@@ -209,7 +209,7 @@ public class OverallAssessmentActivity extends AppCompatActivity {
 
     // Navigate to GMHBonusActivity
     private void navigateToGMHBonusActivity() {
-        Intent intent = new Intent(OverallAssessmentActivity.this, GmhBonusActivity.class);
+        Intent intent = new Intent(OverallAssessmentActivity.this, EndofPart4Activity.class);
         startActivity(intent);
         finish(); // Close this activity
     }

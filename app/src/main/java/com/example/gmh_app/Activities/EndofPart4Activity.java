@@ -44,7 +44,7 @@ public class EndofPart4Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate to the next part of the app (replace TargetActivity with the actual activity class)
-                Intent intent = new Intent(EndofPart4Activity.this, TopicsActivity.class);
+                Intent intent = new Intent(EndofPart4Activity.this, GmhBonusActivity.class);
                 startActivity(intent);
 
                 // Finish the current activity to prevent returning to it on back press

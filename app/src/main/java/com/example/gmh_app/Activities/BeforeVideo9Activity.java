@@ -37,7 +37,7 @@ public class BeforeVideo9Activity extends AppCompatActivity {
 
     private TextView titleTextView, tvCombinedToc, video9IntroTextView, tvChangesExplain, tvChangesExplain2, encouragementTextView;
     private RadioGroup moneyInflowsGroup, easyAdjustmentGroup, satisfactionGroup;
-    private ViewGroup businessLocationGroup; // Changed from RadioGroup
+    private ViewGroup businessLocationGroup;
     private EditText editTextGoodHabits, editTextChanges;
     private Button btnSubmit;
 
