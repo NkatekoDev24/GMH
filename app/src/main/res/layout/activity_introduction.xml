@@ -71,23 +71,19 @@
                 android:id="@+id/tv_important"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Important Notice"
+                android:text="User consent"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textAllCaps="true"
                 android:fontFamily="@font/calibri_regular"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tv_consent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Before you continue learning some Good Money Habits we are asking your permission to collect information on your experience of navigating the app and its contents? (For more information on what we do with your data please read the terms and conditions on the Google Play Store)"
                 android:textSize="18sp"
                 android:fontFamily="@font/calibri_regular"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
+                android:textColor="@color/black" />
 
             <RadioGroup
                 android:id="@+id/rg_consent"

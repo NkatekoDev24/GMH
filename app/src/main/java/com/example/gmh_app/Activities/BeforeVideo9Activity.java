@@ -149,6 +149,10 @@ public class BeforeVideo9Activity extends AppCompatActivity {
                         showMessageDialog("Error", "Failed to submit responses. Please try again.", false);
                     }
                 });
+
+        // Proceed to the next activity immediately
+        setResult(RESULT_OK);
+        finish(); // Close this activity
     }
 
     private String getSelectedRadioText(RadioGroup group) {

@@ -70,7 +70,7 @@
             android:id="@+id/privacy_notice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.\nWe promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
             android:textSize="16sp"
             android:fontFamily="@font/calibri_regular"
             android:textStyle="italic"

@@ -2,6 +2,8 @@ package com.example.gmh_app.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -19,34 +21,31 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Make the activity full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_help);
 
-        // Setup Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
-            getSupportActionBar().setTitle("");
+            getSupportActionBar().setTitle("Help");
         }
 
         TextView helpContent = findViewById(R.id.help_text);
         helpContent.setText(getHelpText());
+        helpContent.setAutoLinkMask(Linkify.WEB_URLS);
+        helpContent.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private String getHelpText() {
-        return "Welcome to the GMH App!\n\n"
-                + "Here are some tips to get you started:\n\n"
-                + "\u2022 Navigate through the four main topics: Orientation, Inflows, Outflows, and Profit.\n"
-                + "\u2022 Watch each video and complete the feedback section to unlock the next topic.\n"
-                + "\u2022 Earn badges as you complete each section. Check them out in your Profile.\n"
-                + "\u2022 Use the bottom navigation to quickly jump between Home, Topics, and Profile.\n\n"
-                + "Need more help? Contact our support at help@gmhapp.com.";
+        return "GMH HELP and INFORMATION\n\n"
+                + "If you have \u2022 <b>trouble operating the app or video controls</b>, go to the website:\n"
+                + "www.ufs.ac.za/econ/cds/GoodMoneyHabits\n\n"
+                + "You can also visit this website for more \u2022 <b>information or suggestions</b> regarding the Good Money Habits app and videos.";
     }
 
     @Override

@@ -51,7 +51,7 @@ public class GmhBonusActivity extends AppCompatActivity {
                     // Unlock certificate
                     certPrefs.edit().putBoolean("all_videos_watched", true).apply();
 
-                    btnComplete.setVisibility(View.GONE); // Hide after clicking
+                    btnComplete.setVisibility(View.GONE);
 
                     Intent home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
                     startActivity(home);

@@ -76,6 +76,7 @@ public class IntroductionActivity extends AppCompatActivity {
         // TextView for Combined Message setup with HTML formatting
 //        TextView tvCombinedMessage = findViewById(R.id.tvCombinedMessage);
         TextView tvCombineToc = findViewById(R.id.tvCombinedToc);
+        TextView tvConsent = findViewById(R.id.tv_consent);
         TextView tvParts = findViewById(R.id.tvPart);
         TextView video1 = findViewById(R.id.video1);
         rgConsent = findViewById(R.id.rg_consent);
@@ -98,6 +99,16 @@ public class IntroductionActivity extends AppCompatActivity {
 //        tvCombinedMessage.setText(Html.fromHtml(formattedText));
 
         tvParts.setText(Html.fromHtml("<u>PART 1 START PAGE</u>"));
+
+        tvConsent.setText(Html.fromHtml(
+                        "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br>" +
+                        "<ul>" +
+                        "<li>Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.</li>" +
+                        "<li>We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.</li>" +
+                        "<li>We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.</li>" +
+                        "<li>You can still use the app even if you don't want us to use your answers for research.</li>" +
+                        "<li>But we really are keen to get your answers – so that we can improve this training programme, app and videos.</li>"
+        ));
 
         tvCombineToc.setText(Html.fromHtml(
                 " " +

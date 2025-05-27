@@ -47,13 +47,13 @@ public class OverallPart3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_overall_part3);
 
         // Setup Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
-            getSupportActionBar().setTitle("");
-        }
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
+//            getSupportActionBar().setTitle("");
+//        }
 
         // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Overall Part 3 Response");
