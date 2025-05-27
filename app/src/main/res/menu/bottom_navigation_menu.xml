@@ -17,7 +17,7 @@
 
     <item
         android:id="@+id/navigation_certificates"
-        android:title="Certificates"
+        android:title="Certificate"
         android:icon="@drawable/ic_account"
         android:padding="8dp" />
 

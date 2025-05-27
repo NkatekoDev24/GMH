@@ -1,5 +1,6 @@
 package com.example.gmh_app.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gmh_app.R;
@@ -30,31 +32,52 @@ public class GmhBonusActivity extends AppCompatActivity {
 
         btnComplete = findViewById(R.id.btn_complete);
 
-        // Check if already completed
         SharedPreferences certPrefs = getSharedPreferences("VideoPrefs", MODE_PRIVATE);
         boolean alreadyUnlocked = certPrefs.getBoolean("all_videos_watched", false);
 
         if (alreadyUnlocked) {
-            btnComplete.setVisibility(View.GONE); // Hide if previously completed
+            btnComplete.setVisibility(View.GONE);
         } else {
-            btnComplete.setVisibility(View.VISIBLE); // Show button
+            btnComplete.setVisibility(View.VISIBLE);
 
             btnComplete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Save completion status
                     SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean(KEY_OUTFLOWS_COMPLETED, true);
                     editor.apply();
 
-                    // Unlock certificate
                     certPrefs.edit().putBoolean("all_videos_watched", true).apply();
 
-                    btnComplete.setVisibility(View.GONE);
+                    String message = "We would like to contact you again later about these videos. For example, we might want to ask you how the videos helped your business grow, increase profits or create jobs – or whether you have further training needs. Such feedback is important to us.\n\n" +
+                            "We promise we won't share your information with anyone outside our research team.\n" +
+                            "And if you decide later that you don’t want to participate any more, you can withdraw.\n\n" +
+                            "Is it okay if we contact you in the future about this?";
 
-                    Intent home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
-                    startActivity(home);
+                    new AlertDialog.Builder(GmhBonusActivity.this)
+                            .setTitle("Keeping in touch")
+                            .setMessage(message)
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    btnComplete.setVisibility(View.GONE);
+                                    Intent home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
+                                    startActivity(home);
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    btnComplete.setVisibility(View.GONE);
+                                    Intent home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
+                                    startActivity(home);
+                                    finish();
+                                }
+                            })
+                            .show();
                 }
             });
         }
