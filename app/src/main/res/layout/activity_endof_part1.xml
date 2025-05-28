@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If you have answered all the questions and given responses when asked, \nyou qualify to get the first ACHIEVEMENT SHIELD (Level)."
+            android:text="If you have answered all the questions and given responses when asked, \nyou qualify to get the first ACHIEVEMENT SHIELD (Level 1)."
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"

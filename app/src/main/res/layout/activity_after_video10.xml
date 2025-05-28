@@ -15,7 +15,7 @@
         android:background="@color/white"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title=""
+        app:title="Back to Video 10"
         app:navigationIcon="@drawable/ic_arrow_back_24"
         app:titleTextColor="@color/black"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FEEDBACK BREAK"
+            android:text="FEEDBACK BREAK (Video 10)"
             android:textSize="24sp"
             android:fontFamily="@font/calibri_regular"
             android:textStyle="bold"
