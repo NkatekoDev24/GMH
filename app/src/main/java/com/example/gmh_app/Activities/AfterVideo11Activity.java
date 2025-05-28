@@ -58,7 +58,6 @@ public class AfterVideo11Activity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
-            getSupportActionBar().setTitle("Feedback break Video 11");
         }
 
         // Initialize Firebase Database reference

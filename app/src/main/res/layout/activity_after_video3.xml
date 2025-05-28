@@ -15,7 +15,7 @@
         android:background="@color/white"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title=""
+        app:title="Back to Video 3"
         app:navigationIcon="@drawable/ic_arrow_back_24"
         app:titleTextColor="@color/black"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
