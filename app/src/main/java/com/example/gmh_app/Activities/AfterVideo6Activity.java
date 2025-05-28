@@ -87,17 +87,17 @@ public class AfterVideo6Activity extends AppCompatActivity {
         btnBack = findViewById(R.id.btn_back);
 
 
-        CheckBox checkBox1 = findViewById(R.id.milking_the_business);
+        CheckBox checkBox1 = findViewById(R.id.hazard1);
         checkBox1.setText(Html.fromHtml(
                 "<b>Milking the business</b> – Taking money from the business to pay for household expenses without recording it as a salary advance.",
                 Html.FROM_HTML_MODE_LEGACY));
 
-        CheckBox checkBox2 = findViewById(R.id.location_room_in_house);
+        CheckBox checkBox2 = findViewById(R.id.hazard2);
         checkBox2.setText(Html.fromHtml(
                 "<b>Eating your profits</b> – Eating or taking products/stock of your business for you or your family members without paying for it or recording it as a salary advance to you.",
                 Html.FROM_HTML_MODE_LEGACY));
 
-        CheckBox checkBox3 = findViewById(R.id.location_separate_room_in_house);
+        CheckBox checkBox3 = findViewById(R.id.hazard3);
         checkBox3.setText(Html.fromHtml(
                 "<b>Milking the household</b> – Taking household money to pay for business expenses or recording it as a cash loan from the household to the business, thus owed to the household.",
                 Html.FROM_HTML_MODE_LEGACY));
