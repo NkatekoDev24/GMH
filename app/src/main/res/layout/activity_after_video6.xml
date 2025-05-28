@@ -183,7 +183,7 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id="@+id/milking_the_business"
+                android:id="@+id/hazard1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/calibri_regular"
@@ -193,7 +193,7 @@
                 android:textColor="@color/black" />
 
             <CheckBox
-                android:id="@+id/location_room_in_house"
+                android:id="@+id/hazard2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/calibri_regular"
@@ -203,7 +203,7 @@
                 android:textColor="@color/black" />
 
             <CheckBox
-                android:id="@+id/location_separate_room_in_house"
+                android:id="@+id/hazard3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/calibri_regular"
