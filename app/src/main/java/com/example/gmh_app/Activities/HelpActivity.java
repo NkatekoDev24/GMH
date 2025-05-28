@@ -2,6 +2,7 @@ package com.example.gmh_app.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.Menu;
@@ -36,16 +37,16 @@ public class HelpActivity extends AppCompatActivity {
         }
 
         TextView helpContent = findViewById(R.id.help_text);
-        helpContent.setText(getHelpText());
+        helpContent.setText(Html.fromHtml(getHelpText(), Html.FROM_HTML_MODE_LEGACY));
         helpContent.setAutoLinkMask(Linkify.WEB_URLS);
         helpContent.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private String getHelpText() {
-        return "GMH HELP and INFORMATION\n\n"
-                + "If you have \u2022 <b>trouble operating the app or video controls</b>, go to the website:\n"
-                + "www.ufs.ac.za/econ/cds/GoodMoneyHabits\n\n"
-                + "You can also visit this website for more \u2022 <b>information or suggestions</b> regarding the Good Money Habits app and videos.";
+        return "<b>GMH HELP and INFORMATION</b><br><br>"
+                + "If you have <b>trouble operating the app or video controls</b>, go to the website:<br>"
+                + "www.ufs.ac.za/econ/cds/GoodMoneyHabits<br><br>"
+                + "You can also visit this website for more <b>information or suggestions</b> regarding the Good Money Habits app and videos.";
     }
 
     @Override
