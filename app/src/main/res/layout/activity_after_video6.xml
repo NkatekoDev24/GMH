@@ -169,7 +169,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Into which of the hazards highlighted in videos 5 and 6 do you tend to fall into frequently? (Select all that apply to you.)"
+            android:text="Into which of the hazards highlighted in videos 5 and 6 do you tend to fall into frequently? (Select one's/those that apply to you.)"
             android:textSize="20sp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="10dp"

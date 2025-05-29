@@ -18,6 +18,12 @@
     <item
         android:id="@+id/navigation_certificates"
         android:title="Certificate"
+        android:icon="@drawable/ic_badge"
+        android:padding="8dp" />
+
+    <item
+        android:id="@+id/navigation_credits"
+        android:title="Acknowledgements"
         android:icon="@drawable/ic_account"
         android:padding="8dp" />
 

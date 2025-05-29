@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class VideoModel implements Parcelable {
-    public static final int QUESTION_30 = 30;
     private final String title;
     private final String videoUri;
     private final boolean isQuestion;
@@ -41,6 +40,16 @@ public class VideoModel implements Parcelable {
     public static final int QUESTION_27 = 27;
     public static final int QUESTION_28 = 28;
     public static final int QUESTION_29 = 29;
+    public static final int QUESTION_30 = 30;
+    public static final int QUESTION_31 = 31;
+    public static final int QUESTION_32 = 32;
+    public static final int QUESTION_33 = 33;
+    public static final int QUESTION_34 = 34;
+    public static final int QUESTION_35 = 35;
+    public static final int QUESTION_36 = 36;
+    public static final int QUESTION_37 = 37;
+    public static final int QUESTION_38 = 38;
+
 
     public VideoModel(String title, String videoUri) {
         this.title = title;

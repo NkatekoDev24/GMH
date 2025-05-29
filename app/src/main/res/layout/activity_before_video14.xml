@@ -183,7 +183,7 @@
             android:id="@+id/tvCredit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="In this short video, we revisit the issue of hazards – in fact, we meet a major hazard that you need to pay attention to. \nBefore you watch the video, let’s think about CREDIT a bit:"
+            android:text="In this short video, we revisit the issue of hazards – in fact, we meet a major hazard that you need to pay attention to. \n\nBefore you watch the video, let’s think about CREDIT a bit:"
             android:textSize="20sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
