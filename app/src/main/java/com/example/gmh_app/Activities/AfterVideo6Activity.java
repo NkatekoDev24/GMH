@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -43,6 +44,7 @@ public class AfterVideo6Activity extends AppCompatActivity {
     private ImageView btnBack;
     private RadioGroup changePlanGroup;
 
+    private CheckBox cbHazard1, cbHazard2, cbHazard3, cbNone;
     private ViewGroup hazardGroup;
     private Button buttonSubmit;
 
@@ -84,6 +86,10 @@ public class AfterVideo6Activity extends AppCompatActivity {
         buttonSubmit = findViewById(R.id.button_submit);
         changesExplained = findViewById(R.id.tv_changes_explain);
         hazardGroup = findViewById(R.id.hazardGroup);
+        cbHazard1 = findViewById(R.id.hazard1);
+        cbHazard2 = findViewById(R.id.hazard2);
+        cbHazard3 = findViewById(R.id.hazard3);
+        cbNone = findViewById(R.id.hazards_none);
         btnBack = findViewById(R.id.btn_back);
 
 
@@ -111,6 +117,24 @@ public class AfterVideo6Activity extends AppCompatActivity {
                 editTextChanges.setVisibility(View.GONE);
             }
         });
+        
+        cbNone.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                cbHazard1.setChecked(false);
+                cbHazard2.setChecked(false);
+                cbHazard3.setChecked(false);
+            }
+        });
+
+        CompoundButton.OnCheckedChangeListener otherCheckboxListener = (buttonView, isChecked) -> {
+            if (isChecked) {
+                cbNone.setChecked(false);
+            }
+        };
+
+        cbHazard1.setOnCheckedChangeListener(otherCheckboxListener);
+        cbHazard2.setOnCheckedChangeListener(otherCheckboxListener);
+        cbHazard3.setOnCheckedChangeListener(otherCheckboxListener);
 
         // Set up the Submit button click listener
         buttonSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
