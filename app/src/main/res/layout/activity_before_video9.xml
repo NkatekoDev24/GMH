@@ -87,17 +87,17 @@
             android:fontFamily="@font/calibri_regular"
             android:textColor="@color/black"/>
 
+        <!-- Money Inflows Change Question -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="\n[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.\nWe promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            android:fontFamily="@font/calibri_regular"
             android:layout_marginBottom="8dp"
-            android:textColor="@color/black"/>
+            android:fontFamily="@font/calibri_regular"
+            android:text="\n[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="italic" />
 
-        <!-- Money Inflows Change Question -->
         <TextView
             android:id="@+id/moneyInflowsQuestionTextView"
             android:layout_width="match_parent"
@@ -334,7 +334,7 @@
             android:id="@+id/premisesTextView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="\n[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.]"
+            android:text="\n[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
             android:textSize="16sp"
             android:textStyle="italic"
             android:fontFamily="@font/calibri_regular"

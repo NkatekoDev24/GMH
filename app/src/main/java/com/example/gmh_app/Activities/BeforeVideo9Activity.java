@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -39,6 +40,8 @@ public class BeforeVideo9Activity extends AppCompatActivity {
     private RadioGroup moneyInflowsGroup, easyAdjustmentGroup, satisfactionGroup;
     private ViewGroup businessLocationGroup;
     private EditText editTextGoodHabits, editTextChanges;
+
+    private CheckBox cblocation_informal_stall, cblocation_room_in_house, cblocation_separate_room_in_house, cblocation_permanent_structure_in_yard, cblocation_public_structure, cblocation_shop_in_building, cbonline, cblocation_none;
     private Button btnSubmit;
 
     private DatabaseReference databaseReference;
@@ -75,7 +78,16 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         editTextChanges = findViewById(R.id.editTextChanges);
         satisfactionGroup = findViewById(R.id.satisfactionGroup);
         encouragementTextView = findViewById(R.id.encouragementTextView);
-        businessLocationGroup = findViewById(R.id.businessLocationGroup); // Changed from RadioGroup
+        businessLocationGroup = findViewById(R.id.businessLocationGroup);
+
+        cblocation_informal_stall = findViewById(R.id.location_informal_stall);
+        cblocation_room_in_house = findViewById(R.id.location_room_in_house);
+        cblocation_separate_room_in_house = findViewById(R.id.location_separate_room_in_house);
+        cblocation_permanent_structure_in_yard = findViewById(R.id.location_permanent_structure_in_yard);
+        cblocation_public_structure = findViewById(R.id.location_public_structure);
+        cblocation_shop_in_building = findViewById(R.id.location_shop_in_building);
+        cbonline = findViewById(R.id.online);
+        cblocation_none = findViewById(R.id.location_none);
         btnSubmit = findViewById(R.id.button_submit);
 
         // Set section texts
@@ -98,6 +110,33 @@ public class BeforeVideo9Activity extends AppCompatActivity {
                 editTextGoodHabits.setVisibility(View.GONE);
             }
         });
+
+        cblocation_none.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                cblocation_informal_stall.setChecked(false);
+                cblocation_room_in_house.setChecked(false);
+                cblocation_separate_room_in_house.setChecked(false);
+                cblocation_permanent_structure_in_yard.setChecked(false);
+                cblocation_public_structure.setChecked(false);
+                cblocation_shop_in_building.setChecked(false);
+                cbonline.setChecked(false);
+            }
+        });
+
+        CompoundButton.OnCheckedChangeListener otherCheckboxListener = (buttonView, isChecked) -> {
+            if (isChecked) {
+                cblocation_none.setChecked(false);
+            }
+        };
+
+        cblocation_informal_stall.setOnCheckedChangeListener(otherCheckboxListener);
+        cblocation_room_in_house.setOnCheckedChangeListener(otherCheckboxListener);
+        cblocation_separate_room_in_house.setOnCheckedChangeListener(otherCheckboxListener);
+        cblocation_permanent_structure_in_yard.setOnCheckedChangeListener(otherCheckboxListener);
+        cblocation_room_in_house.setOnCheckedChangeListener(otherCheckboxListener);
+        cblocation_public_structure.setOnCheckedChangeListener(otherCheckboxListener);
+        cblocation_shop_in_building.setOnCheckedChangeListener(otherCheckboxListener);
+        cbonline.setOnCheckedChangeListener(otherCheckboxListener);
 
         // Submit button
         btnSubmit.setOnClickListener(v -> submitResponses());

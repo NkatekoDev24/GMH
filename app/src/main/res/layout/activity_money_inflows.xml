@@ -86,17 +86,18 @@
             android:paddingBottom="16dp"/>
 
         <!-- Privacy Text -->
+
+        <!-- Question -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.\nWe promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
-            android:textSize="16sp"
             android:fontFamily="@font/calibri_regular"
-            android:textStyle="italic"
+            android:paddingBottom="16dp"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
             android:textColor="@android:color/black"
-            android:paddingBottom="16dp"/>
+            android:textSize="16sp"
+            android:textStyle="italic" />
 
-        <!-- Question -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

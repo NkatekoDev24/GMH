@@ -99,13 +99,12 @@ public class IntroductionActivity extends AppCompatActivity {
         tvParts.setText(Html.fromHtml("<u>PART 1 START PAGE</u>"));
 
         tvConsent.setText(Html.fromHtml(
-                        "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br>" +
-                        "<ul>" +
-                        "<li>Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.</li>" +
-                        "<li>We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.</li>" +
-                        "<li>We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.</li>" +
-                        "<li>You can still use the app even if you don't want us to use your answers for research.</li>" +
-                        "<li>But we really are keen to get your answers – so that we can improve this training programme, app and videos.</li>"
+                "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br><br>" +
+                        "• Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.<br><br>" +
+                        "• We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.<br><br>" +
+                        "• We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.<br><br>" +
+                        "• You can still use the app even if you don't want us to use your answers for research.<br><br>" +
+                        "• But we really are keen to get your answers – so that we can improve this training programme, app and videos."
         ));
 
         tvCombineToc.setText(Html.fromHtml(
