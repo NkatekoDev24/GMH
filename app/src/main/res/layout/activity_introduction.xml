@@ -62,27 +62,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_important"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User consent"
-                android:textSize="24sp"
-                android:textStyle="bold"
                 android:fontFamily="@font/calibri_regular"
-                android:textColor="@color/black" />
+                android:text="User consent"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_consent"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:fontFamily="@font/calibri_regular"
-                android:textColor="@color/black" />
+                android:background="@drawable/border_background"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                />
 
             <RadioGroup
                 android:id="@+id/rg_consent"

@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.\nWe promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
             android:textSize="16sp"
             android:textStyle="italic"
             android:fontFamily="@font/calibri_regular"
@@ -193,7 +193,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="How much PROFIT does your business make \n per month, on average?"
+            android:text="Using video 12’s knowledge, how much PROFIT does your business make \n per month, on average?"
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
@@ -204,7 +204,7 @@
             android:id="@+id/profitPerMonthInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="How much PROFIT does your business make per month,\n on average? Enter profit in Rands"
+            android:hint="Using video 12’s knowledge, how much PROFIT does your business make per month,\n on average? Enter profit in Rands"
             android:background="@drawable/dotted_underline"
             android:paddingBottom="10dp"
             android:minHeight="40dp"

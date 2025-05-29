@@ -51,7 +51,7 @@ public class GmhBonusActivity extends AppCompatActivity {
                     certPrefs.edit().putBoolean("all_videos_watched", true).apply();
 
                     String message = "We would like to contact you again later about these videos. For example, we might want to ask you how the videos helped your business grow, increase profits or create jobs – or whether you have further training needs. Such feedback is important to us.\n\n" +
-                            "We promise we won't share your information with anyone outside our research team.\n" +
+                            "We promise we won't share your information with anyone outside our research team. " +
                             "And if you decide later that you don’t want to participate any more, you can withdraw.\n\n" +
                             "Is it okay if we contact you in the future about this?";
 

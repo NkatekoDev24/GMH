@@ -89,10 +89,10 @@ public class TopicsActivity extends AppCompatActivity {
     }
 
     private void updateCardVisibility() {
-        boolean isOrientationComplete = sharedPreferences.getBoolean(KEY_ORIENTATION_COMPLETED, false);
-        boolean isInflowsComplete = sharedPreferences.getBoolean(KEY_INFLOWS_COMPLETED, false);
-        boolean isOutflowsComplete = sharedPreferences.getBoolean(KEY_OUTFLOWS_COMPLETED, false);
-        boolean isProfitComplete = sharedPreferences.getBoolean(KEY_PROFIT_COMPLETED, false);
+        boolean isOrientationComplete = sharedPreferences.getBoolean(KEY_ORIENTATION_COMPLETED, true);
+        boolean isInflowsComplete = sharedPreferences.getBoolean(KEY_INFLOWS_COMPLETED, true);
+        boolean isOutflowsComplete = sharedPreferences.getBoolean(KEY_OUTFLOWS_COMPLETED, true);
+        boolean isProfitComplete = sharedPreferences.getBoolean(KEY_PROFIT_COMPLETED, true);
 
         // Orientation is always enabled
         cardOrientation.setEnabled(true);
