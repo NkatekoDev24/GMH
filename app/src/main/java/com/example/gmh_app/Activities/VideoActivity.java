@@ -82,7 +82,6 @@ public class VideoActivity extends AppCompatActivity {
 
         // If revisiting Orientation, Inflows, Outflows, or Profit sections, do NOT auto-play
         if (shouldPreventAutoPlay(sectionKey) && wasSectionCompleted(sectionKey)) {
-            Toast.makeText(this, "Revisiting " + sectionKey + " - Choose a video", Toast.LENGTH_LONG).show();
             return;
         }
 

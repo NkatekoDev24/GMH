@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgHowToUse1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/badge1" />
+            android:src="@drawable/badge1"
+            android:scaleType="fitCenter" />
     </androidx.viewpager.widget.ViewPager>
 
     <!-- Back Button -->
@@ -42,7 +42,6 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <!-- Next Button -->
     <Button

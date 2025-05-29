@@ -11,10 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.gmh_app.Models.VideoModel;
 import com.example.gmh_app.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -38,6 +42,41 @@ public class TopicsActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_topics);
+
+        // FAB + Drawer setup
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        FloatingActionButton fabMenu = findViewById(R.id.fab_menu);
+        NavigationView navView = findViewById(R.id.nav_view);
+
+        fabMenu.setOnClickListener(v -> {
+            if (!drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        // Set navigation item listener
+        navView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_home) {
+                // Already in TopicsActivity (Home)
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            } else if (id == R.id.nav_profile) {
+                startActivity(new Intent(this, CreditsActivity.class));
+            } else if (id == R.id.nav_settings) {
+//                startActivity(new Intent(this, SettingsActivity.class));
+            } else if (id == R.id.nav_help) {
+                startActivity(new Intent(this, HelpActivity.class));
+            } else if (id == R.id.nav_logout) {
+                showLogoutDialog();
+            }
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        });
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -127,6 +166,25 @@ public class TopicsActivity extends AppCompatActivity {
                 .setPositiveButton("OK", null)
                 .show();
     }
+
+    private void showLogoutDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to logout?")
+                .setPositiveButton("Logout", (dialog, which) -> {
+                    // Clear shared prefs or session
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    // Navigate to login
+                    Intent intent = new Intent(this, WelcomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
 
 
     private void openVideoActivity(ArrayList<VideoModel> videoList, String sectionKey) {

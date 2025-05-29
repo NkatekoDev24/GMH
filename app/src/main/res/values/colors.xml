@@ -52,4 +52,12 @@
     <color name="background_light">#F5F5F5</color>
     <color name="progress_background">#E0E0E0</color>  <!-- Light gray background -->
     <color name="progress_foreground">#4CAF50</color>  <!-- Green progress indicator -->
+
+    <color name="primaryColor">#6200EE</color>
+    <color name="accentColor">#03DAC5</color>
+    <color name="backgroundColor">#F5F5F5</color>
+    <color name="textColor">#212121</color>
+    <color name="cardBackgroundColor">#FFFFFF</color>
+    <color name="dividerColor">#E0E0E0</color>
+    <color name="bottomNavColor">#6200EE</color>
 </resources>

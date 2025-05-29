@@ -9,9 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/white"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp">
 
+        <!-- Logo with shadow -->
         <ImageView
             android:id="@+id/Logo"
             android:layout_width="wrap_content"
@@ -20,8 +22,9 @@
             android:src="@drawable/logo"
             android:layout_gravity="center"
             android:contentDescription="Logo"
-            android:layout_marginBottom="0dp"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:elevation="8dp"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Title -->
         <TextView
@@ -34,7 +37,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
             android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Intro Text -->
         <TextView
@@ -43,11 +46,10 @@
             android:layout_height="wrap_content"
             android:text="The aim of the GMH Videos is to help you make more money and grow your business by adopting good habits in the handling and recording of money."
             android:textSize="20sp"
-            android:textStyle="bold"
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Details Section -->
         <TextView
@@ -59,18 +61,7 @@
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Good financial habits help to ensure the survival of your business."
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Good Money Habits Section -->
         <TextView
@@ -78,11 +69,11 @@
             android:layout_height="wrap_content"
             android:text="Good money habits will help you:"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -92,7 +83,7 @@
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Circumstances Section -->
         <TextView
@@ -104,7 +95,7 @@
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Intended Users Section -->
         <TextView
@@ -116,7 +107,7 @@
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Approach Section -->
         <TextView
@@ -128,7 +119,7 @@
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- GMH Series Videos -->
         <TextView
@@ -137,10 +128,10 @@
             android:layout_height="wrap_content"
             android:text="GMH Series Videos (3-5 minutes per video):"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:id="@+id/videoGroups"
@@ -151,7 +142,7 @@
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"/>
 
         <!-- Pre-conclusion -->
         <TextView
@@ -164,7 +155,7 @@
             android:textStyle="bold|italic"
             android:textColor="@color/black"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/calibri_regular" />
+            android:fontFamily="@font/calibri_regular"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -175,7 +166,7 @@
             android:textStyle="bold|italic"
             android:textColor="@color/black"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/calibri_regular" />
+            android:fontFamily="@font/calibri_regular"/>
 
         <!-- Conclusion Section -->
         <TextView
@@ -188,17 +179,20 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="24dp"
-            android:fontFamily="@font/calibri_regular" />
+            android:fontFamily="@font/calibri_regular"/>
 
-        <!-- Next Button -->
+        <!-- Next Button with rounded corners -->
         <Button
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="Next"
-            android:backgroundTint="@color/signup_button_default_color"
             android:textColor="@android:color/white"
-            android:padding="12dp" />
+            android:padding="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/signup_button_default_color"
+            android:background="@drawable/rounded_button"/>
+
     </LinearLayout>
 </ScrollView>
