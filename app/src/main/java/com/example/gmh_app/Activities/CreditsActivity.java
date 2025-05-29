@@ -1,12 +1,19 @@
 package com.example.gmh_app.Activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.graphics.Typeface;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.gmh_app.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CreditsActivity extends AppCompatActivity {
 
@@ -16,12 +23,41 @@ public class CreditsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ScrollView scrollView = new ScrollView(this);
-        creditsLayout = new LinearLayout(this);
-        creditsLayout.setOrientation(LinearLayout.VERTICAL);
-        creditsLayout.setPadding(32, 32, 32, 32);
-        scrollView.addView(creditsLayout);
-        setContentView(scrollView);
+        // Make the activity full screen
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_credits);
+
+        creditsLayout = findViewById(R.id.creditsLayout);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        // Hide the certificates tab
+        bottomNavigationView.getMenu().findItem(R.id.navigation_certificates).setVisible(false);
+
+        // Set the selected item to credits
+        bottomNavigationView.setSelectedItemId(R.id.navigation_credits);
+
+        // Navigation handling
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.navigation_home) {
+                startActivity(new Intent(CreditsActivity.this, TopicsActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+
+            } else if (id == R.id.navigation_credits) {
+                return true;
+            }
+
+            return false;
+        });
+
+
+        bottomNavigationView.setSelectedItemId(R.id.navigation_credits);
 
         addText("GMH APP CREDITS/ACKNOWLEDGEMENTS", 20, true);
 
@@ -49,6 +85,21 @@ public class CreditsActivity extends AppCompatActivity {
         addText("Frederick C.V.N. Fourie, Annelize Booysen-Wolthers", 16, true);
 
         addText("\u00A9 This app in its entirety is protected by the South African Copyright Act 98 of 1978 and other relevant South African and international legislation.", 14, false);
+    }
+
+    // Check flag from SharedPreferences
+    private boolean areAllVideosWatched() {
+        SharedPreferences prefs = getSharedPreferences("VideoPrefs", MODE_PRIVATE);
+        return prefs.getBoolean("all_videos_watched", false);
+    }
+
+    // Show dialog box if videos are not completed
+    private void showLockedDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Locked")
+                .setMessage("Complete all videos to unlock the Certificates section.")
+                .setPositiveButton("OK", null)
+                .show();
     }
 
     private void addText(String text, float size, boolean bold) {

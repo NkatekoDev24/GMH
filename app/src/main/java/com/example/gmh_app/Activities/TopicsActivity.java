@@ -73,11 +73,10 @@ public class TopicsActivity extends AppCompatActivity {
                     showLockedDialog();
                 }
                 return true;
-            } else if (id == R.id.navigation_certificates) {
-                startActivity(new Intent(TopicsActivity.this, GmhBonusActivity.class));
+            } else if (id == R.id.navigation_credits) {
+                startActivity(new Intent(TopicsActivity.this, CreditsActivity.class));
                 overridePendingTransition(0,0);
             }
-
             return false;
         });
 
