@@ -86,6 +86,17 @@
                 android:textSize="16sp"
                 />
 
+            <TextView
+                android:id="@+id/tv_consent_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
+                android:text="Do we have your permission to use your answers for our research?"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <RadioGroup
                 android:id="@+id/rg_consent"
                 android:layout_width="wrap_content"
