@@ -6,15 +6,15 @@
         android:icon="@drawable/menu_home"
         android:title="Home" />
 
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_account"
-        android:title="Profile" />
+<!--    <item-->
+<!--        android:id="@+id/nav_profile"-->
+<!--        android:icon="@drawable/ic_account"-->
+<!--        android:title="Profile" />-->
 
     <item
         android:id="@+id/nav_settings"
         android:icon="@android:drawable/ic_menu_set_as"
-        android:title="Settings" />
+        android:title="My Certificate" />
 
     <item
         android:id="@+id/nav_help"
@@ -24,6 +24,6 @@
     <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/ic_logout"
-        android:title="Logout" />
+        android:title="Exit" />
 
 </menu>

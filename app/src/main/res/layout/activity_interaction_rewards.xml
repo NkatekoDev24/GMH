@@ -187,13 +187,12 @@
             android:id="@+id/startVideosButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start Videos"
+            android:text="Next"
             android:textColor="@android:color/white"
             android:padding="16dp"
             android:layout_marginTop="24dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/signup_button_default_color"
-            android:background="@drawable/rounded_button" />
+            android:backgroundTint="@color/signup_button_default_color" />
 
     </LinearLayout>
 </ScrollView>

@@ -64,9 +64,7 @@ public class TopicsActivity extends AppCompatActivity {
                 // Already in TopicsActivity (Home)
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
-            } else if (id == R.id.nav_profile) {
-                startActivity(new Intent(this, CreditsActivity.class));
-            } else if (id == R.id.nav_settings) {
+            }  else if (id == R.id.nav_settings) {
 //                startActivity(new Intent(this, SettingsActivity.class));
             } else if (id == R.id.nav_help) {
                 startActivity(new Intent(this, HelpActivity.class));
@@ -169,17 +167,15 @@ public class TopicsActivity extends AppCompatActivity {
 
     private void showLogoutDialog() {
         new AlertDialog.Builder(this)
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to logout?")
-                .setPositiveButton("Logout", (dialog, which) -> {
+                .setTitle("Exit")
+                .setMessage("Are you sure you want to exit?")
+                .setPositiveButton("Exit", (dialog, which) -> {
                     // Clear shared prefs or session
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.clear();
                     editor.apply();
-                    // Navigate to login
-                    Intent intent = new Intent(this, WelcomeActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                    finishAffinity();         // Close all activities
+                    System.exit(0);           // Terminate the app
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
