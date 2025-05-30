@@ -65,7 +65,7 @@ public class TopicsActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }  else if (id == R.id.nav_settings) {
-//                startActivity(new Intent(this, SettingsActivity.class));
+                startActivity(new Intent(this, MyCertificateActivity.class));
             } else if (id == R.id.nav_help) {
                 startActivity(new Intent(this, HelpActivity.class));
             } else if (id == R.id.nav_logout) {
@@ -104,7 +104,7 @@ public class TopicsActivity extends AppCompatActivity {
 
             } else if (id == R.id.navigation_certificates) {
                 if (areAllVideosWatched()) {
-                    startActivity(new Intent(TopicsActivity.this, GmhBonusActivity.class));
+                    startActivity(new Intent(TopicsActivity.this, MyCertificateActivity.class));
                     overridePendingTransition(0, 0);
                 } else {
                     showLockedDialog();
