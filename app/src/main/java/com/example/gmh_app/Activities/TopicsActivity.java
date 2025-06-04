@@ -64,9 +64,7 @@ public class TopicsActivity extends AppCompatActivity {
                 // Already in TopicsActivity (Home)
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
-            }  else if (id == R.id.nav_settings) {
-                startActivity(new Intent(this, MyCertificateActivity.class));
-            } else if (id == R.id.nav_help) {
+            }  else if (id == R.id.nav_help) {
                 startActivity(new Intent(this, HelpActivity.class));
             } else if (id == R.id.nav_logout) {
                 showLogoutDialog();
