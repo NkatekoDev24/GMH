@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 
@@ -113,30 +114,39 @@ public class AfterVideo15Activity extends AppCompatActivity {
             return;
         }
 
+        String incomeStatementAbility = ((RadioButton) findViewById(selectedIncomeStatementAbilityId)).getText().toString();
+        String existingIncomeStatement = ((RadioButton) findViewById(selectedExistingIncomeStatementId)).getText().toString();
+        String recentIncomeStatement = ((RadioButton) findViewById(selectedRecentIncomeStatementId)).getText().toString();
+        String realizationIncomeStatement = ((RadioButton) findViewById(selectedRealizationIncomeStatementId)).getText().toString();
+
         Map<String, Object> feedback = new HashMap<>();
         feedback.put("videoRating", videoRating);
         feedback.put("clarityRating", clarityRating);
         feedback.put("usefulnessRating", usefulnessRating);
         feedback.put("lessonLearned", lessonLearned);
         feedback.put("comments", TextUtils.isEmpty(comments) ? "No comments provided" : comments);
-        feedback.put("canDrawIncomeStatement", selectedIncomeStatementAbilityId == R.id.rb_income_statement_ability_yes);
-        feedback.put("hasExistingIncomeStatement", selectedExistingIncomeStatementId == R.id.rb_existing_income_statement_yes);
-        feedback.put("hasRecentIncomeStatement", selectedRecentIncomeStatementId == R.id.rb_recent_income_statement_yes);
-        feedback.put("realizesIncomeStatementImportance", selectedRealizationIncomeStatementId == R.id.rb_realization_income_statement_yes);
+        feedback.put("canDrawIncomeStatement", incomeStatementAbility);
+        feedback.put("hasExistingIncomeStatement", existingIncomeStatement);
+        feedback.put("hasRecentIncomeStatement", recentIncomeStatement);
+        feedback.put("realizesIncomeStatementImportance", realizationIncomeStatement);
         feedback.put("timestamp", System.currentTimeMillis());
 
-        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(feedback)
+        databaseReference.child(String.valueOf(System.currentTimeMillis()))
+                .setValue(feedback)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "Feedback submitted successfully.");
+                        setResult(RESULT_OK);
+                        navigateToEndofPart3Activity();
                     } else {
                         Log.e(TAG, "Error submitting feedback", task.getException());
                     }
                 });
 
         setResult(RESULT_OK);
-        navigateToEndofPart3Activity(); // Close this activity
+        navigateToEndofPart3Activity();
     }
+
 
     private void showErrorDialog(List<String> errors) {
         StringBuilder errorMessage = new StringBuilder();
