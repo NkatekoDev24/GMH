@@ -10,8 +10,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="56dp"
+        android:layout_height="35dp"
+        android:paddingEnd="10dp"
         android:background="@color/white"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textColor="@android:color/black"
             android:textStyle="italic|bold"
             android:text="👏 Congratulations! Completing and understanding this video is quite an achievement."
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
             android:textStyle="italic"
             android:text="It is especially important since these costs can easily get a business into trouble."
@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:text="FEEDBACK BREAK (Video 11)"
             android:textSize="24sp"
+            android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:paddingBottom="12dp"/>
@@ -237,6 +238,7 @@
 
         <!-- Reminder Message -->
         <TextView
+            android:id="@+id/tv_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📌 It’s important to write this down BEFORE you go to the next video."

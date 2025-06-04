@@ -156,7 +156,17 @@
             android:textColor="@color/black"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/calibri_regular"/>
-
+        <TextView
+            android:id="@+id/assistivetext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Before and after each video you will also find some questions related to that video. They help you identify problems as well as changes you could make. You need to respond to all these questions. Take your time to do that."
+            android:textSize="20sp"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/calibri_regular"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

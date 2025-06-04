@@ -36,7 +36,7 @@ public class AfterVideo11Activity extends AppCompatActivity {
 
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness, ratingControlCurrent, ratingControlFuture;
     private RadioGroup fixedCostChangesGroup;
-    private TextView changesExplained;
+    private TextView changesExplained, tv_reminder;
     private ImageView btnBack;
     private EditText lessonLearnedEditText, changesExplanationEditText, additionalCommentsEditText;
     private Button submitButton;
@@ -78,15 +78,18 @@ public class AfterVideo11Activity extends AppCompatActivity {
         additionalCommentsEditText = findViewById(R.id.additional_comments);
         submitButton = findViewById(R.id.submit_button);
         changesExplained = findViewById(R.id.text_changes_explained);
+        tv_reminder = findViewById(R.id.tv_reminder);
         btnBack = findViewById(R.id.btn_back);
 
         fixedCostChangesGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.fixed_cost_changes_yes) {
                 changesExplained.setVisibility(View.VISIBLE);
                 changesExplanationEditText.setVisibility(View.VISIBLE);
+                tv_reminder.setVisibility(View.VISIBLE);
             } else {
                 changesExplained.setVisibility(View.GONE);
                 changesExplanationEditText.setVisibility(View.GONE);
+                tv_reminder.setVisibility(View.GONE);
             }
         });
 

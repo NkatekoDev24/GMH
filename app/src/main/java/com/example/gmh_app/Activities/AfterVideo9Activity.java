@@ -35,7 +35,7 @@ public class AfterVideo9Activity extends AppCompatActivity {
     private static final String TAG = "AfterVideo9Activity";
 
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness, ratingMoneyHabits, likingMoneyHabits;
-    private TextView changesExplained;
+    private TextView changesExplained, tv_reminder;
 
     private ImageView btnBack;
     private RadioGroup changePlanGroup;
@@ -78,15 +78,18 @@ public class AfterVideo9Activity extends AppCompatActivity {
         changePlanGroup = findViewById(R.id.change_plan_group);
         buttonSubmit = findViewById(R.id.button_submit);
         changesExplained = findViewById(R.id.tv_changes_explain);
+        tv_reminder = findViewById(R.id.tv_reminder);
         btnBack = findViewById(R.id.btn_back);
 
         changePlanGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.plan_yes) {
                 changesExplained.setVisibility(View.VISIBLE);
                 editTextChanges.setVisibility(View.VISIBLE);
+                tv_reminder.setVisibility(View.VISIBLE);
             } else {
                 changesExplained.setVisibility(View.GONE);
                 editTextChanges.setVisibility(View.GONE);
+                tv_reminder.setVisibility(View.GONE);
             }
         });
 

@@ -90,6 +90,7 @@
             android:text="Have you made changes in the way you handle your business EXPENSES (costs), i.e. MONEY OUTFLOWS, after watching videos 9 to 11 (Part 3)?"
             android:textColor="@android:color/black"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:paddingBottom="8dp"/>
         <RadioGroup
@@ -119,8 +120,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Which main changes regarding Good Money Habits have you adopted up to now? Explain briefly."
+            android:text="Which MAIN changes regarding Good Money Habits have you adopted up to now? Explain briefly."
             android:textColor="@android:color/black"
+            android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:textSize="20sp"/>
         <EditText
@@ -129,7 +131,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="Which main changes regarding Good Money Habits have you adopted up to now?\n Explain briefly."/>
+            android:hint="Which MAIN changes regarding Good Money Habits have you adopted up to now?\n Explain briefly."/>
 
         <!-- Question 3 -->
         <TextView
@@ -138,6 +140,7 @@
             android:text="Which ones have you postponed? Type 'None' or '0' if you haven't postponed any."
             android:textColor="@android:color/black"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:paddingTop="16dp"/>
         <EditText
@@ -155,6 +158,7 @@
             android:text="Why have you postponed them, if any?"
             android:textColor="@android:color/black"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:paddingTop="16dp"/>
         <EditText

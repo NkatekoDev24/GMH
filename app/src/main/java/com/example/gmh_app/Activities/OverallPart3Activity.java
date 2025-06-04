@@ -93,7 +93,7 @@ public class OverallPart3Activity extends AppCompatActivity {
         if (changesMade == null) errors.add("Please specify the changes made.");
         if (progress == null) errors.add("Please specify your progress.");
         if (moneyHelp == null) errors.add("Please specify if money management has helped.");
-        if (TextUtils.isEmpty(changesAdoptedText)) errors.add("Please specify the changes you have adopted.");
+        if (TextUtils.isEmpty(changesAdoptedText)) errors.add("Please specify the MAIN changes you have adopted.");
         if (TextUtils.isEmpty(changesPostponedText)) errors.add("Please specify the changes you have postponed.");
         if (!"none".equalsIgnoreCase(changesPostponedText) &&
                 !"0".equals(changesPostponedText)) {

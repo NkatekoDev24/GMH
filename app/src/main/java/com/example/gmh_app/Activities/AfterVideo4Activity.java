@@ -36,7 +36,7 @@ public class AfterVideo4Activity extends AppCompatActivity {
     // UI components
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness;
     private EditText etLesson, etChangesExplain, etComments;
-    private TextView tv_changes_explain;
+    private TextView tv_changes_explain, tv_reminder;
 
     ImageView btnBack;
     private RadioGroup rgChangePlan, rgRecordBook;
@@ -83,15 +83,18 @@ public class AfterVideo4Activity extends AppCompatActivity {
         etComments = findViewById(R.id.editText_comments);
         btnSubmit = findViewById(R.id.button_submit);
         tv_changes_explain = findViewById(R.id.tv_changes_explain);
+        tv_reminder = findViewById(R.id.tv_reminder);
         btnBack = findViewById(R.id.btn_back);
 
         rgChangePlan.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.plan_yes) {
                 tv_changes_explain.setVisibility(View.VISIBLE);
                 etChangesExplain.setVisibility(View.VISIBLE);
+                tv_reminder.setVisibility(View.VISIBLE);
             } else {
                 tv_changes_explain.setVisibility(View.GONE);
                 etChangesExplain.setVisibility(View.GONE);
+                tv_reminder.setVisibility(View.GONE);
             }
         });
 

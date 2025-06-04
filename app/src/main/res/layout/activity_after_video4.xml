@@ -10,8 +10,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="56dp"
+        android:layout_height="35dp"
+        android:paddingEnd="10dp"
         android:background="@color/white"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -47,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="FEEDBACK BREAK (Video 4)"
+            android:textAllCaps="true"
             android:textSize="24sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
@@ -195,6 +196,7 @@
 
         <!-- Reminder -->
         <TextView
+            android:id="@+id/tv_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📌 It’s important to write this down BEFORE you go to the next video."

@@ -36,7 +36,7 @@ import java.util.Map;
 
 public class BeforeVideo9Activity extends AppCompatActivity {
 
-    private TextView titleTextView, tvCombinedToc, video9IntroTextView, tvChangesExplain, tvChangesExplain2, encouragementTextView;
+    private TextView titleTextView, tvCombinedToc, video9IntroTextView, tvChangesExplain,titleTextView1, tvChangesExplain2, encouragementTextView;
     private RadioGroup moneyInflowsGroup, easyAdjustmentGroup, satisfactionGroup;
     private ViewGroup businessLocationGroup;
     private EditText editTextGoodHabits, editTextChanges;
@@ -79,6 +79,7 @@ public class BeforeVideo9Activity extends AppCompatActivity {
         satisfactionGroup = findViewById(R.id.satisfactionGroup);
         encouragementTextView = findViewById(R.id.encouragementTextView);
         businessLocationGroup = findViewById(R.id.businessLocationGroup);
+        titleTextView1 = findViewById(R.id.titleTextView1);
 
         cblocation_informal_stall = findViewById(R.id.location_informal_stall);
         cblocation_room_in_house = findViewById(R.id.location_room_in_house);
@@ -92,6 +93,7 @@ public class BeforeVideo9Activity extends AppCompatActivity {
 
         // Set section texts
         titleTextView.setText(Html.fromHtml("<u>PART 3 START PAGE</u>"));
+        titleTextView1.setText(Html.fromHtml("<u>COUNTING AND RECORDING MONEY OUTFLOWS</u>"));
         tvCombinedToc.setText(Html.fromHtml(
                 "<b>Part 3. Counting and Recording Money OUTFLOWS (EXPENSES)</b><br>" +
                         "<span style='color:#00ff00;'><b><u>Video 9: Correctly counting and recording Money Outflows: Variable costs versus Fixed costs.</b></u></span><br>" +

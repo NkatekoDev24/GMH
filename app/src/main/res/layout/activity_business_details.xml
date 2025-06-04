@@ -10,8 +10,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="56dp"
+        android:layout_height="35dp"
+        android:paddingEnd="10dp"
         android:background="@color/white"
         android:elevation="4dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textAllCaps="true"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
             android:paddingBottom="8dp" />
