@@ -267,6 +267,7 @@
 
     <!-- Reason for Not Moving Question -->
     <TextView
+        android:id="@+id/tvMoveReason"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="If not happy, why don’t you move to better premises?"

@@ -51,7 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:text="BASICS: WHY GOOD MONEY HABITS – AND THE SEPARATION RULE"
             android:textSize="24sp"
             android:textStyle="bold"
             android:lineSpacingExtra="6dp"
@@ -82,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_background"
                 android:padding="16dp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 />
@@ -107,12 +107,16 @@
                     android:id="@+id/rb_consent_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/calibri_regular"
                     android:text="Yes" />
 
                 <RadioButton
                     android:id="@+id/rb_consent_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/calibri_regular"
                     android:text="No" />
             </RadioGroup>
         </LinearLayout>

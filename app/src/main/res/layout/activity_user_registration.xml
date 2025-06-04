@@ -151,20 +151,23 @@
                 android:id="@+id/rbFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
                 android:text="Female"
-                android:textSize="16sp"/>
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Male"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Other"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
         </RadioGroup>
 
         <TextView
@@ -185,37 +188,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No schooling / No formal education"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbSomePrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Some Primary education but less than Grade 7"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbPrimaryCompleted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Primary education completed (Grade 7)"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbSomeSecondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Some Secondary education but less than Matric"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbMatric"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Passed Matric (Grade 12)"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbMatricPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Matric plus Diploma or Degree"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
         </RadioGroup>
 
         <TextView
@@ -293,14 +302,16 @@
                 android:id="@+id/rbBusinessYes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/calibri_regular"
                 android:text="Yes"
-                android:textSize="16sp"/>
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbBusinessNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
         </RadioGroup>
 
         <TextView
@@ -321,13 +332,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
             <RadioButton
                 android:id="@+id/rbNameNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
-                android:textSize="16sp"/>
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"/>
         </RadioGroup>
 
         <TextView

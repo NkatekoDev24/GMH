@@ -31,6 +31,7 @@ public class IntroductionActivity extends AppCompatActivity {
 
     private static final String TAG = "IntroductionActivity";
     Button btnNext;
+    TextView welcomeMessage;
     private DatabaseReference databaseReference;
 
     private RadioGroup rgConsent;
@@ -77,6 +78,7 @@ public class IntroductionActivity extends AppCompatActivity {
         TextView tvConsent = findViewById(R.id.tv_consent);
         TextView tvParts = findViewById(R.id.tvPart);
         TextView video1 = findViewById(R.id.video1);
+        welcomeMessage = findViewById(R.id.tvWelcomeMessage);
         rgConsent = findViewById(R.id.rg_consent);
 
         // Get the selected radio button value
@@ -97,6 +99,8 @@ public class IntroductionActivity extends AppCompatActivity {
 //        tvCombinedMessage.setText(Html.fromHtml(formattedText));
 
         tvParts.setText(Html.fromHtml("<u>PART 1 START PAGE</u>"));
+
+        welcomeMessage.setText(Html.fromHtml("<u>BASICS: WHY GOOD MONEY HABITS – AND THE SEPARATION RULE</u>"));
 
         tvConsent.setText(Html.fromHtml(
                 "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br><br>" +

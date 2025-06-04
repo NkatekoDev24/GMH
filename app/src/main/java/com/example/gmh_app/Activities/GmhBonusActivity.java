@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -50,23 +52,23 @@ public class GmhBonusActivity extends AppCompatActivity {
 
                     certPrefs.edit().putBoolean("all_videos_watched", true).apply();
 
-                    String message = "We would like to contact you again later about these videos. For example, we might want to ask you how the videos helped your business grow, increase profits or create jobs – or whether you have further training needs. \n" +
-                            "Such feedback is important to us, since <b>we realise that it can take several months or even a year or more for regular higher profits to be earned</b> after you start to improve your money and other management habits. <b>Please be patient and persist with your new good money habits.</b>\n\n" +
+                    String messageHtml = "We would like to contact you again later about these videos. For example, we might want to ask you how the videos helped your business grow, increase profits or create jobs – or whether you have further training needs. <br><br>" +
+                            "Such feedback is important to us, since <b>we realise that it can take several months or even a year or more for regular higher profits to be earned</b> after you start to improve your money and other management habits. <b>Please be patient and persist with your new good money habits.</b><br><br>" +
                             "We promise we won't share your information with anyone outside our research team. " +
-                            "And if you decide later that you don’t want to participate any more, you can withdraw.\n\n" +
+                            "And if you decide later that you don’t want to participate any more, you can withdraw.<br><br>" +
                             "Is it okay if we contact you in the future about this?";
 
+                    Spanned formattedMessage = Html.fromHtml(messageHtml, Html.FROM_HTML_MODE_LEGACY);
 
                     new AlertDialog.Builder(GmhBonusActivity.this)
                             .setTitle("Keeping in touch")
-                            .setMessage(message)
+                            .setMessage(formattedMessage)
                             .setCancelable(false)
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     btnComplete.setVisibility(View.GONE);
-                                    Intent home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
-                                    startActivity(home);
+                                    startActivity(new Intent(GmhBonusActivity.this, TopicsActivity.class));
                                     finish();
                                 }
                             })
@@ -74,8 +76,7 @@ public class GmhBonusActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     btnComplete.setVisibility(View.GONE);
-                                    Intent home = new Intent(GmhBonusActivity.this, TopicsActivity.class);
-                                    startActivity(home);
+                                    startActivity(new Intent(GmhBonusActivity.this, TopicsActivity.class));
                                     finish();
                                 }
                             })

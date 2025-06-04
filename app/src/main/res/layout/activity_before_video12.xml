@@ -46,9 +46,9 @@
 
         <!-- Title -->
         <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="COUNTING AND RECORDING PROFIT – AND THE RISK OF CUSTOMER CREDIT"
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
@@ -117,6 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Not easy at all"
+                android:fontFamily="@font/calibri_regular"
                 android:textSize="20sp"
                 android:textColor="@color/black"/>
             <RadioButton
@@ -125,6 +126,7 @@
                 android:layout_height="wrap_content"
                 android:text="To some extent"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
             <RadioButton
                 android:id="@+id/rb_easy_large_extent"
@@ -132,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="To a large extent"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
             <RadioButton
                 android:id="@+id/rb_easy_yes_very"
@@ -139,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:text="Yes, very easy"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
         </RadioGroup>
 
@@ -199,6 +203,7 @@
                 android:layout_height="wrap_content"
                 android:text="Not yet"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
             <RadioButton
                 android:id="@+id/rb_happy_some_extent"
@@ -206,6 +211,7 @@
                 android:layout_height="wrap_content"
                 android:text="To some extent"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
             <RadioButton
                 android:id="@+id/rb_happy_large_extent"
@@ -213,6 +219,7 @@
                 android:layout_height="wrap_content"
                 android:text="To a large extent"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
             <RadioButton
                 android:id="@+id/rb_happy_yes_very"
@@ -220,6 +227,7 @@
                 android:layout_height="wrap_content"
                 android:text="Yes, very!"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
         </RadioGroup>
 
@@ -307,13 +315,14 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
+            android:fontFamily="@font/calibri_regular"
             android:paddingTop="16dp"
             android:paddingBottom="8dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.\nWe promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
             android:textSize="16sp"
             android:fontFamily="@font/calibri_regular"
             android:textStyle="italic"
@@ -339,6 +348,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
+                android:fontFamily="@font/calibri_regular"
                 android:textSize="20sp"
                 android:textColor="@color/black"/>
             <RadioButton
@@ -347,6 +357,7 @@
                 android:layout_height="wrap_content"
                 android:text="No"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
         </RadioGroup>
 
@@ -391,12 +402,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Yes"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black"/>
             <RadioButton
                 android:id="@+id/rb_satisfaction_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
+                android:fontFamily="@font/calibri_regular"
                 android:textSize="20sp"
                 android:textColor="@color/black"/>
         </RadioGroup>

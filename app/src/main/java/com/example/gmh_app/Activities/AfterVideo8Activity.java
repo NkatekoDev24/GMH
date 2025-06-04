@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -33,31 +34,26 @@ public class AfterVideo8Activity extends AppCompatActivity {
 
     private static final String TAG = "AfterVideo8Activity";
 
-    // UI components
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness, ratingTransactions;
     private RadioGroup changePlanGroup;
+    private RadioButton transactionsNotApplicable;
     private TextView changesExplained, reminderNextVideo;
 
-    private ImageView btnBack;
     private EditText editTextChanges, editTextComments;
     private Button buttonSubmit;
+    private ImageView btnBack;
 
-    // Firebase reference
     private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Make the activity full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // Set the layout
         setContentView(R.layout.activity_after_video8);
 
-        // Setup Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -65,15 +61,9 @@ public class AfterVideo8Activity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
         }
 
-        // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 8");
-        databaseReference.keepSynced(true); // Ensures local data is synced when online
+        databaseReference.keepSynced(true);
 
-        // Debugging: Log Firebase Database path
-        Log.d(TAG, "Firebase Database Path: " + databaseReference);
-
-
-        // Initialize UI components
         ratingVideo = findViewById(R.id.rating_overall);
         ratingClarity = findViewById(R.id.rating_clarity);
         ratingUsefulness = findViewById(R.id.rating_usefulness);
@@ -84,6 +74,7 @@ public class AfterVideo8Activity extends AppCompatActivity {
         buttonSubmit = findViewById(R.id.button_submit);
         changesExplained = findViewById(R.id.tv_changes_explain);
         reminderNextVideo = findViewById(R.id.reminder_next_video);
+        transactionsNotApplicable = findViewById(R.id.transactions_not_applicable);
         btnBack = findViewById(R.id.btn_back);
 
         changePlanGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -98,19 +89,22 @@ public class AfterVideo8Activity extends AppCompatActivity {
             }
         });
 
-        // Set up button click listener
+        ratingTransactions.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+            if (fromUser && rating > 0) {
+                transactionsNotApplicable.setChecked(false);
+                transactionsNotApplicable.setVisibility(View.GONE);
+            }
+        });
+
+        transactionsNotApplicable.setOnClickListener(v -> {
+            ratingTransactions.setRating(0);
+            ratingTransactions.setVisibility(View.GONE);
+        });
+
         buttonSubmit.setOnClickListener(v -> validateAndSubmitFeedback());
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                setResult(RESULT_CANCELED);
-//                finish();
-//            }
-//        });
     }
 
     private void validateAndSubmitFeedback() {
-        // Collect input data
         float videoRating = ratingVideo.getRating();
         float clarityRating = ratingClarity.getRating();
         float usefulnessRating = ratingUsefulness.getRating();
@@ -118,53 +112,35 @@ public class AfterVideo8Activity extends AppCompatActivity {
         String changesExplanation = editTextChanges.getText().toString();
         String comments = editTextComments.getText().toString();
 
-        // Get selected radio button value
         int selectedChangePlanId = changePlanGroup.getCheckedRadioButtonId();
         String changePlan = selectedChangePlanId == R.id.plan_yes ? "Yes" :
                 selectedChangePlanId == R.id.plan_no ? "No" :
                         selectedChangePlanId == R.id.plan_not_applicable ? "Not applicable" : "";
 
-        // Validate inputs
         List<String> errors = new ArrayList<>();
-        if (videoRating == 0) {
-            errors.add("Please rate the video.");
-        }
-        if (clarityRating == 0) {
-            errors.add("Please rate the clarity of the information.");
-        }
-        if (usefulnessRating == 0) {
-            errors.add("Please rate the usefulness of the information.");
-        }
-        if (transactionsRating == 0 && selectedChangePlanId != R.id.plan_not_applicable) {
-            errors.add("Please rate how well you record individual transactions.");
-        }
-        if (TextUtils.isEmpty(changePlan)) {
-            errors.add("Please indicate whether you want to make changes.");
-        }
-        if (changePlan.equals("Yes") && TextUtils.isEmpty(changesExplanation)) {
+        if (videoRating == 0) errors.add("Please rate the video.");
+        if (clarityRating == 0) errors.add("Please rate the clarity of the information.");
+        if (usefulnessRating == 0) errors.add("Please rate the usefulness of the information.");
+        if (transactionsRating == 0 && !transactionsNotApplicable.isChecked())
+            errors.add("Please rate how well you record individual transactions or select Not applicable.");
+        if (TextUtils.isEmpty(changePlan)) errors.add("Please indicate whether you want to make changes.");
+        if (changePlan.equals("Yes") && TextUtils.isEmpty(changesExplanation))
             errors.add("Please explain the changes you want to make.");
-        }
 
-        // Show errors if any
         if (!errors.isEmpty()) {
             showErrorDialog(errors);
             return;
         }
 
-        // Prepare feedback data
         Map<String, Object> feedback = new HashMap<>();
         feedback.put("videoRating", videoRating);
         feedback.put("clarityRating", clarityRating);
         feedback.put("usefulnessRating", usefulnessRating);
-        feedback.put("transactionsRating", selectedChangePlanId == R.id.plan_not_applicable ? "Not applicable" : transactionsRating);
+        feedback.put("transactionsRating", transactionsNotApplicable.isChecked() ? "Not applicable" : transactionsRating);
         feedback.put("changePlan", changePlan);
         feedback.put("changesExplanation", changesExplanation.isEmpty() ? "No explanation provided" : changesExplanation);
         feedback.put("comments", comments.isEmpty() ? "No comments provided" : comments);
 
-        // Debugging: Log feedback data
-        Log.d(TAG, "Feedback Data: " + feedback);
-
-        // Save feedback to Firebase
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(feedback)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -176,19 +152,16 @@ public class AfterVideo8Activity extends AppCompatActivity {
                     }
                 });
 
-        // Proceed to the next activity immediately
         setResult(RESULT_OK);
-        navigateToEndofPart2Activity(); // Close this activity
+        navigateToEndofPart2Activity();
     }
 
     private void showErrorDialog(List<String> errors) {
-        // Combine error messages into a single string
         StringBuilder errorMessage = new StringBuilder();
         for (String error : errors) {
             errorMessage.append("• ").append(error).append("\n");
         }
 
-        // Show an AlertDialog with the errors
         new AlertDialog.Builder(this)
                 .setTitle("Error")
                 .setMessage(errorMessage.toString())
@@ -209,9 +182,9 @@ public class AfterVideo8Activity extends AppCompatActivity {
     }
 
     private void navigateToEndofPart2Activity() {
-        Intent endOfPartIntent = new Intent(AfterVideo8Activity.this, OverallPart2Activity.class);
-        startActivity(endOfPartIntent);
-        finish(); // Finish current activity to remove it from the back stack
+        Intent intent = new Intent(AfterVideo8Activity.this, OverallPart2Activity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -229,12 +202,12 @@ public class AfterVideo8Activity extends AppCompatActivity {
             finish();
             return true;
         } else if (id == R.id.action_home) {
-            startActivity(new Intent(AfterVideo8Activity.this, TopicsActivity.class));
+            startActivity(new Intent(this, TopicsActivity.class));
             overridePendingTransition(0, 0);
             return true;
         } else if (id == R.id.action_help) {
-            startActivity(new Intent(AfterVideo8Activity.this, HelpActivity.class));
-            overridePendingTransition(0,0);
+            startActivity(new Intent(this, HelpActivity.class));
+            overridePendingTransition(0, 0);
             return true;
         }
 

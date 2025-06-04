@@ -203,7 +203,6 @@
                 android:layout_height="wrap_content"
                 android:text="Let's go to Video 2"
                 android:textSize="18sp"
-                android:fontFamily="@font/calibri_regular"
                 android:textColor="@android:color/white"
                 android:backgroundTint="@color/signup_button_default_color"
                 android:layout_gravity="center_horizontal"

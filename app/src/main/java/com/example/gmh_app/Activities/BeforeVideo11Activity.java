@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,7 +37,7 @@ public class BeforeVideo11Activity extends AppCompatActivity {
     private RadioGroup radioGroupRent, radioGroupOwn, radioGroupFree, radioGroupStructure, radioGroupLocation;
     private EditText editTextOtherArrangements, editTextMoveReason;
     private Button btnSubmit;
-    private TextView tvCombinedToc, intro_text_video11;
+    private TextView tvCombinedToc, intro_text_video11, moveReason;
 
     private DatabaseReference databaseReference;
 
@@ -76,6 +77,7 @@ public class BeforeVideo11Activity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
         tvCombinedToc = findViewById(R.id.tvCombinedToc);
         intro_text_video11 = findViewById(R.id.intro_text_video11);
+        moveReason = findViewById(R.id.tvMoveReason);
 
         // Set text content
         tvCombinedToc.setText(Html.fromHtml(
@@ -89,6 +91,17 @@ public class BeforeVideo11Activity extends AppCompatActivity {
 
         // Set up submit button listener
         btnSubmit.setOnClickListener(view -> submitResponses());
+
+        radioGroupLocation.setOnCheckedChangeListener((group, checkedId) -> {
+            if(checkedId == R.id.radioLocationYes)
+            {
+                moveReason.setVisibility(View.GONE);
+                editTextMoveReason.setVisibility(View.GONE);
+            }else {
+                moveReason.setVisibility(View.VISIBLE);
+                editTextMoveReason.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     private void submitResponses() {

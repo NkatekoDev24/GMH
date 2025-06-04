@@ -143,12 +143,14 @@
                 android:layout_height="wrap_content"
                 android:text="Yes"
                 android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black" />
             <RadioButton
                 android:id="@+id/profit_changes_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
+                android:fontFamily="@font/calibri_regular"
                 android:textSize="20sp"
                 android:textColor="@color/black" />
         </RadioGroup>
@@ -196,12 +198,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
                 android:textColor="@color/black" />
             <RadioButton
                 android:id="@+id/profit_difference_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
                 android:textColor="@color/black" />
         </RadioGroup>
 
@@ -250,12 +256,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black" />
             <RadioButton
                 android:id="@+id/profit_confidence_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
+                android:textSize="20sp"
+                android:fontFamily="@font/calibri_regular"
                 android:textColor="@color/black" />
         </RadioGroup>
 

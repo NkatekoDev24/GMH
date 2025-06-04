@@ -12,7 +12,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -36,8 +35,7 @@ public class AfterVideo11Activity extends AppCompatActivity {
 
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness, ratingControlCurrent, ratingControlFuture;
     private RadioGroup fixedCostChangesGroup;
-    private TextView changesExplained, tv_reminder;
-    private ImageView btnBack;
+    private TextView changesExplained;
     private EditText lessonLearnedEditText, changesExplanationEditText, additionalCommentsEditText;
     private Button submitButton;
     private DatabaseReference databaseReference;
@@ -45,14 +43,11 @@ public class AfterVideo11Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_video);
 
         setContentView(R.layout.activity_after_video11);
 
-        // Setup Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -60,13 +55,10 @@ public class AfterVideo11Activity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
         }
 
-        // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Feedback After Video 11");
-        databaseReference.keepSynced(true); // Ensures local data is synced when online
+        databaseReference.keepSynced(true);
 
-        // Debugging: Log Firebase Database path
-        Log.d(TAG, "Firebase Database Path: " + databaseReference);
-
+        // Initialize views
         ratingVideo = findViewById(R.id.rating_video);
         ratingClarity = findViewById(R.id.rating_clarity);
         ratingUsefulness = findViewById(R.id.rating_usefulness);
@@ -78,35 +70,15 @@ public class AfterVideo11Activity extends AppCompatActivity {
         additionalCommentsEditText = findViewById(R.id.additional_comments);
         submitButton = findViewById(R.id.submit_button);
         changesExplained = findViewById(R.id.text_changes_explained);
-        tv_reminder = findViewById(R.id.tv_reminder);
-        btnBack = findViewById(R.id.btn_back);
 
+        // Toggle explanation field based on radio button
         fixedCostChangesGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.fixed_cost_changes_yes) {
-                changesExplained.setVisibility(View.VISIBLE);
-                changesExplanationEditText.setVisibility(View.VISIBLE);
-                tv_reminder.setVisibility(View.VISIBLE);
-            } else {
-                changesExplained.setVisibility(View.GONE);
-                changesExplanationEditText.setVisibility(View.GONE);
-                tv_reminder.setVisibility(View.GONE);
-            }
+            boolean show = (checkedId == R.id.fixed_cost_changes_yes);
+            changesExplained.setVisibility(show ? View.VISIBLE : View.GONE);
+            changesExplanationEditText.setVisibility(show ? View.VISIBLE : View.GONE);
         });
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validateAndSubmitFeedback();
-            }
-        });
-
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                setResult(RESULT_CANCELED);
-//                finish();
-//            }
-//        });
+        submitButton.setOnClickListener(v -> validateAndSubmitFeedback());
     }
 
     private void validateAndSubmitFeedback() {
@@ -115,25 +87,24 @@ public class AfterVideo11Activity extends AppCompatActivity {
         float usefulnessRating = ratingUsefulness.getRating();
         float currentControlRating = ratingControlCurrent.getRating();
         float futureControlRating = ratingControlFuture.getRating();
-        String lessonLearned = lessonLearnedEditText.getText().toString();
-        String changesExplanation = changesExplanationEditText.getText().toString();
-        String additionalComments = additionalCommentsEditText.getText().toString();
+
+        String lessonLearned = lessonLearnedEditText.getText().toString().trim();
+        String changesExplanation = changesExplanationEditText.getText().toString().trim();
+        String additionalComments = additionalCommentsEditText.getText().toString().trim();
 
         int selectedChangeOptionId = fixedCostChangesGroup.getCheckedRadioButtonId();
         String fixedCostChange = selectedChangeOptionId == R.id.fixed_cost_changes_yes ? "Yes" :
                 selectedChangeOptionId == R.id.fixed_cost_changes_no ? "No" : "";
 
         List<String> errors = new ArrayList<>();
-        if (videoRating == 0) errors.add("• Please rate the video.");
-        if (clarityRating == 0) errors.add("• Please rate the clarity of the information.");
-        if (usefulnessRating == 0) errors.add("• Please rate the usefulness of the information.");
-        if (currentControlRating == 0) errors.add("• Please rate your current control of overhead costs.");
-        if (futureControlRating == 0) errors.add("• Please rate how you'd like to control overhead costs in the future.");
-        if (TextUtils.isEmpty(lessonLearned)) errors.add("• Please provide the biggest lesson you learned.");
-        if (TextUtils.isEmpty(fixedCostChange)) errors.add("• Please indicate whether you plan to make changes to handle fixed costs.");
-        if (fixedCostChange.equals("Yes") && TextUtils.isEmpty(changesExplanation)) {
-            errors.add("• Please explain the changes you want to make.");
-        }
+        if (videoRating == 0) errors.add("Please rate the video.");
+        if (clarityRating == 0) errors.add("Please rate the clarity of the information.");
+        if (usefulnessRating == 0) errors.add("Please rate the usefulness of the information.");
+        if (currentControlRating == 0) errors.add("Please rate your current control of overhead costs.");
+        if (futureControlRating == 0) errors.add("Please rate how you'd like to control overhead costs in the future.");
+        if (TextUtils.isEmpty(lessonLearned)) errors.add("Please provide the biggest lesson you learned.");
+        if (TextUtils.isEmpty(fixedCostChange)) errors.add("Please indicate whether you plan to make changes to handle fixed costs.");
+        if (fixedCostChange.equals("Yes") && TextUtils.isEmpty(changesExplanation)) errors.add("Please explain the changes you want to make.");
 
         if (!errors.isEmpty()) {
             showErrorDialog(errors);
@@ -162,20 +133,18 @@ public class AfterVideo11Activity extends AppCompatActivity {
                     }
                 });
 
-        // Proceed to the next activity immediately
         setResult(RESULT_OK);
-        navigateToEndofPart3Activity(); // Close this activity
+        navigateToEndofPart3Activity();
     }
 
     private void showErrorDialog(List<String> errors) {
-        StringBuilder errorMessage = new StringBuilder();
+        StringBuilder message = new StringBuilder();
         for (String error : errors) {
-            errorMessage.append(error).append("\n");
+            message.append("• ").append(error).append("\n");
         }
-
         new AlertDialog.Builder(this)
                 .setTitle("Error")
-                .setMessage(errorMessage.toString())
+                .setMessage(message.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }
@@ -192,18 +161,13 @@ public class AfterVideo11Activity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Success")
                 .setMessage("Feedback submitted successfully!")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        navigateToEndofPart3Activity();
-                    }
-                })
+                .setPositiveButton("OK", (dialog, which) -> navigateToEndofPart3Activity())
                 .show();
     }
 
     private void navigateToEndofPart3Activity() {
-        Intent endOfPartIntent = new Intent(AfterVideo11Activity.this, OverallPart3Activity.class);
-        startActivity(endOfPartIntent);
+        Intent intent = new Intent(AfterVideo11Activity.this, OverallPart3Activity.class);
+        startActivity(intent);
         finish();
     }
 
@@ -216,21 +180,19 @@ public class AfterVideo11Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == android.R.id.home) {
             setResult(RESULT_CANCELED);
             finish();
             return true;
         } else if (id == R.id.action_home) {
-            startActivity(new Intent(AfterVideo11Activity.this, TopicsActivity.class));
+            startActivity(new Intent(this, TopicsActivity.class));
             overridePendingTransition(0, 0);
             return true;
         } else if (id == R.id.action_help) {
-            startActivity(new Intent(AfterVideo11Activity.this, HelpActivity.class));
-            overridePendingTransition(0,0);
+            startActivity(new Intent(this, HelpActivity.class));
+            overridePendingTransition(0, 0);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

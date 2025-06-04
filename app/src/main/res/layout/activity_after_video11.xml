@@ -44,6 +44,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/calibri_regular"
             android:textSize="24sp"
             android:textColor="@android:color/black"
             android:textStyle="italic|bold"
@@ -56,6 +57,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@android:color/black"
+            android:fontFamily="@font/calibri_regular"
             android:textStyle="italic"
             android:text="It is especially important since these costs can easily get a business into trouble."
             android:paddingBottom="16dp"/>
@@ -66,6 +68,7 @@
             android:layout_height="wrap_content"
             android:text="FEEDBACK BREAK (Video 11)"
             android:textSize="24sp"
+            android:fontFamily="@font/calibri_regular"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -88,6 +91,7 @@
             android:layout_height="wrap_content"
             android:text="1 star means: Not at all / I didn’t like it at all\n5 stars mean: A lot / I liked it very much"
             android:textSize="16sp"
+            android:fontFamily="@font/calibri_regular"
             android:textStyle="italic"
             android:textColor="@android:color/black"/>
 
@@ -214,8 +218,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <RadioButton android:id="@+id/fixed_cost_changes_yes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" android:textColor="@color/black" android:textSize="20sp" />
-            <RadioButton android:id="@+id/fixed_cost_changes_no" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:textColor="@color/black" android:textSize="20sp" />
+            <RadioButton android:id="@+id/fixed_cost_changes_yes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" android:textColor="@color/black" android:textSize="20sp" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/fixed_cost_changes_no" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:textColor="@color/black" android:textSize="20sp" android:fontFamily="@font/calibri_regular" />
         </RadioGroup>
 
         <TextView

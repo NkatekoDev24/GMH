@@ -292,7 +292,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Watch video 3"
-            android:fontFamily="@font/calibri_regular"
             android:backgroundTint="@color/signup_button_default_color"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp" />
