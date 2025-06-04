@@ -46,9 +46,9 @@
 
         <!-- Title -->
         <TextView
-            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="COUNTING AND RECORDING PROFIT – AND THE RISK OF CUSTOMER CREDIT"
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
@@ -142,14 +142,12 @@
                 android:textColor="@color/black"/>
         </RadioGroup>
 
-
-
         <!-- Question 2: What Did You Change -->
         <TextView
             android:id="@+id/text_changes_explained"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="If yes: what did you change?"
+            android:text="What did you change?"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
@@ -160,14 +158,14 @@
             android:layout_height="wrap_content"
             android:minHeight="40dp"
             android:background="@drawable/dotted_underline"
-            android:hint="If yes: what did you change?"/>
+            android:hint="What did you change?"/>
 
         <!-- Question 3: Result of Changes -->
         <TextView
             android:id="@+id/results_explained"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="If yes, what was the results/outcome of the changes?"
+            android:text="What was the results/outcome of the changes?"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
@@ -178,14 +176,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
-            android:hint="If yes, what was the results/outcome of the changes?"/>
+            android:hint="What was the results/outcome of the changes?"/>
 
         <!-- Question 4: Satisfaction with Results -->
         <TextView
             android:id="@+id/txtIfYes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="If yes, are you happy with the results?"
+            android:text="Are you happy with the results?"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
@@ -271,12 +269,11 @@
             android:id="@+id/vid12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp"/>
+            android:paddingTop="24dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -316,7 +313,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
+            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared.\nWe promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
             android:textSize="16sp"
             android:fontFamily="@font/calibri_regular"
             android:textStyle="italic"

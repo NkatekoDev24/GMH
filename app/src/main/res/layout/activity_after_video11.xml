@@ -237,14 +237,14 @@
             android:textColor="@android:color/black"/>
 
         <!-- Reminder Message -->
-        <TextView
+        <!--<TextView
             android:id="@+id/tv_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📌 It’s important to write this down BEFORE you go to the next video."
             android:textSize="16sp"
             android:textColor="@android:color/black"
-            android:textStyle="italic"/>
+            android:textStyle="italic"/>-->
 
         <!-- Additional Comments -->
         <TextView

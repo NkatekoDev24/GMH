@@ -67,8 +67,8 @@ public class BeforeVideo11Activity extends AppCompatActivity {
 
         // Initialize views
         radioGroupRent = findViewById(R.id.radioGroupRent);
-        radioGroupOwn = findViewById(R.id.radioGroupOwn);
-        radioGroupFree = findViewById(R.id.radioGroupFree);
+/*        radioGroupOwn = findViewById(R.id.radioGroupOwn);
+        radioGroupFree = findViewById(R.id.radioGroupFree);*/
         editTextOtherArrangements = findViewById(R.id.editTextOtherArrangements);
         radioGroupStructure = findViewById(R.id.radioGroupStructure);
         radioGroupLocation = findViewById(R.id.radioGroupLocation);
@@ -94,8 +94,8 @@ public class BeforeVideo11Activity extends AppCompatActivity {
     private void submitResponses() {
         // Gather user inputs
         String rent = getSelectedOption(radioGroupRent);
-        String own = getSelectedOption(radioGroupOwn);
-        String free = getSelectedOption(radioGroupFree);
+       /* String own = getSelectedOption(radioGroupOwn);
+        String free = getSelectedOption(radioGroupFree);*/
         String otherArrangements = editTextOtherArrangements.getText().toString().trim();
         String structure = getSelectedOption(radioGroupStructure);
         String location = getSelectedOption(radioGroupLocation);
@@ -104,9 +104,9 @@ public class BeforeVideo11Activity extends AppCompatActivity {
         List<String> errors = new ArrayList<>();
 
         // rules
-        if (rent.isEmpty()) errors.add("Please select an option for 'Do you rent your business premises?'.");
-        if (own.isEmpty()) errors.add("Please select an option for 'Do you own your business premises?'.");
-        if (free.isEmpty()) errors.add("Please select an option for 'Do you use the premises for free?'.");
+        if (rent.isEmpty()) errors.add("Please select an option for 'Regarding your current business premises:'.");
+        /*if (own.isEmpty()) errors.add("Please select an option for 'Do you own your business premises?'.");
+        if (free.isEmpty()) errors.add("Please select an option for 'Do you use the premises for free?'.");*/
         if (rent.equals("Other") && otherArrangements.isEmpty()) errors.add("Please provide details about your other arrangements for rent.");
         if (structure.isEmpty()) errors.add("Please select an option for 'What is the structure of the premises?'.");
         if (location.isEmpty()) errors.add("Please select an option for 'What is the location of the premises?'.");
@@ -121,8 +121,8 @@ public class BeforeVideo11Activity extends AppCompatActivity {
         // Create feedback data
         Map<String, Object> response = new HashMap<>();
         response.put("rent", rent);
-        response.put("own", own);
-        response.put("free", free);
+/*        response.put("own", own);
+        response.put("free", free);*/
         response.put("otherArrangements", TextUtils.isEmpty(otherArrangements) ? "N/A" : otherArrangements);
         response.put("structure", structure);
         response.put("location", location);
