@@ -133,35 +133,58 @@
         android:layout_height="wrap_content" />
 
     <!-- Ability to draw Income Statement section -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Do you think you will be able to draw up a complete Income Statement – all money inflows and outflows (with corrections and adjustments) and then your profit – as in the last example? (This can be for either a month or a year.)"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/calibri_regular"
-        android:textColor="@color/black"/>
-    <RadioGroup
-        android:id="@+id/rg_income_statement_ability"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/rb_income_statement_ability_yes"
-            android:text="Yes"
-            android:fontFamily="@font/calibri_regular"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:id="@+id/rb_income_statement_ability_no"
-            android:text="No"
-            android:fontFamily="@font/calibri_regular"
+            android:layout_height="wrap_content"
+            android:text="Do you think you will be able to draw up a complete Income Statement – all money inflows and outflows (with corrections and adjustments) and then your profit – as in the last example? (This can be for either a month or a year.)"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@color/black" />
+
+        <RadioGroup
+            android:id="@+id/rg_income_statement_ability"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RadioGroup>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_not_at_all"
+                android:text="Not at all"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/rb_to_some_extent"
+                android:text="To some extent"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/rb_to_large_extent"
+                android:text="To a large extent"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/rb_definitely"
+                android:text="Definitely"
+                android:fontFamily="@font/calibri_regular"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
 
     <!-- Existing Income Statement section -->
     <TextView

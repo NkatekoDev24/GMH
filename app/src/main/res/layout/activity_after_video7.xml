@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="What do you think of this video? Please rate it by indicating the number of stars."
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"/>
@@ -237,6 +237,7 @@
 
         <!-- Reminder to Answer Before Next Video -->
         <TextView
+            android:id="@+id/reminder_next_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📌It’s important to write this down BEFORE you go to the next video."

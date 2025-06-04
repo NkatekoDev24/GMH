@@ -46,9 +46,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Set the content
         title.setText("Welcome to the Good Money Habits (GMH) Videos");
-        intro.setText(Html.fromHtml("<b>The aim of the GMH Videos is to help you make more money and grow your business by adopting</b> good habits in the handling and recording of money."));
+        intro.setText(Html.fromHtml("<b>The aim of the GMH Videos is to help you make more money and grow your business by adopting good habits in the handling and recording of money.</b>"));
         details.setText(Html.fromHtml("This covers <b>money inflows</b> (income, revenue) and <b>money outflows</b> (expenses, costs) – and the correct calculation and use of <b>profit</b>."));
-        circumstances.setText(Html.fromHtml("<b>Context: The circumstances, needs, problems, and ambitions of <b>small or micro-businesses (often informal) in townships</b>"));
+        circumstances.setText(Html.fromHtml("<b>Context: The circumstances, needs, problems, and ambitions of <b>small or micro-businesses (often informal) in townships.</b>"));
         intendedUsers.setText(Html.fromHtml("<b>Intended users:</b><b> Owners and managers</b> of small and micro-enterprises in townships, especially if you haven’t had any training in bookkeeping or management."));
 
         // Set "Approach:" in bold and the rest unbold

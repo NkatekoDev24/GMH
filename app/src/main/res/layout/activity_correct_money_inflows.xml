@@ -48,23 +48,23 @@
             android:id="@+id/congratulationsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="👏Congratulations on getting this far. You are doing well."
+            android:text="👏Congratulations on getting this far. You are doing well. It is important to KEEP GOING."
             android:textSize="24sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
             android:textStyle="bold" />
 
         <!-- Encouragement Text -->
-        <TextView
-            android:id="@+id/keepGoingTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="It is important to KEEP GOING."
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/calibri_regular"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/keepGoingTextView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=""-->
+<!--            android:textSize="20sp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginBottom="16dp" />-->
 
         <!-- Introduction to Video 7 -->
         <TextView

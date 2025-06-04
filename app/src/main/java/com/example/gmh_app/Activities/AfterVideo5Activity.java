@@ -39,7 +39,7 @@ public class AfterVideo5Activity extends AppCompatActivity {
     private EditText editTextLesson, editTextChanges, editTextComments;
 
     private ImageView btnBack;
-    private TextView changesExplained;
+    private TextView changesExplained, reminderNextVideo;
     private Button buttonSubmit;
 
     // Firebase reference
@@ -81,15 +81,18 @@ public class AfterVideo5Activity extends AppCompatActivity {
         editTextComments = findViewById(R.id.editText_comments);
         buttonSubmit = findViewById(R.id.button_submit);
         changesExplained = findViewById(R.id.tv_changes_explain);
+        reminderNextVideo = findViewById(R.id.reminder_next_video);
         btnBack = findViewById(R.id.btn_back);
 
         changePlanGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.plan_yes) {
                 changesExplained.setVisibility(View.VISIBLE);
                 editTextChanges.setVisibility(View.VISIBLE);
+                reminderNextVideo.setVisibility(View.VISIBLE);
             } else {
                 changesExplained.setVisibility(View.GONE);
                 editTextChanges.setVisibility(View.GONE);
+                reminderNextVideo.setVisibility(View.GONE);
             }
         });
 

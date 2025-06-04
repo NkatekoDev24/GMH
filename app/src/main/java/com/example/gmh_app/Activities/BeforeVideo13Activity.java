@@ -36,7 +36,7 @@ public class BeforeVideo13Activity extends AppCompatActivity {
     private RadioGroup emergencyFundGroup, planEmergencyFundGroup, changesInProfitCalculationGroup;
     private EditText profitPerMonthInput, changesExplanationInput;
     private Button submitButton;
-    private TextView changesExplained, emergencyFollowUp, tvCombinedToc;
+    private TextView changesExplained, emergencyFollowUp, tvCombinedToc, introductionText;
     private DatabaseReference databaseReference;
 
     @Override
@@ -70,7 +70,10 @@ public class BeforeVideo13Activity extends AppCompatActivity {
         submitButton = findViewById(R.id.submitButton);
         changesExplained = findViewById(R.id.text_changes_explained);
         emergencyFollowUp = findViewById(R.id.emergencyFundFollowUp);
+        introductionText = findViewById(R.id.introductionText);
         tvCombinedToc = findViewById(R.id.tvCombinedToc);
+
+        introductionText.setText(Html.fromHtml("<u>VIDEO 13</U>"));
 
         tvCombinedToc.setText(Html.fromHtml(
                 "<b>Part 4. Counting and Recording PROFIT – and the risk of customer credit</b><br>" +

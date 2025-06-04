@@ -100,10 +100,10 @@ public class IntroductionActivity extends AppCompatActivity {
 
         tvConsent.setText(Html.fromHtml(
                 "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br><br>" +
-                        "• Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.<br><br>" +
-                        "• We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.<br><br>" +
-                        "• We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.<br><br>" +
-                        "• You can still use the app even if you don't want us to use your answers for research.<br><br>" +
+                        "• Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.<br>" +
+                        "• We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.<br>" +
+                        "• We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.<br>" +
+                        "• You can still use the app even if you don't want us to use your answers for research.<br>" +
                         "• But we really are keen to get your answers – so that we can improve this training programme, app and videos."
         ));
 
@@ -166,7 +166,7 @@ public class IntroductionActivity extends AppCompatActivity {
         // Create a list to hold error messages
         List<String> errors = new ArrayList<>();
 
-        if (consentGiven == null) errors.add("Please provide your consent for data collection.");
+        if (consentGiven == null) errors.add("Please indicate yes or no for User Consent question above.");
 
         // Show errors if any
         if (!errors.isEmpty()) {

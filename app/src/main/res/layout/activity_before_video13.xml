@@ -39,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:text="VIDEO 13"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
@@ -193,7 +192,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Using video 12’s knowledge, how much PROFIT does your business make \n per month, on average?"
+            android:text="Using video 12’s knowledge, how much PROFIT does your business make \nper month, on average?"
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
@@ -210,16 +209,6 @@
             android:minHeight="40dp"
             android:layout_marginBottom="8dp"
             android:inputType="numberDecimal" />
-
-        <!-- Profit per Month Input -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="However, if you find Video 13 difficult at this stage, you can give it your best attempt, you can then revisit this video and try understand it better at a later stage."
-            android:textSize="20sp"
-            android:fontFamily="@font/calibri_regular"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="16dp" />
 
         <!-- Combined TOC TextView -->
         <TextView
@@ -251,6 +240,16 @@
             android:text="🔎Pay close attention and you’ll get it very quickly."
             android:textSize="20sp"
             android:textStyle="bold"
+            android:fontFamily="@font/calibri_regular"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp" />
+
+        <!-- Profit per Month Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="However, if you find Video 13 difficult at this stage, just give it your best attempt. At a later stage you can then revisit this video and try understand it better."
+            android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
             android:layout_marginTop="16dp" />

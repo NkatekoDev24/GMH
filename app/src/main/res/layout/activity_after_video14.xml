@@ -196,6 +196,7 @@
 
         <!-- Instructional note -->
         <TextView
+            android:id="@+id/reminder_next_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📌It’s important to write this down BEFORE you go to the next video."

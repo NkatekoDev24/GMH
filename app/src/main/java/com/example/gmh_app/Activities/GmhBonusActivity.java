@@ -50,10 +50,12 @@ public class GmhBonusActivity extends AppCompatActivity {
 
                     certPrefs.edit().putBoolean("all_videos_watched", true).apply();
 
-                    String message = "We would like to contact you again later about these videos. For example, we might want to ask you how the videos helped your business grow, increase profits or create jobs – or whether you have further training needs. Such feedback is important to us.\n\n" +
+                    String message = "We would like to contact you again later about these videos. For example, we might want to ask you how the videos helped your business grow, increase profits or create jobs – or whether you have further training needs. \n" +
+                            "Such feedback is important to us, since <b>we realise that it can take several months or even a year or more for regular higher profits to be earned</b> after you start to improve your money and other management habits. <b>Please be patient and persist with your new good money habits.</b>\n\n" +
                             "We promise we won't share your information with anyone outside our research team. " +
                             "And if you decide later that you don’t want to participate any more, you can withdraw.\n\n" +
                             "Is it okay if we contact you in the future about this?";
+
 
                     new AlertDialog.Builder(GmhBonusActivity.this)
                             .setTitle("Keeping in touch")
