@@ -23,7 +23,6 @@ public class CreditsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Make the activity full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -33,67 +32,45 @@ public class CreditsActivity extends AppCompatActivity {
         creditsLayout = findViewById(R.id.creditsLayout);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        // Hide the certificates tab
         bottomNavigationView.getMenu().findItem(R.id.navigation_certificates).setVisible(false);
-
-        // Set the selected item to credits
         bottomNavigationView.setSelectedItemId(R.id.navigation_credits);
 
-        // Navigation handling
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-
             if (id == R.id.navigation_home) {
                 startActivity(new Intent(CreditsActivity.this, TopicsActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
-
             } else if (id == R.id.navigation_credits) {
                 return true;
             }
-
             return false;
         });
 
-
         bottomNavigationView.setSelectedItemId(R.id.navigation_credits);
 
-        addText("GMH APP CREDITS/ACKNOWLEDGEMENTS", 20, true);
+        addText("GMH App Credits & Acknowledgements", 20, true);
+        addText("The development of the App was made possible through the collaborative efforts of multiple teams, each playing a critical role in its development and execution. We extend our deepest appreciation to:", 14, false);
 
-        addText("This project was made possible through the collaborative efforts of multiple teams, each playing a critical role in its development and execution. We extend our deepest appreciation to:", 16, false);
+        addBoldLabelWithValue("App design and development", "Interdisciplinary Centre for Digital Futures (ICDF), University of the Free State");
+        addBoldLabelWithValue("Project management", "Herkulaas M.V.E Combrinck");
+        addBoldLabelWithValue("Design and testing", "Herkulaas M.V.E Combrinck; Nicholas Coetzee");
+        addBoldLabelWithValue("Development planning", "Herkulaas M.V.E Combrinck; Nkateko Nkuna");
+        addBoldLabelWithValue("Front- & back-end development, UI/UX design", "Nkateko Nkuna; Nicholas Coetzee");
+        addBoldLabelWithValue("Database management and testing", "Nkateko Nkuna");
+        addBoldLabelWithValue("Testing and quality assurance", "Priscilla Keche; Lurgasho H. Minnie; Ayandeji Ayantokun");
+        addBoldLabelWithValue("App conceptualisation and script", "© Frederick C.V.N. Fourie");
+        addBoldLabelWithValue("Gamification design, avatars and shields", "© Frederick C.V.N. Fourie; Annelize Booysen-Wolthers");
+        addBoldLabelWithValue("Credits for the videos in the app", "See credits at the end of individual videos.");
 
-        addText("App design & development", 18, true);
-        addText("Interdisciplinary Centre for Digital Futures (ICDF), University of Free State", 16, false);
-
-        addText("Development planning, Front & back-end development, UI/UX Design, Database management and Testing", 16, false);
-        addText("Nkateko Nkuna", 16, true);
-
-        addText("Front & back-end development, UI/UX Design and Testing", 16, false);
-        addText("Nicholas Coetzee", 16, true);
-
-        addText("Project management, Development planning, Design and Testing", 16, false);
-        addText("Herkulaas M.V.E Combrink", 16, true);
-
-        addText("Testing and Quality Assurance", 16, false);
-        addText("Priscilla Keche, Lurgasho H. Minnie, Ayandeji Ayantokun", 16, true);
-
-        addText("Conceptualisation and script", 18, true);
-        addText("Frederick C.V.N. Fourie", 16, true);
-
-        addText("Gamification design and badges", 18, true);
-        addText("Frederick C.V.N. Fourie, Annelize Booysen-Wolthers", 16, true);
-
-        addText("\u00A9 This app in its entirety is protected by the South African Copyright Act 98 of 1978 and other relevant South African and international legislation.", 14, false);
+        addText("© This app in its entirety is protected by the South African Copyright Act 98 of 1978 and other relevant South African and international legislation.", 12, true);
     }
 
-    // Check flag from SharedPreferences
     private boolean areAllVideosWatched() {
         SharedPreferences prefs = getSharedPreferences("VideoPrefs", MODE_PRIVATE);
         return prefs.getBoolean("all_videos_watched", false);
     }
 
-    // Show dialog box if videos are not completed
     private void showLockedDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Locked")
@@ -112,5 +89,24 @@ public class CreditsActivity extends AppCompatActivity {
             tv.setTypeface(null, Typeface.BOLD);
         }
         creditsLayout.addView(tv);
+    }
+
+    private void addBoldLabelWithValue(String label, String value) {
+        LinearLayout row = new LinearLayout(this);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+
+        TextView labelView = new TextView(this);
+        labelView.setText(label + ":  ");
+        labelView.setTypeface(null, Typeface.BOLD);
+        labelView.setTextSize(14);
+
+        TextView valueView = new TextView(this);
+        valueView.setText(value);
+        valueView.setTextSize(14);
+
+        row.addView(labelView);
+        row.addView(valueView);
+        row.setPadding(0, 16, 0, 0);
+        creditsLayout.addView(row);
     }
 }
