@@ -36,7 +36,7 @@ public class BeforeVideo14Activity extends AppCompatActivity {
             remindCustomersGroup, collectDebtsGroup, writeOffDebtsGroup, sellToDebtorsGroup;
     private EditText grossProfitInput, netProfitInput;
     private Button submitButton;
-    TextView tvCombinedToc;
+    TextView tvCombinedToc, video14;
 
     private DatabaseReference databaseReference;
 
@@ -77,6 +77,9 @@ public class BeforeVideo14Activity extends AppCompatActivity {
         sellToDebtorsGroup = findViewById(R.id.sellToIndebtedGroup);
         submitButton = findViewById(R.id.submitButton);
         tvCombinedToc = findViewById(R.id.tvCombinedToc);
+        video14 = findViewById(R.id.video14);
+
+        video14.setText(Html.fromHtml("<u>VIDEO 14</u>"));
 
 
         tvCombinedToc.setText(Html.fromHtml(

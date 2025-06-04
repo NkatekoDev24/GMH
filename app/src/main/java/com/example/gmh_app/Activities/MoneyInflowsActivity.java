@@ -32,7 +32,7 @@ public class MoneyInflowsActivity extends AppCompatActivity {
 
     // UI Components
     private RadioGroup businessDurationGroup, countCashStartGroup, countCashEndGroup, writeTransactionsGroup, countStockGroup;
-    private TextView tvCombinedToc, tvParts2, video5;
+    private TextView tvCombinedToc, tvParts2, video5, tvWelcome;
     private Button submitButton;
 
     // Firebase Database Reference
@@ -73,6 +73,9 @@ public class MoneyInflowsActivity extends AppCompatActivity {
         tvParts2 = findViewById(R.id.tvparts2);
         video5 = findViewById(R.id.video5);
         submitButton = findViewById(R.id.submit_button);
+        tvWelcome = findViewById(R.id.tvWelcome);
+
+        tvWelcome.setText(Html.fromHtml("<u>COUNTING AND RECORDING MONEY INFLOWS</u>"));
 
         // Set Text for TextViews
         tvParts2.setText(Html.fromHtml("<u>PART 2 START PAGE</u>"));

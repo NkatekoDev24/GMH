@@ -46,9 +46,9 @@
 
         <!-- Introductory Texts -->
         <TextView
+            android:id="@+id/tvWelcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="COUNTING AND RECORDING MONEY INFLOWS"
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
@@ -256,7 +256,7 @@
             android:id="@+id/video5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
             android:paddingTop="16dp"

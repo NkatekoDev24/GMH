@@ -36,7 +36,7 @@ public class AfterVideo8Activity extends AppCompatActivity {
     // UI components
     private RatingBar ratingVideo, ratingClarity, ratingUsefulness, ratingTransactions;
     private RadioGroup changePlanGroup;
-    private TextView changesExplained;
+    private TextView changesExplained, reminderNextVideo;
 
     private ImageView btnBack;
     private EditText editTextChanges, editTextComments;
@@ -83,15 +83,18 @@ public class AfterVideo8Activity extends AppCompatActivity {
         changePlanGroup = findViewById(R.id.change_plan_group);
         buttonSubmit = findViewById(R.id.button_submit);
         changesExplained = findViewById(R.id.tv_changes_explain);
+        reminderNextVideo = findViewById(R.id.reminder_next_video);
         btnBack = findViewById(R.id.btn_back);
 
         changePlanGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.plan_yes) {
                 changesExplained.setVisibility(View.VISIBLE);
                 editTextChanges.setVisibility(View.VISIBLE);
+                reminderNextVideo.setVisibility(View.VISIBLE);
             } else {
                 changesExplained.setVisibility(View.GONE);
                 editTextChanges.setVisibility(View.GONE);
+                reminderNextVideo.setVisibility(View.GONE);
             }
         });
 

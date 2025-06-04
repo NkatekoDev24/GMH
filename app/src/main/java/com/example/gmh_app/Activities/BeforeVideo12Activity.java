@@ -35,7 +35,7 @@ import java.util.Map;
 public class BeforeVideo12Activity extends AppCompatActivity {
 
     private RadioGroup rgAdjustHabits, rgHappyResults, rgConfidenceProfit, rgSatisfactionProfit;
-    private TextView changesExplained, resultsExplained, txtIfYes;
+    private TextView changesExplained, resultsExplained, txtIfYes, title;
     private EditText etWhatChanged, etResult, etCurrentProfit;
     private Button btnSubmit;
     private TextView tvCombinedToc, tvVideoList, video12;
@@ -77,11 +77,14 @@ public class BeforeVideo12Activity extends AppCompatActivity {
         video12 = findViewById(R.id.vid12);
         changesExplained = findViewById(R.id.text_changes_explained);
         resultsExplained = findViewById(R.id.results_explained);
+        title = findViewById(R.id.title);
         txtIfYes = findViewById(R.id.txtIfYes);
 
         etCurrentProfit.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
         tvCombinedToc.setText(Html.fromHtml("<u>PART 4 START PAGE</u>"));
+
+        title.setText(Html.fromHtml("<u>COUNTING AND RECORDING PROFIT – AND THE RISK OF CUSTOMER CREDIT</u>"));
 
         tvVideoList.setText(Html.fromHtml(
                 "<b>Part 4. Counting and Recording PROFIT – and the risk of customer credit</b><br>" +

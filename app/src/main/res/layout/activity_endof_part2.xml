@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If you have answered all the questions and given responses when asked, \nyou qualify to get the second ACHIEVEMENT SHIELD (Level 2)."
+            android:text="Since you have answered all the questions and given responses when asked, \nyou qualify to get the second ACHIEVEMENT SHIELD (Level 2)."
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:paddingBottom="16dp"

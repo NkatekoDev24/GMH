@@ -142,12 +142,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
+                android:textSize="20sp"
                 android:textColor="@color/black" />
             <RadioButton
                 android:id="@+id/profit_changes_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No"
+                android:textSize="20sp"
                 android:textColor="@color/black" />
         </RadioGroup>
 
@@ -221,6 +223,7 @@
             android:hint="What amount do you think your profit per month will come to, approximately?\n (Enter Rand amount)" />
 
         <TextView
+            android:id="@+id/reminder_next_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📌 It’s important to write this down BEFORE you go on to the next video."

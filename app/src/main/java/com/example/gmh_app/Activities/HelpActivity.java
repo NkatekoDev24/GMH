@@ -44,9 +44,9 @@ public class HelpActivity extends AppCompatActivity {
 
     private String getHelpText() {
         return "GMH HELP and INFORMATION<br><br>"
-                + "If you have &bull; <b>trouble operating the app or video controls</b>, go to the website:<br>"
+                + "If you have <b>trouble operating the app or video controls</b>, go to the website:<br>"
                 + "www.ufs.ac.za/econ/cds/GoodMoneyHabits<br><br>"
-                + "You can also visit this website for more &bull; <b>information or suggestions</b> regarding the Good Money Habits app and videos.";
+                + "You can also visit this website for more <b>information or suggestions</b> regarding the Good Money Habits app and videos.";
     }
 
     @Override
