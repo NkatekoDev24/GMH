@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:text="FEEDBACK BREAK (Video 7)"
             android:textSize="24sp"
+            android:textAllCaps="true"
             android:fontFamily="@font/calibri_regular"
             android:textStyle="bold"
             android:textColor="@color/black"
