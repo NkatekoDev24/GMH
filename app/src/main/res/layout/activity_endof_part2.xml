@@ -48,16 +48,6 @@
             android:textColor="@color/black" />
 
         <!-- Achievement Info Text -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="*If not, check the videos in Part 2 and make sure you have completed all the questions."
-            android:textSize="16sp"
-            android:textStyle="italic"
-            android:fontFamily="@font/calibri_regular"
-            android:paddingBottom="16dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/gray" />
 
         <!-- Achievement Shield Heading -->
         <TextView

@@ -59,23 +59,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If you have answered all the questions and given responses when asked, you qualify to get \nthe fourth and ultimate GOLD ACHIEVEMENT SHIELD (Level 4)."
+            android:text="Since you have answered all the questions and given responses when asked, you qualify to get \nthe fourth and ultimate GOLD ACHIEVEMENT SHIELD (Level 4)."
             android:textSize="16sp"
             android:fontFamily="@font/calibri_regular"
             android:paddingBottom="8dp"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/black" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="*If not, check the videos in Part 4 and make sure you have completed all the questions."
-            android:textSize="16sp"
-            android:textStyle="italic"
-            android:fontFamily="@font/calibri_regular"
-            android:paddingBottom="16dp"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/gray" />
 
         <!-- Achievement Shield Heading -->
         <TextView
