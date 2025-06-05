@@ -34,7 +34,6 @@ public class IntroductionActivity extends AppCompatActivity {
     TextView welcomeMessage;
     private DatabaseReference databaseReference;
 
-    private RadioGroup rgConsent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,23 +74,13 @@ public class IntroductionActivity extends AppCompatActivity {
         // TextView for Combined Message setup with HTML formatting
 //        TextView tvCombinedMessage = findViewById(R.id.tvCombinedMessage);
         TextView tvCombineToc = findViewById(R.id.tvCombinedToc);
-        TextView tvConsent = findViewById(R.id.tv_consent);
+
         TextView tvParts = findViewById(R.id.tvPart);
         TextView video1 = findViewById(R.id.video1);
         welcomeMessage = findViewById(R.id.tvWelcomeMessage);
-        rgConsent = findViewById(R.id.rg_consent);
 
-        // Get the selected radio button value
-        int selectedConsentId = rgConsent.getCheckedRadioButtonId();
-        String consentGiven;
 
-        if (selectedConsentId == R.id.rb_consent_yes) {
-            consentGiven = "Yes";
-        } else if (selectedConsentId == R.id.rb_consent_no) {
-            consentGiven = "No";
-        } else {
-            consentGiven = null; // No selection made
-        }
+
 
 //        String formattedText = " " + "<b>You will be tempted to watch all the videos in one go, because they are really good!</b><br><br>" +
 //                "<b>However</b>, <b>we RECOMMEND that you space the four parts (15 videos) over at least 4 weeks.</b><br><br>" +
@@ -102,14 +91,6 @@ public class IntroductionActivity extends AppCompatActivity {
 
         welcomeMessage.setText(Html.fromHtml("<u>BASICS: WHY GOOD MONEY HABITS – AND THE SEPARATION RULE</u>"));
 
-        tvConsent.setText(Html.fromHtml(
-                "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br><br>" +
-                        "• Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.<br>" +
-                        "• We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.<br>" +
-                        "• We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.<br>" +
-                        "• You can still use the app even if you don't want us to use your answers for research.<br>" +
-                        "• But we really are keen to get your answers – so that we can improve this training programme, app and videos."
-        ));
 
         tvCombineToc.setText(Html.fromHtml(
                 " " +
@@ -154,63 +135,9 @@ public class IntroductionActivity extends AppCompatActivity {
     }
 
     private void validateAndSubmitFeedback() {
-
-        // Get the selected radio button value
-        int selectedConsentId = rgConsent.getCheckedRadioButtonId();
-        String consentGiven;
-
-        if (selectedConsentId == R.id.rb_consent_yes) {
-            consentGiven = "Yes";
-        } else if (selectedConsentId == R.id.rb_consent_no) {
-            consentGiven = "No";
-        } else {
-            consentGiven = null; // No selection made
-        }
-
-        // Create a list to hold error messages
-        List<String> errors = new ArrayList<>();
-
-        if (consentGiven == null) errors.add("Please indicate yes or no for User Consent question above.");
-
-        // Show errors if any
-        if (!errors.isEmpty()) {
-            showErrorDialog(errors);
-            return;
-        }
-
-        // Create feedback data
-        Map<String, Object> feedback = new HashMap<>();
-        feedback.put("consentGiven", consentGiven);
-        feedback.put("timestamp", System.currentTimeMillis());
-
-        // Save data to Firebase (offline support enabled)
-        databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(feedback)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.d(TAG, "Feedback submitted successfully.");
-                    } else {
-                        Log.e(TAG, "Error submitting feedback", task.getException());
-                    }
-                });
-
         // Proceed to the next activity immediately
         setResult(RESULT_OK);
         finish(); // Close this activity
-    }
-
-    private void showErrorDialog(List<String> errors) {
-        // Combine error messages into a single string
-        StringBuilder errorMessage = new StringBuilder();
-        for (String error : errors) {
-            errorMessage.append("• ").append(error).append("\n");
-        }
-
-        // Create and show an AlertDialog with the error messages
-        new AlertDialog.Builder(this)
-                .setTitle("Errors")
-                .setMessage(errorMessage.toString())
-                .setPositiveButton("OK", null)
-                .show();
     }
 
 //    @Override

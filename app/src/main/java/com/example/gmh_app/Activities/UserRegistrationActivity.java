@@ -39,7 +39,7 @@ import java.util.Map;
 public class UserRegistrationActivity extends AppCompatActivity {
 
     private EditText etUsername, etEmail, etCellphone, etAge, etLocation, etCity, etCountry, etBusinessName, etBusinessDescription;
-    private RadioGroup rgEducation, rgGender, rgBusinessName, rbBusinessYes,rbBusinessNo, rgNameDisplayed;
+    private RadioGroup rgEducation, rgGender, rgBusinessName, rbBusinessYes,rbBusinessNo, rgNameDisplayed, rgConsent;
     private Spinner spinnerProvince;
     private TextView tvCombinedToc, video2, tvBusinessFollowup, tvBusinessName;
     private Button btnSubmit;
@@ -90,6 +90,8 @@ public class UserRegistrationActivity extends AppCompatActivity {
         video2 = findViewById(R.id.video2);
         tvBusinessFollowup = findViewById(R.id.tvBusinessNameFollowup);
         tvBusinessName = findViewById(R.id.tvBusinessName);
+        TextView tvConsent = findViewById(R.id.tv_consent);
+        rgConsent = findViewById(R.id.rg_consent);
 
 
         rgBusinessName.setOnCheckedChangeListener((group, checkedId ) ->{
@@ -106,6 +108,18 @@ public class UserRegistrationActivity extends AppCompatActivity {
             }
         });
 
+        // Get the selected radio button value
+        int selectedConsentId = rgConsent.getCheckedRadioButtonId();
+        String consentGiven;
+
+        if (selectedConsentId == R.id.rb_consent_yes) {
+            consentGiven = "Yes";
+        } else if (selectedConsentId == R.id.rb_consent_no) {
+            consentGiven = "No";
+        } else {
+            consentGiven = null; // No selection made
+        }
+
                 // Populate the spinner
         List<String> provinces = new ArrayList<>(Arrays.asList("Select Province", "Gauteng", "Western Cape", "KwaZulu-Natal", "Eastern Cape", "Free State", "Limpopo", "Mpumalanga", "Northern Cape", "North West"));
         String defaultOption = provinces.remove(0);
@@ -115,6 +129,15 @@ public class UserRegistrationActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProvince.setAdapter(adapter);
+
+        tvConsent.setText(Html.fromHtml(
+                "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br><br>" +
+                        "• Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.<br>" +
+                        "• We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.<br>" +
+                        "• We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.<br>" +
+                        "• You can still use the app even if you don't want us to use your answers for research.<br>" +
+                        "• But we really are keen to get your answers – so that we can improve this training programme, app and videos."
+        ));
 
         tvCombinedToc.setText(Html.fromHtml(
                 "<b>Part 1. BASICS: Why Good Money Habits – and the Separation rule</b><br>" +
@@ -149,6 +172,18 @@ public class UserRegistrationActivity extends AppCompatActivity {
         String hasBusinessName = getSelectedRadioText(rgBusinessName);
         String isNameDisplayed = getSelectedRadioText(rgNameDisplayed);
 
+        // Get the selected radio button value
+        int selectedConsentId = rgConsent.getCheckedRadioButtonId();
+        String consentGiven;
+
+        if (selectedConsentId == R.id.rb_consent_yes) {
+            consentGiven = "Yes";
+        } else if (selectedConsentId == R.id.rb_consent_no) {
+            consentGiven = "No";
+        } else {
+            consentGiven = null; // No selection made
+        }
+
         // Create a list to hold error messages
         List<String> errors = new ArrayList<>();
 
@@ -164,6 +199,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         if (!hasMinimumWords(businessDescription, 3)) errors.add("Business description must contain at least three words.");
         if (rgBusinessName.getCheckedRadioButtonId() == R.id.rbBusinessYes && TextUtils.isEmpty(businessName)) errors.add("Business name is required.");
         if (rgBusinessName.getCheckedRadioButtonId() == R.id.rbBusinessYes && rgNameDisplayed.getCheckedRadioButtonId() == -1) errors.add("Please select if your name should be displayed.");
+        if (consentGiven == null) errors.add("Please indicate yes or no for User Consent question above.");
 
         // Show errors if any
         if (!errors.isEmpty()) {
@@ -186,6 +222,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         userData.put("hasBusinessName", hasBusinessName);
         userData.put("isNameDisplayed", isNameDisplayed);
         userData.put("province", province);
+        userData.put("consentGiven", consentGiven);
         userData.put("timestamp", System.currentTimeMillis());
 
         // Store in Firebase
