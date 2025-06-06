@@ -54,15 +54,15 @@
             android:textColor="@android:color/black"
             android:paddingBottom="12dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:fontFamily="@font/calibri_regular"
-            android:paddingBottom="16dp"
-            android:textStyle="italic"/>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="[PRIVACY: We gather this information only for research and to improve the training material. Your personal information will never be shared. We promise to keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act).]"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:textStyle="italic"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
