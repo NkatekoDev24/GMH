@@ -118,9 +118,10 @@
 
         <!-- Question 2 -->
         <TextView
+            android:id="@+id/changes_explained"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Which MAIN changes regarding Good Money Habits have you adopted up to now? Explain briefly."
+            android:text="Which MAIN changes regarding EXPENSES have you adopted up to now? Explain briefly."
             android:textColor="@android:color/black"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"

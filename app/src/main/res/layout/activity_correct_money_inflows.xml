@@ -52,7 +52,8 @@
             android:textSize="24sp"
             android:textColor="@color/black"
             android:fontFamily="@font/calibri_regular"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
 
         <!-- Encouragement Text -->
 <!--        <TextView-->

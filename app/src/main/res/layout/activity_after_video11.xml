@@ -171,7 +171,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="How would you want to control your overhead costs 4 weeks from now?"
+            android:text="How well would you want to control your overhead costs 4 weeks from now?"
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"/>

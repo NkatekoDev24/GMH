@@ -106,7 +106,7 @@ public class AfterVideo6Activity extends AppCompatActivity {
 
         CheckBox checkBox3 = findViewById(R.id.hazard3);
         checkBox3.setText(Html.fromHtml(
-                "<b>Milking the household</b> – Taking household money to pay for business expenses or recording it as a cash loan from the household to the business, thus owed to the household.",
+                "<b>Milking the household</b> – Taking household money to pay for business expenses without recording it as a cash loan from the household to the business, thus owed to the household.",
                 Html.FROM_HTML_MODE_LEGACY));
 
         changePlanGroup.setOnCheckedChangeListener((group, checkedId) -> {

@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text="You can be very proud!"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/holo_red_dark"
             android:paddingBottom="34dp"/>

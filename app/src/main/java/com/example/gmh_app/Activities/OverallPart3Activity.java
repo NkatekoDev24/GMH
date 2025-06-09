@@ -8,12 +8,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +34,7 @@ public class OverallPart3Activity extends AppCompatActivity {
 
     private RadioGroup changesMadeGroup, progressGroup, moneyHelpGroup;
     private EditText changesAdopted, changesPostponed, reasonPostponed, part3Comments;
+    private TextView changesExplained;
     private Button submitButton;
     private DatabaseReference databaseReference;
 
@@ -66,11 +69,22 @@ public class OverallPart3Activity extends AppCompatActivity {
         changesMadeGroup = findViewById(R.id.changes_made_group);
         progressGroup = findViewById(R.id.progress_group);
         moneyHelpGroup = findViewById(R.id.money_help_group);
+        changesExplained = findViewById(R.id.changes_explained);
         changesAdopted = findViewById(R.id.changes_adopted);
         changesPostponed = findViewById(R.id.changes_postponed);
         reasonPostponed = findViewById(R.id.reason_postponed);
         part3Comments = findViewById(R.id.part3_comments);
         submitButton = findViewById(R.id.submit_button);
+
+        changesMadeGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.changes_yes) {
+                changesExplained.setVisibility(View.VISIBLE);
+                changesAdopted.setVisibility(View.VISIBLE);
+            } else {
+                changesExplained.setVisibility(View.GONE);
+                changesAdopted.setVisibility(View.GONE);
+            }
+        });
 
         // Set button click listener
         submitButton.setOnClickListener(v -> validateAndSubmitData());

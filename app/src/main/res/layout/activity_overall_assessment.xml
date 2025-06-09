@@ -150,7 +150,7 @@
             android:id="@+id/changes_explained"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="If at least some changes: what are the main changes that have you made?"
+            android:text="If at least some changes: what are the main changes that you have made?"
             android:textSize="20sp"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"/>
@@ -161,7 +161,7 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:layout_marginBottom="16dp"
-            android:hint="If at least some changes: what are the main changes that have you made?"/>
+            android:hint="If at least some changes: what are the Main changes that have you made?"/>
 
         <!-- Question 4: Progress and New Skills -->
         <TextView

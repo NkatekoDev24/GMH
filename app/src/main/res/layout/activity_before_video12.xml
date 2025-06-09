@@ -231,18 +231,6 @@
                 android:textColor="@color/black"/>
         </RadioGroup>
 
-        <!-- Reminder Text -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="📌 Remember to answer all these questions, so that you can be rewarded with an Achievement Shield at the end of Part 4."
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:textColor="@color/black"
-            android:fontFamily="@font/calibri_regular"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"/>
-
         <!-- Introductory Text for Profit Section -->
         <TextView
             android:layout_width="match_parent"
@@ -277,7 +265,7 @@
             android:id="@+id/vid12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
@@ -290,7 +278,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:paddingBottom="8dp"/>
 
 
         <!-- Placeholder for Dynamic Video List Text -->

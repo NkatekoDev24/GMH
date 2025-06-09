@@ -131,7 +131,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         spinnerProvince.setAdapter(adapter);
 
         tvConsent.setText(Html.fromHtml(
-                "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br><br>" +
+                "Before and after each video, you will find a few questions. They will help you understand your business <i>and</i> how the videos can help you. You can also rate the videos.<br>" +
                         "• Your answers are important <u>for us!</u> They will help us understand how much the videos help you and other businesspeople – so that we can do research and keep improving the app and videos.<br>" +
                         "• We promise to keep your information private. Only our research team will see it. We won't share it with anyone else.<br>" +
                         "• We'll keep it safe and private, following South Africa's rules for protecting personal information (called the POPI Act). No one will ever know it's you.<br>" +

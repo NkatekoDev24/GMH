@@ -173,8 +173,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <RadioButton android:id="@+id/rb_changes_yes" android:text="Yes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/black" android:textSize="20sp" />
-            <RadioButton android:id="@+id/rb_changes_no" android:text="No" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/black" android:textSize="20sp" />
+            <RadioButton android:id="@+id/rb_changes_yes" android:text="Yes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/black" android:textSize="20sp" android:fontFamily="@font/calibri_regular" />
+            <RadioButton android:id="@+id/rb_changes_no" android:text="No" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/black" android:textSize="20sp" android:fontFamily="@font/calibri_regular" />
         </RadioGroup>
 
         <TextView
