@@ -227,18 +227,19 @@
             android:background="@drawable/dotted_underline"
             android:minHeight="40dp"
             android:inputType="numberDecimal"
-            android:hint="What amount do you think your profit per month will come to, approximately?\n (Enter Rand amount)" />
-
-        <TextView
-            android:id="@+id/reminder_next_video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="📌 It’s important to write this down BEFORE you go on to the next video."
-            android:textSize="16sp"
-            android:fontFamily="@font/calibri_regular"
-            android:textColor="@color/black"
-            android:textStyle="italic"
+            android:hint="What amount do you think your profit per month will come to, approximately?\n (Enter Rand amount)"
             android:layout_marginBottom="16dp"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/reminder_next_video"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="📌 It’s important to write this down BEFORE you go on to the next video."-->
+<!--            android:textSize="16sp"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="italic"-->
+<!--            android:layout_marginBottom="16dp"/>-->
 
         <TextView
             android:layout_width="wrap_content"

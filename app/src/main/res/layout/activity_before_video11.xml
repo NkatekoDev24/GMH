@@ -58,7 +58,7 @@
         android:id="@+id/intro_text_video11_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="It is a crucial category if one wants to control costs (expenses). \nReplay the video as many times as you need to. \nYou must really understand the concepts and types of costs – and how they differ from variable costs."
+        android:text="It is a crucial category if one wants to control costs (expenses). \nReplay the video as many times as you need to. \nYou must really understand the concepts and types of costs – and how they differ from \nvariable costs."
         android:textSize="20sp"
         android:lineSpacingExtra="16dp"
         android:textStyle="bold"

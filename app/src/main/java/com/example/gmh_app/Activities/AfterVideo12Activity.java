@@ -79,7 +79,7 @@ public class AfterVideo12Activity extends AppCompatActivity {
         submitButton = findViewById(R.id.submit_button);
         changesExplained = findViewById(R.id.text_changes_explained);
         txtYes = findViewById(R.id.txtIfYes);
-        reminderNextVideo = findViewById(R.id.reminder_next_video);
+//        reminderNextVideo = findViewById(R.id.reminder_next_video);
         btnBack = findViewById(R.id.btn_back);
 
         profitChangesGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -96,11 +96,11 @@ public class AfterVideo12Activity extends AppCompatActivity {
             if (checkedId == R.id.profit_difference_yes) {
                 txtYes.setVisibility(View.VISIBLE);
                 profitAmountEditText.setVisibility(View.VISIBLE);
-                reminderNextVideo.setVisibility(View.VISIBLE);
+//                reminderNextVideo.setVisibility(View.VISIBLE);
             } else {
                 txtYes.setVisibility(View.GONE);
                 profitAmountEditText.setVisibility(View.GONE);
-                reminderNextVideo.setVisibility(View.GONE);
+//                reminderNextVideo.setVisibility(View.GONE);
             }
         });
 

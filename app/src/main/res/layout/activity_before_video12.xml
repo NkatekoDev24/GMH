@@ -269,7 +269,8 @@
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
-            android:paddingTop="24dp" />
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -279,7 +280,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/calibri_regular"
             android:textColor="@android:color/black"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="16dp"/>
 
 
         <!-- Placeholder for Dynamic Video List Text -->

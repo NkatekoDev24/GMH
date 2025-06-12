@@ -42,30 +42,17 @@ public class OverallPart3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Make the activity full screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_overall_part3);
 
-        // Setup Toolbar
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        if (getSupportActionBar() != null) {
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_24);
-//            getSupportActionBar().setTitle("");
-//        }
-
-        // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference("Overall Part 3 Response");
-        databaseReference.keepSynced(true); // Ensures local data is cached offline
+        databaseReference.keepSynced(true);
 
-        // Debugging: Log Firebase Database path
         Log.d(TAG, "Firebase Database Path: " + databaseReference);
 
-        // Initialize views
         changesMadeGroup = findViewById(R.id.changes_made_group);
         progressGroup = findViewById(R.id.progress_group);
         moneyHelpGroup = findViewById(R.id.money_help_group);
@@ -86,12 +73,10 @@ public class OverallPart3Activity extends AppCompatActivity {
             }
         });
 
-        // Set button click listener
         submitButton.setOnClickListener(v -> validateAndSubmitData());
     }
 
     private void validateAndSubmitData() {
-        // Collect input data
         String changesMade = getSelectedRadioText(changesMadeGroup);
         String progress = getSelectedRadioText(progressGroup);
         String moneyHelp = getSelectedRadioText(moneyHelpGroup);
@@ -100,29 +85,28 @@ public class OverallPart3Activity extends AppCompatActivity {
         String reasonPostponedText = reasonPostponed.getText().toString().trim();
         String part3CommentsText = part3Comments.getText().toString().trim();
 
-        // Create a list to hold error messages
         List<String> errors = new ArrayList<>();
 
-        // Validate input
         if (changesMade == null) errors.add("Please specify the changes made.");
         if (progress == null) errors.add("Please specify your progress.");
         if (moneyHelp == null) errors.add("Please specify if money management has helped.");
-        if (TextUtils.isEmpty(changesAdoptedText)) errors.add("Please specify the MAIN changes you have adopted.");
+
+        if (changesAdopted.getVisibility() == View.VISIBLE && TextUtils.isEmpty(changesAdoptedText)) {
+            errors.add("Please specify the MAIN changes you have adopted.");
+        }
+
         if (TextUtils.isEmpty(changesPostponedText)) errors.add("Please specify the changes you have postponed.");
-        if (!"none".equalsIgnoreCase(changesPostponedText) &&
-                !"0".equals(changesPostponedText)) {
+        if (!"none".equalsIgnoreCase(changesPostponedText) && !"0".equals(changesPostponedText)) {
             if (TextUtils.isEmpty(reasonPostponedText)) {
                 errors.add("Please specify the reason for postponing changes.");
             }
         }
 
-        // Show errors if any
         if (!errors.isEmpty()) {
             showErrorDialog(errors);
             return;
         }
 
-        // Create data map
         Map<String, Object> formData = new HashMap<>();
         formData.put("changes_made", changesMade);
         formData.put("progress", progress);
@@ -133,7 +117,6 @@ public class OverallPart3Activity extends AppCompatActivity {
         formData.put("part3_comments", TextUtils.isEmpty(part3CommentsText) ? "No comments provided" : part3CommentsText);
         formData.put("timestamp", System.currentTimeMillis());
 
-        // Save data to Firebase (offline support enabled)
         databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(formData)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -143,10 +126,8 @@ public class OverallPart3Activity extends AppCompatActivity {
                     }
                 });
 
-        // Proceed to the next activity immediately
         setResult(RESULT_OK);
         navigateToNextActivity();
-
     }
 
     private String getSelectedRadioText(RadioGroup radioGroup) {
@@ -161,46 +142,17 @@ public class OverallPart3Activity extends AppCompatActivity {
     }
 
     private void showErrorDialog(List<String> errors) {
-        // Combine error messages into a single string
         StringBuilder errorMessage = new StringBuilder();
         for (String error : errors) {
             errorMessage.append("• ").append(error).append("\n");
         }
 
-        // Create and show an AlertDialog with the error messages
         new AlertDialog.Builder(this)
                 .setTitle("Errors")
                 .setMessage(errorMessage.toString())
                 .setPositiveButton("OK", null)
                 .show();
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//
-//        if (id == android.R.id.home) {
-//            setResult(RESULT_CANCELED);
-//            finish();
-//            return true;
-//        } else if (id == R.id.action_home) {
-//            startActivity(new Intent(OverallPart3Activity.this, TopicsActivity.class));
-//            overridePendingTransition(0, 0);
-//            return true;
-//        } else if (id == R.id.action_help) {
-//            startActivity(new Intent(OverallPart3Activity.this, HelpActivity.class));
-//            overridePendingTransition(0,0);
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     private void navigateToNextActivity() {
         Intent nextIntent = new Intent(OverallPart3Activity.this, EnfofPart3Activity.class);

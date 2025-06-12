@@ -73,15 +73,15 @@
             android:textStyle="italic"
             android:paddingBottom="16dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Looking back at the whole group of Videos 9 to 11 in Part 3:"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/calibri_regular"
-            android:paddingBottom="8dp"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Looking back at the whole group of Videos 9 to 11 in Part 3:"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:fontFamily="@font/calibri_regular"-->
+<!--            android:paddingBottom="8dp"/>-->
 
         <!-- Question 1 -->
         <TextView
