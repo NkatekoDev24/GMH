@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "622319878887",
-    "project_id": "good-money-habits-fe9f8",
-    "storage_bucket": "good-money-habits-fe9f8.firebasestorage.app"
+    "project_number": "468565503013",
+    "project_id": "good-money-habits-3f478",
+    "storage_bucket": "good-money-habits-3f478.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:622319878887:android:b4037af4cc788ba1fd9842",
+        "mobilesdk_app_id": "1:468565503013:android:d08eefcc8b00b9629a23cc",
         "android_client_info": {
           "package_name": "com.example.gmh_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAxQ9172JRwR7NUk2Te5j0pyMcXMwFWpms"
+          "current_key": "AIzaSyCLVBprakJDlwrua-qguF5qnyZLJ37eJ4c"
         }
       ],
       "services": {

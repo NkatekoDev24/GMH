@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,7 +51,7 @@ public class VideoActivity extends AppCompatActivity {
 
         if (videoList == null || videoList.isEmpty()) {
             videoList = new ArrayList<>();
-            Toast.makeText(this, "No videos available to display.", Toast.LENGTH_SHORT).show();
+            showDialog("No videos available to display.");
             Log.e(TAG, "Video list from intent is null or empty.");
         }
 
@@ -61,12 +60,10 @@ public class VideoActivity extends AppCompatActivity {
             isViewed.add(false);
         }
 
-        // Filter out questions if section is already completed
         if (wasSectionCompleted(sectionKey)) {
             videoList = filterOutQuestions(videoList);
         }
 
-        // Restore last watched index
         currentVideoIndex = sharedPreferences.getInt(sectionKey, 0);
         if (currentVideoIndex >= videoList.size()) {
             currentVideoIndex = 0;
@@ -80,7 +77,6 @@ public class VideoActivity extends AppCompatActivity {
 
         videoRecyclerView.scrollToPosition(currentVideoIndex);
 
-        // If revisiting Orientation, Inflows, Outflows, or Profit sections, do NOT auto-play
         if (shouldPreventAutoPlay(sectionKey) && wasSectionCompleted(sectionKey)) {
             return;
         }
@@ -91,17 +87,16 @@ public class VideoActivity extends AppCompatActivity {
     private List<VideoModel> filterOutQuestions(List<VideoModel> videos) {
         List<VideoModel> filteredVideos = new ArrayList<>();
         for (VideoModel video : videos) {
-            if (!video.isQuestion()) { // Ensure this returns a boolean
+            if (!video.isQuestion()) {
                 filteredVideos.add(video);
             }
         }
-        return filteredVideos; // Ensure this returns List<VideoModel>
+        return filteredVideos;
     }
-
 
     private void playNextVideo() {
         if (videoList == null || videoList.isEmpty()) {
-            Toast.makeText(this, "No videos available.", Toast.LENGTH_SHORT).show();
+            showDialog("No videos available.");
             finish();
             return;
         }
@@ -116,7 +111,7 @@ public class VideoActivity extends AppCompatActivity {
 
         VideoModel currentVideo = videoList.get(currentVideoIndex);
         if (currentVideo == null) {
-            Toast.makeText(this, "Invalid video data.", Toast.LENGTH_SHORT).show();
+            showDialog("Invalid video data.");
             return;
         }
 
@@ -133,12 +128,11 @@ public class VideoActivity extends AppCompatActivity {
         videoAdapter.notifyDataSetChanged();
     }
 
-
     private void openVideoPlaybackActivity(boolean isFiltered) {
         List<VideoModel> filteredVideos = isFiltered ? filterOutQuestions(videoList) : new ArrayList<>(videoList);
 
         if (filteredVideos.isEmpty()) {
-            Toast.makeText(this, "No valid videos to play.", Toast.LENGTH_SHORT).show();
+            showDialog("No valid videos to play.");
             return;
         }
 
@@ -149,14 +143,12 @@ public class VideoActivity extends AppCompatActivity {
         startActivityForResult(intent, VideoPlaybackActivity.REQUEST_CODE_VIDEO_PLAYBACK);
     }
 
-
-
     private void openQuestionActivity(VideoModel question) {
         Intent intent = new Intent(this, getQuestionActivityClass(question.getQuestionId()));
         if (intent != null) {
             startActivityForResult(intent, VideoPlaybackActivity.REQUEST_CODE_QUESTION);
         } else {
-            Toast.makeText(this, "Unexpected question ID: " + question.getQuestionId(), Toast.LENGTH_SHORT).show();
+            showDialog("Unexpected question ID: " + question.getQuestionId());
         }
     }
 
@@ -247,7 +239,6 @@ public class VideoActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -256,25 +247,23 @@ public class VideoActivity extends AppCompatActivity {
         finish();
     }
 
-
     private void goBackToPreviousVideo() {
-        // Stay within bounds
         if (currentVideoIndex > 0) {
-            currentVideoIndex--; // Step back
+            currentVideoIndex--;
         }
 
-        // Replay previous video only (skip question)
-        VideoModel currentVideo = videoList.get(currentVideoIndex);
-        if (!currentVideo.isQuestion()) {
-            openVideoPlaybackActivity(wasSectionCompleted(sectionKey));
-        } else {
-            // If still a question, backtrack further until a video is found
-            while (currentVideoIndex > 0 && videoList.get(currentVideoIndex).isQuestion()) {
-                currentVideoIndex--;
-            }
-            // Finally play the actual video
-            openVideoPlaybackActivity(wasSectionCompleted(sectionKey));
+        while (currentVideoIndex > 0 && videoList.get(currentVideoIndex).isQuestion()) {
+            currentVideoIndex--;
         }
+
+        openVideoPlaybackActivity(wasSectionCompleted(sectionKey));
     }
 
+    private void showDialog(String message) {
+        new AlertDialog.Builder(this)
+                .setMessage(message)
+                .setCancelable(true)
+                .setPositiveButton("OK", null)
+                .show();
+    }
 }
